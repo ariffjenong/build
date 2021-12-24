@@ -62,7 +62,7 @@ task:
       - echo "============================"
       - ./collect.sh
 #      - ./final.sh
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls PixelExperience*.zip) Completed!"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls PixelExperience_Plus*.zip) Completed!"
       - echo "============================"
       - echo "Build Completed!"
       - echo "============================"
@@ -71,10 +71,10 @@ task:
       - echo "============================"
       - echo "Mengunggah Build...."
       - echo "============================"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd /tmp/rom/out/target/product/juice/ && ls PixelExperience*.zip)"
-      - rclone copy /tmp/rom/out/target/product/juice/PixelExperience*.zip ceeru:juice -P
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls PixelExperience*.zip) Uploaded Successfully!"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Download link http://anu.inok189.workers.dev/juice/$(cd /tmp/rom/out/target/product/juice/ && ls PixelExperience*.zip)"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd /tmp/rom/out/target/product/juice/ && ls PixelExperience_Plus*.zip)"
+      - rclone copy /tmp/rom/out/target/product/juice/PixelExperience_Plus*.zip ceeru:juice -P
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls PixelExperience_Plus*.zip) Uploaded Successfully!"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Download link http://anu.inok189.workers.dev/juice/$(cd /tmp/rom/out/target/product/juice/ && ls PixelExperience_Plus*.zip)"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Compres ccache"
       - ./ziping.sh
       - cd /tmp
