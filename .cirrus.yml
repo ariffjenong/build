@@ -50,7 +50,7 @@ task:
       # DT/VT/KT/TC
       - git clone --depth=1 https://github.com/c3eru/device_tree -b 11 device/xiaomi/juice
       - git clone --depth=1 https://github.com/c3eru/vendor_tree --single-branch -b 11.0 vendor/xiaomi/juice
-      - git clone --depth=1 https://github.com/mobxCode/kernel_xiaomi_citrus_sm6115 -b rvc-inline kernel/xiaomi/juice
+      - git clone --depth=1 https://github.com/javashin/Xiaomi-Fury-Bengal-SD662 -b main kernel/xiaomi/juice
       - git clone --depth=1 https://github.com/mobxprjkt/GengKapak-clang -b 13 prebuilts/clang/host/linux-x86/clang-gengkapak
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - echo "============================"
