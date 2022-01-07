@@ -41,9 +41,6 @@ task:
       - ls -l -a -h
   
   Sync_script:
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="============================================"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build Baru Terdeteksi!"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="============================================"
       - echo "============================"
       - echo "Menyinkronkan Sumber..."
       - echo "============================"
