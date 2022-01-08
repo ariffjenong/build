@@ -49,7 +49,7 @@ task:
       - repo init -q --no-repo-verify --depth=1 -u https://github.com/PixelExperience/manifest -b eleven-plus -g default,-device,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       # DT/VT/KT/TC
-      - git clone --depth=1 https://github.com/mobxCode/device_tree -b eleven device/xiaomi/juice
+      - git clone --depth=1 https://github.com/c3eru/device_trees -b wip device/xiaomi/juice
       - git clone --depth=1 https://github.com/c3eru/vendor_tree --single-branch -b 11.0 vendor/xiaomi/juice
       - git clone --depth=1 https://github.com/c3eru/kernel_xiaomi_citrus_sm6115 -b rvc kernel/xiaomi/juice
       - git clone --depth=1 https://github.com/kdrag0n/proton-clang -b master prebuilts/clang/host/linux-x86/clang-proton
