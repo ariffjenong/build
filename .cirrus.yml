@@ -27,8 +27,6 @@ task:
        - DEBIAN_FRONTEND=noninteractive
        - sudo apt install python3 -y
        - sudo ln -sf /usr/bin/python3 /usr/bin/python
-       - sudo apt update
-       - sudo apt upgrade
        - git config --global user.name "ariffjenong"
        - git config --global user.email "arifbuditantodablekk@gmail.com"
        - mkdir -p /tmp/ccache
@@ -43,6 +41,7 @@ task:
       - ls -l -a -h
   
   Sync_script:
+      - sudo su curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
       - echo "============================"
       - echo "Menyinkronkan Sumber..."
       - echo "============================"
