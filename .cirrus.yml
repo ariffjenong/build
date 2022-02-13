@@ -42,7 +42,7 @@ task:
   
   Sync_script:
       - echo "============================"
-      - echo "Menyinkronkan Sumber..."
+      - echo "Menyinkronkan Sumber...."
       - echo "============================"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai sinkronisasi Sumber..."
       - cd /tmp/rom
