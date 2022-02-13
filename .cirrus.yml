@@ -25,9 +25,7 @@ task:
        - mkdir -p ~/.config/rclone
        - echo "$rcloneconfig" > ~/.config/rclone/rclone.conf
        - DEBIAN_FRONTEND=noninteractive
-       - sudo apt install python3 -y
-       - sudo ln -sf /usr/bin/python3 /usr/bin/python
-       - sudo apt install repo
+       - apt install repo
        - git config --global user.name "ariffjenong"
        - git config --global user.email "arifbuditantodablekk@gmail.com"
        - mkdir -p /tmp/ccache
