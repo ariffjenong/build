@@ -2,6 +2,8 @@ env:
     rcloneconfig: "ENCRYPTED[9c2bf7587b5b3a5f22fd2147f142e07d88d8b8627275c00a30a8f927983f87a51c999e87babdf6a3253140b34ad49508]"
     TG_TOKEN: "ENCRYPTED[7888fd688129c58fcd9a25086dad02a0c103986cfca92f0d1606b3873ab2e02fffacffe4a8a432b0d726eff81999323e]"
     TG_CHAT_ID: "ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]"
+    LUNCH: lineage_maple_dsds-userdebug
+    MAKE: make bacon
  
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -10,7 +12,7 @@ task:
       image: inok2341/anu:latest
       cpu: 8
       memory: 32G
-
+        
   Build-Env-Setup_background_script:
        - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build baru terdeteksi!"
        - export DEBIAN_FRONTEND=noninteractive
@@ -30,7 +32,7 @@ task:
        - git config --global user.name "ariffjenong"
        - git config --global user.email "arifbuditantodablekk@gmail.com"
        - mkdir -p /tmp/ccache
-       - rclone copy znxt:lineage-18.1/ccache.tar.gz /tmp -P
+       - rclone copy znxt:lineage/ccache.tar.gz /tmp -P
        - cd /tmp
        - time tar xf ccache.tar.gz
        - cd /tmp
@@ -42,22 +44,18 @@ task:
   
   Sync_script:
       - echo "============================"
-      - echo "Menyinkronkan Sumber...."
+      - echo "Menyinkronkan Sumber..."
       - echo "============================"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai sinkronisasi Sumber..."
       - cd /tmp/rom
-      - repo init -q --no-repo-verify --depth=1 -u git://github.com/LineageOS/android.git -b lineage-18.1 -g default,-device,-mips,-darwin,-notdefault
+      - repo init -q --no-repo-verify --depth=1 -u https://github.com/LineageOS/android.git -b lineage-18.1 -g default,-device,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       # DT/VT/KT/TC
-      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b Lineage-18.1 device/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b lineage-18.1 device/sony/maple_dsds
       - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common -b lineage-18.1 device/sony/yoshino-common
-      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds -b lineage-18.1 vendor/sony/maple_dsds
-      - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b Lineage-18.1 kernel/sony/maple_dsds
-      - git clone --depth=1 https://github.com/kdrag0n/proton-clang -b master prebuilts/clang/host/linux-x86/clang-proton
-      # Anu
-#      - rm -rf vendor/aosp
-#      - git clone --depth=1 https://github.com/c3eru/vendor_aosp -b eleven-plus vendor/aosp
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds --single-branch -b lineage-18.1 vendor/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b lineage-18.1 kernel/sony/maple_dsds
+       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - echo "============================"
       - echo "Sinkronisasi Selesai!"
       - echo "============================"
@@ -68,7 +66,7 @@ task:
       - echo "============================"
       - ./collect.sh
 #      - ./final.sh
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/maple_dsds/ && ls lineage-18.1*.zip) Completed!"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls lineage*.zip) Completed!"
       - echo "============================"
       - echo "Build Completed!"
       - echo "============================"
@@ -77,17 +75,17 @@ task:
       - echo "============================"
       - echo "Mengunggah Build...."
       - echo "============================"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd /tmp/rom/out/target/product/maple_dsds/ && ls lineage-18.1*.zip)"
-#      - rclone copy /tmp/rom/out/target/product/maple_dsds/*.zip znxt:maple_dsds -P
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/maple_dsds/ && ls *.zip) Uploaded Successfully!"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Download link https://cloud.mobxs.workers.dev/maple_dsds/$(cd /tmp/rom/out/target/product/maple_dsds/ && ls lineage-18.1*.zip)"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd /tmp/rom/out/target/product/juice/ && ls lineage*.zip)"
+#      - rclone copy /tmp/rom/out/target/product/juice/*.zip znxt:juice -P
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls *.zip) Uploaded Successfully!"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Download link https://cloud.mobxs.workers.dev/juice/$(cd /tmp/rom/out/target/product/juice/ && ls lineage*.zip)"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Compres ccache"
       - ./ziping.sh
       - cd /tmp
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache...."
-      - rclone copy ccache.tar.gz znxt:lineage-18.1 -P
+      - rclone copy ccache.tar.gz znxt:lineage -P
       - echo " "
       - echo "============================"
       - echo "Build Berhasil Diunggah!"
       - echo "============================"
-   
+  
