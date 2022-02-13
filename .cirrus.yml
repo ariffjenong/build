@@ -41,7 +41,7 @@ task:
       - ls -l -a -h
   
   Sync_script:
-      - sudo su curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+      - sudo su
       - echo "============================"
       - echo "Menyinkronkan Sumber..."
       - echo "============================"
