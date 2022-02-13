@@ -27,7 +27,8 @@ task:
        - DEBIAN_FRONTEND=noninteractive
        - sudo apt install python3 -y
        - sudo ln -sf /usr/bin/python3 /usr/bin/python
-       - sudo apt install repo
+       - sudo apt update
+       - sudo apt upgrade
        - git config --global user.name "ariffjenong"
        - git config --global user.email "arifbuditantodablekk@gmail.com"
        - mkdir -p /tmp/ccache
