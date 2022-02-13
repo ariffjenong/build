@@ -3,7 +3,7 @@ env:
     TG_TOKEN: "ENCRYPTED[7888fd688129c58fcd9a25086dad02a0c103986cfca92f0d1606b3873ab2e02fffacffe4a8a432b0d726eff81999323e]"
     TG_CHAT_ID: "ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]"
     LUNCH: lineage_maple_dsds-userdebug
-    MAKE: make -j8 bacon
+    MAKE: make bacon
  
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -45,9 +45,7 @@ task:
       - echo "Menyinkronkan Sumber..."
       - echo "============================"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai sinkronisasi Sumber..."
-      - cd /tmp
-      - mkdir /rom
-      - cd /rom
+      - cd /tmp/rom
       - repo init -u https://github.com/LineageOS/android.git -b lineage-18.1
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       # DT/VT/KT/TC
