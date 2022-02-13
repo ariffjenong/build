@@ -2,7 +2,7 @@
 cd /tmp/rom
 
 . build/envsetup.sh
-lunch aosp_juice-userdebug
+lunch lineage_maple_dsds-userdebug
 curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)

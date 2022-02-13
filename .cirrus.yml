@@ -1,7 +1,7 @@
 env:
-    rcloneconfig: "ENCRYPTED[c0efdb804bdcc75ad2862f1d55873d0e7c2d70813588ac6c9c619854e87f5a3be93e41ccef73e108039d276fcda7a70f]"
-    TG_TOKEN: "ENCRYPTED[50701e9f27f834a4a99c0aa06f8f1a1c85cc923f196a7554d8204ea55ec7289d82eebc11930d132fdf8a355d42f1fdbf]"
-    TG_CHAT_ID: "ENCRYPTED[a4a78dd24020e099215701732a11b071378a3912e9c550ac3acd3dd64350c78ceea095d907dc840f21e77897b775dbe1]"
+    rcloneconfig: "ENCRYPTED[02a2d6b0631583b4a45267209d8b21c9d74ef076e307a14a71456909678ce1b4a255e8f94d957818bf812fd074d5323e]"
+    TG_TOKEN: "ENCRYPTED[7888fd688129c58fcd9a25086dad02a0c103986cfca92f0d1606b3873ab2e02fffacffe4a8a432b0d726eff81999323e]"
+    TG_CHAT_ID: "ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]"
  
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -27,10 +27,10 @@ task:
        - DEBIAN_FRONTEND=noninteractive
        - sudo apt install python3 -y
        - sudo ln -sf /usr/bin/python3 /usr/bin/python
-       - git config --global user.name "c3eru"
-       - git config --global user.email "yyprjkt@gmail.com"
+       - git config --global user.name "ariffjenong"
+       - git config --global user.email "arifbuditantodablekk@gmail.com"
        - mkdir -p /tmp/ccache
-       - rclone copy mobx:PixelExperience_Plus/ccache.tar.gz /tmp -P
+       - rclone copy znxt:LineageOs-18.1/ccache.tar.gz /tmp -P
        - cd /tmp
        - time tar xf ccache.tar.gz
        - cd /tmp
@@ -46,12 +46,13 @@ task:
       - echo "============================"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai sinkronisasi Sumber..."
       - cd /tmp/rom
-      - repo init -q --no-repo-verify --depth=1 -u https://github.com/PixelExperience/manifest -b eleven-plus -g default,-device,-mips,-darwin,-notdefault
+      - repo init -u git://github.com/LineageOS/android.git -b lineage-18.1 -g default,-device,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       # DT/VT/KT/TC
-      - git clone --depth=1 https://github.com/c3eru/device_trees -b eleven device/xiaomi/juice
-      - git clone --depth=1 https://github.com/c3eru/vendor_tree --single-branch -b 11.0 vendor/xiaomi/juice
-      - git clone --depth=1 https://github.com/c3eru/KERNEL_A11 -b 11.0 kernel/xiaomi/juice
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b eleven device/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common -b eleven device/sony/yoshino-common
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds --single-branch -b 11.0 vendor/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b 11.0 kernel/sony/maple_dsds
       - git clone --depth=1 https://github.com/kdrag0n/proton-clang -b master prebuilts/clang/host/linux-x86/clang-proton
       # Anu
 #      - rm -rf vendor/aosp
@@ -65,9 +66,9 @@ task:
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
- #     - ./collect.sh
-      - ./final.sh
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls PixelExperience_Plus*.zip) Completed!"
+      - ./collect.sh
+#      - ./final.sh
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/maple_dsds/ && ls LineageOs-18.1*.zip) Completed!"
       - echo "============================"
       - echo "Build Completed!"
       - echo "============================"
@@ -76,15 +77,15 @@ task:
       - echo "============================"
       - echo "Mengunggah Build...."
       - echo "============================"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd /tmp/rom/out/target/product/juice/ && ls PixelExperience_Plus*.zip)"
-      - rclone copy /tmp/rom/out/target/product/juice/*.zip mobx:juice -P
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls *.zip) Uploaded Successfully!"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Download link https://cloud.mobxs.workers.dev/juice/$(cd /tmp/rom/out/target/product/juice/ && ls PixelExperience_Plus*.zip)"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd /tmp/rom/out/target/product/maple_dsds/ && ls LineageOs-18.1*.zip)"
+#      - rclone copy /tmp/rom/out/target/product/maple_dsds/*.zip znxt:maple_dsds -P
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/maple_dsds/ && ls *.zip) Uploaded Successfully!"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Download link https://cloud.mobxs.workers.dev/maple_dsds/$(cd /tmp/rom/out/target/product/maple_dsds/ && ls LineageOs-18.1*.zip)"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Compres ccache"
       - ./ziping.sh
       - cd /tmp
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache...."
-      - rclone copy ccache.tar.gz mobx:PixelExperience_Plus -P
+      - rclone copy ccache.tar.gz znxt:lineage-18.1 -P
       - echo " "
       - echo "============================"
       - echo "Build Berhasil Diunggah!"
