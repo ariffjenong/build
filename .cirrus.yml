@@ -47,12 +47,24 @@ task:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai sinkronisasi Sumber..."
       - cd /tmp/rom
       - repo init -q --no-repo-verify --depth=1 -u git://github.com/LineageOS/android.git -b lineage-18.1 -g default,-device,-mips,-darwin,-notdefault
+      -   vim .repo/local_manifests/roomservice.xml
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <manifest>
+      <!-- SONY -->
+      <project name="whatawurst/android_kernel_sony_msm8998" path="kernel/sony/msm8998" remote="github" revision="lineage-18.1" />
+      <project name="whatawurst/android_device_sony_yoshino-common" path="device/sony/yoshino-common" remote="github" revision="lineage-18.1" />
+      <project name="whatawurst/android_device_sony_maple_dsds" path="device/sony/maple_dsds" remote="github" revision="lineage-18.1" />
+
+      <!-- Pinned blobs for poplar -->
+      <project name="whatawurst/android_vendor_sony_maple_dsds" path="vendor/sony/maple_dsds" remote="github" revision="lineage-18.1" />
+  </manifest>
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       # DT/VT/KT/TC
-      - git clone --depth=1 https://github.com/whatawurst/android_device_sony_maple_dsds -b Lineage-18.1 device/sony/maple_dsds
-      - git clone --depth=1 https://github.com/whatawurst/android_device_sony_yoshino-common -b lineage-18.1 device/sony/yoshino-common
-      - git clone --depth=1 https://github.com/whatawurst/android_vendor_sony_maple_dsds -b lineage-18.1 vendor/sony/maple_dsds
-      - git clone --depth=1 https://github.com/whatawurst/android_kernel_sony_msm8998 -b Lineage-18.1 kernel/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b Lineage-18.1 device/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common -b lineage-18.1 device/sony/yoshino-common
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds -b lineage-18.1 vendor/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b Lineage-18.1 kernel/sony/maple_dsds
       - git clone --depth=1 https://github.com/kdrag0n/proton-clang -b master prebuilts/clang/host/linux-x86/clang-proton
       # Anu
 #      - rm -rf vendor/aosp
