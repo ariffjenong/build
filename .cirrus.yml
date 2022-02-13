@@ -49,9 +49,9 @@ task:
       - repo init -u git://github.com/LineageOS/android.git -b lineage-18.1 -g default,-device,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       # DT/VT/KT/TC
-      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b lineage-18.1 device/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b Lineage-18.1 device/sony/maple_dsds
       - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common -b lineage-18.1 device/sony/yoshino-common
-      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds -b lineage-18.1 vendor/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds --single-branch -b lineage-18.1 vendor/sony/maple_dsds
       - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b S kernel/sony/maple_dsds
       - git clone --depth=1 https://github.com/kdrag0n/proton-clang -b master prebuilts/clang/host/linux-x86/clang-proton
       # Anu
