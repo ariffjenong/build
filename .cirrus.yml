@@ -21,8 +21,11 @@ task:
       - cd ~
       - mkdir rom
       - cd rom
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b Lineage-18.1 device/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common -b lineage-18.1 device/sony/yoshino-common
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds -b lineage-18.1 vendor/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b Lineage-18.1 kernel/sony/maple_dsds
       - repo init -u https://github.com/LineageOS/android.git -b lineage-18.1
-      - git clone https://github.com/ariffjenong/local_manifest --depth 1 -b lineage-18.1 .repo/local_manifests
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
        - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - echo "============================"
@@ -58,7 +61,7 @@ task:
       - ls -lh
       - pwd
       - chmod 777 *
-      - rclone copy *.zip lineage:maple_dsds -P
+      - curl --upload-file V*.zip https://transfer.sh
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls *.zip) Uploaded Successfully!"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Download link https://cloud.mobxs.workers.dev/juice/$(cd /tmp/rom/out/target/product/juice/ && ls lineage*.zip)"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Compres ccache"
