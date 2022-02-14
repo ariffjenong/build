@@ -32,6 +32,7 @@ task:
        - git config --global user.name "ariffjenong"
        - git config --global user.email "arifbuditantodablekk@gmail.com"
        - mkdir -p /tmp/ccache
+       - mkdir -p /tmp/rom
        - rclone copy znxt:lineage/ccache.tar.gz /tmp -P
        - cd /tmp
        - time tar xf ccache.tar.gz
