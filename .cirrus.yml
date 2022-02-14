@@ -14,6 +14,7 @@ task:
       memory: 32G
   
   Sync_script:
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build baru terdeteksi!"
       - echo "============================"
       - echo "Menyinkronkan Sumber..."
       - echo "============================"
@@ -22,7 +23,7 @@ task:
       - mkdir rom
       - cd rom
       - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b S device/sony/maple_dsds
-      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common-b S device/sony/yoshino-common
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common -b S device/sony/yoshino-common
       - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds --single-branch -b S vendor/sony/maple_dsds
       - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b lineage-19.0_bpf_backport kernel/sony/msm8998
       - repo init -u https://github.com/BlissRoms/platform_manifest.git -b arcadia
