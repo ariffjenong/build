@@ -44,8 +44,8 @@ task:
       - export CROSS_COMPILE=aarch64-linux-gnu-
       - export CROSS_COMPILE_ARM32=arm-linux-gnueabi-
       - DEBIAN_FRONTEND=noninteractive
-      - sudo python setup.py clean
-      - sudo python3 setup.py install
+      - sudo apt install python3 -y
+      - sudo ln -sf /usr/bin/python3 /usr/bin/python
       - git submodule sync
       - git submodule deinit -f .
       - git submodule update --init --recursive
@@ -56,18 +56,17 @@ task:
       - export BUILD_BROKEN_DUP_RULES=true
       - export USE_CCACHE=1 >> ~/.bashrc
       - ccache -M 40G
-      - . build/envsetup.sh
-      - blissify -v bliss_maple_dsds-userdebug
-
-  Upload_script:
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
+      - ./final.sh
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
       - echo "============================"
       - echo "Build Completed!"
       - echo "============================"
+
+  Upload_script:
       - echo "============================"
       - echo "Mengunggah Build...."
       - echo "============================"
-#      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd /rom/out/target/product/maple_dsds/ && ls *.zip)"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *.zip)"
       - cd ~
       - cd rom
       - cd out/target/product/maple_dsds
@@ -75,13 +74,7 @@ task:
       - pwd
       - chmod 777 *
       - curl --upload-file *.zip https://transfer.sh
-#      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /rom/out/target/product/maple_dsds/ && ls *.zip) Uploaded Successfully!"
-#      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Download link https://cloud.mobxs.workers.dev/maple_dsds/$(cd /rom/out/target/product/maple_dsds/ && ls *.zip)"
-#      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Compres ccache"
-#      - ./ziping.sh
-#      - cd 
-#      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache...."
-#      - rclone copy ccache.tar.gz znxt:lineage -P
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *.zip) Uploaded Successfully!"
       - echo " "
       - echo "============================"
       - echo "Build Berhasil Diunggah!"
@@ -89,4 +82,5 @@ task:
       - echo "----------------------------"
       - cat link.txt && echo " "
       - echo "============================"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
  
