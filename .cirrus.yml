@@ -25,7 +25,7 @@ task:
       - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common -b lineage-18.1 device/sony/yoshino-common
       - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds -b lineage-18.1 vendor/sony/maple_dsds
       - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b lineage-18.1 kernel/sony/msm8998
-      - repo init -u https://github.com/LineageOS/android.git -b lineage-18.1
+      - repo init -q --no-repo-verify --depth=1 -u https://github.com/LineageOS/android.git -b lineage-18.1 -g default,-device,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
        - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - echo "============================"
