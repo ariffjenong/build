@@ -26,6 +26,7 @@ task:
       - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common -b S device/sony/yoshino-common
       - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds --single-branch -b S vendor/sony/maple_dsds
       - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b lineage-19.0_bpf_backport kernel/sony/msm8998
+      - git clone --depth=1 https://github.com/kdrag0n/proton-clang -b master prebuilts/clang/host/linux-x86/clang-proton
       - repo init -u https://github.com/BlissRoms/platform_manifest.git -b arcadia
       - repo sync -c --force-sync --no-tags --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune
 
@@ -35,6 +36,17 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - export ALLOW_MISSING_DEPENDENCIES=true
+      - export DEBIAN_FRONTEND=noninteractive
+      - export SELINUX_IGNORE_NEVERALLOW=true
+      - export CC=clang
+      - export CLANG_TRIPLE=aarch64-linux-gnu-
+      - export CROSS_COMPILE=aarch64-linux-gnu-
+      - export CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+      - DEBIAN_FRONTEND=noninteractive
+      - sudo apt install python3 -y
+      - sudo ln -sf /usr/bin/python3 /usr/bin/python
+      - git config --global user.name "ariffjenong"
+      - git config --global user.email "arifbuditantodablekk@gmail.com"
       - cd ~
       - cd rom
       - export BUILD_BROKEN_DUP_RULES=true
