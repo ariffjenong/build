@@ -2,7 +2,7 @@ env:
     rcloneconfig: "ENCRYPTED[32b6ff68080e9be8c9324bc134955912eb5b784a3eb285433315c42a66be5afe1759c3eb1e182c32db213d86025bc58a]"
     TG_TOKEN: "ENCRYPTED[7888fd688129c58fcd9a25086dad02a0c103986cfca92f0d1606b3873ab2e02fffacffe4a8a432b0d726eff81999323e]"
     TG_CHAT_ID: "ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]"
-    LUNCH: lineage_maple_dsds-userdebug
+    LUNCH: bliss_maple_dsds-userdebug
     MAKE: make bacon
  
 task:
@@ -21,9 +21,12 @@ task:
       - cd ~
       - mkdir rom
       - cd rom
-      - repo init -u https://github.com/LineageOS/android.git -b lineage-18.1
-      - git clone https://github.com/ariffjenong/local_manifest --depth 1 -b main .repo/local_manifest
-      - repo sync
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b S device/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common-b S device/sony/yoshino-common
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds --single-branch -b S vendor/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b S kernel/sony/msm8998
+      - repo init -u https://github.com/BlissRoms/platform_manifest.git -b arcadia
+      - repo sync -c --force-sync --no-tags --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune
 
   Build_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
@@ -37,8 +40,7 @@ task:
       - export USE_CCACHE=1 >> ~/.bashrc
       - ccache -M 40G
       - . build/envsetup.sh
-      - lunch lineage_maple_dsds-userdebug
-      - make -j8 bacon
+      - blissify -v bliss_maple_dsds-userdebug
 
   Upload_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls lineage*.zip) Completed!"
