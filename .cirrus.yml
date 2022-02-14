@@ -24,7 +24,7 @@ task:
       - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b S device/sony/maple_dsds
       - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common-b S device/sony/yoshino-common
       - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds --single-branch -b S vendor/sony/maple_dsds
-      - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b S kernel/sony/msm8998
+      - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b lineage-19.0_bpf_backport kernel/sony/msm8998
       - repo init -u https://github.com/BlissRoms/platform_manifest.git -b arcadia
       - repo sync -c --force-sync --no-tags --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune
 
