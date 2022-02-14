@@ -9,21 +9,49 @@ task:
   name: "Setting Up, Syncing, Building and Uploading..."
   timeout_in: 480m  
   container:
-      image: ghcr.io/iamshubh69/docker:main
+      image: inok2341/anu:latest
       cpu: 8
       memory: 32G
+        
+  Build-Env-Setup_background_script:
+       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build baru terdeteksi!"
+       - export DEBIAN_FRONTEND=noninteractive
+       - export ALLOW_MISSING_DEPENDENCIES=true
+       - export SELINUX_IGNORE_NEVERALLOW=true
+       - export CC=clang
+       - export CLANG_TRIPLE=aarch64-linux-gnu-
+       - export CROSS_COMPILE=aarch64-linux-gnu-
+       - export CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+       - apt update
+       - apt install sudo
+       - mkdir -p ~/.config/rclone
+       - echo "$rcloneconfig" > ~/.config/rclone/rclone.conf
+       - DEBIAN_FRONTEND=noninteractive
+       - sudo apt install python3 -y
+       - sudo ln -sf /usr/bin/python3 /usr/bin/python
+       - git config --global user.name "ariffjenong"
+       - git config --global user.email "arifbuditantodablekk@gmail.com"
+       - mkdir -p /tmp/ccache
+       - rclone copy znxt:lineage/ccache.tar.gz /tmp -P
+       - cd /tmp
+       - time tar xf ccache.tar.gz
+       - cd /tmp
+  
+  Storage-Checker_background_script:
+      - df -h
+      - lsblk
+      - ls -l -a -h
   
   Sync_script:
       - echo "============================"
       - echo "Menyinkronkan Sumber..."
       - echo "============================"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai sinkronisasi Sumber..."
-      - cd ~
-      - mkdir rom
-      - cd rom
+      - cd /tmp/rom
+      # DT/VT/KT/TC
       - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b lineage-18.1 device/sony/maple_dsds
       - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common -b lineage-18.1 device/sony/yoshino-common
-      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds -b lineage-18.1 vendor/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds --single-branch -b lineage-18.1 vendor/sony/maple_dsds
       - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b lineage-18.1 kernel/sony/msm8998
       - repo init -q --no-repo-verify --depth=1 -u https://github.com/LineageOS/android.git -b lineage-18.1 -g default,-device,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
@@ -36,15 +64,8 @@ task:
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
-      - export ALLOW_MISSING_DEPENDENCIES=true
-      - cd ~
-      - cd rom
-      - export BUILD_BROKEN_DUP_RULES=true
-      - export USE_CCACHE=1 >> ~/.bashrc
-      - ccache -M 40G
-      - . build/envsetup.sh
-      - lunch lineage_maple_dsds-userdebug
-      - make -j8 bacon
+      - ./collect.sh
+#      - ./final.sh
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls lineage*.zip) Completed!"
       - echo "============================"
       - echo "Build Completed!"
@@ -55,20 +76,14 @@ task:
       - echo "Mengunggah Build...."
       - echo "============================"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd /tmp/rom/out/target/product/juice/ && ls lineage*.zip)"
-      - cd ~
-      - cd rom
-      - cd out/target/product/maple_dsds
-      - ls -lh
-      - pwd
-      - chmod 777 *
-      - curl --upload-file V*.zip https://transfer.sh
+#      - rclone copy /tmp/rom/out/target/product/juice/*.zip znxt:juice -P
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls *.zip) Uploaded Successfully!"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Download link https://cloud.mobxs.workers.dev/juice/$(cd /tmp/rom/out/target/product/juice/ && ls lineage*.zip)"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Compres ccache"
-#      - ./ziping.sh
-#      - cd /tmp
+      - ./ziping.sh
+      - cd /tmp
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache...."
-#      - rclone copy ccache.tar.gz znxt:lineage -P
+      - rclone copy ccache.tar.gz znxt:lineage -P
       - echo " "
       - echo "============================"
       - echo "Build Berhasil Diunggah!"
