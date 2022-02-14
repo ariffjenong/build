@@ -26,6 +26,7 @@ task:
       - repo sync
 
   Build_script:
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
@@ -38,12 +39,12 @@ task:
       - . build/envsetup.sh
       - lunch lineage_maple_dsds-userdebug
       - make -j8 bacon
+
+  Upload_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /tmp/rom/out/target/product/juice/ && ls lineage*.zip) Completed!"
       - echo "============================"
       - echo "Build Completed!"
       - echo "============================"
-
-  Upload_script:
       - echo "============================"
       - echo "Mengunggah Build...."
       - echo "============================"
@@ -65,5 +66,8 @@ task:
       - echo " "
       - echo "============================"
       - echo "Build Berhasil Diunggah!"
+      - echo "============================"
+      - echo "----------------------------"
+      - cat link.txt && echo " "
       - echo "============================"
   
