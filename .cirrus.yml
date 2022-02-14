@@ -43,8 +43,11 @@ task:
       - export CROSS_COMPILE=aarch64-linux-gnu-
       - export CROSS_COMPILE_ARM32=arm-linux-gnueabi-
       - DEBIAN_FRONTEND=noninteractive
-      - sudo apt install python3 -y
-      - sudo ln -sf /usr/bin/python3 /usr/bin/python
+      - sudo python setup.py clean
+      - sudo python3 setup.py install
+      - git submodule sync
+      - git submodule deinit -f .
+      - git submodule update --init --recursive
       - git config --global user.name "ariffjenong"
       - git config --global user.email "arifbuditantodablekk@gmail.com"
       - cd ~
