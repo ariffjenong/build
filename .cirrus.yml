@@ -23,7 +23,11 @@ task:
       - mkdir rom
       - cd rom
       - repo init --depth=1 --no-repo-verify -u https://github.com/BlissRoms/platform_manifest.git -b arcadia -g default,-mips,-darwin,-notdefault
-      - git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b Bliss .repo/local_manifests
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds -b S device/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common -b S device/sony/yoshino-common
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds --single-branch -b S vendor/sony/maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998 -b lineage-19.0_bpf_backport kernel/sony/msm8998
+      - git clone --depth=1 https://github.com/kdrag0n/proton-clang -b master prebuilts/clang/host/linux-x86/clang-proton
       - repo sync -c --force-sync --no-tags --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune -j8
 
   Build_script:
