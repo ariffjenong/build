@@ -7,21 +7,15 @@ env:
  
 task:
   name: "Syncing"
-  timeout_in: 480m  
+  timeout_in: 20m  
   container:
       image: inok2341/anu:latest
-      cpu: 8
-      memory: 32G
+      cpu: 2
+      memory: 8G
 
   Sync_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build baru terdeteksi!"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai sinkronisasi Sumber..."
-      - cd ~
-      - mkdir rom
-      - cd rom
-      - git clone --depth=1 https://github.com/ariffjenong/local_manifest.git -b Nusantara-11 .repo/local_manifests
-      - repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest -b 11 -g default,-mips,-darwin,-notdefault
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -30,17 +24,20 @@ task:
   timeout_in: 4h  
   container:
       image: inok2341/anu:latest
-      cpu: 8
-      memory: 32G
+      cpu: 12
+      memory: 48G
 
   Sync_script:
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
+      - cd ~
+      - mkdir rom
+      - cd rom
+      - git clone --depth=1 https://github.com/ariffjenong/local_manifest.git -b Nusantara-11 .repo/local_manifests
+      - repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest -b 11 -g default,-mips,-darwin,-notdefault
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -$(nproc --all)
 
   Build_script:
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai Membangun ROM Baru"
-      - git submodule sync
-      - git submodule deinit -f .
-      - git submodule update --init --recursive
       - cd ~
       - cd rom
       - export USE_CCACHE=1 >> ~/.bashrc
@@ -48,7 +45,7 @@ task:
       - . build/envsetup.sh
       - lunch $LUNCH
       - export ALLOW_MISSING_DEPENDENCIES=true
-      - mka $MAKE && curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
+      - mka nad -j$(nproc --all) && curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
 
