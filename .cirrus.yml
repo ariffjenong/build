@@ -7,6 +7,10 @@ env:
 task:
   name: Test
   timeout_in: 2m
+  container:
+      image: inok2341/anu:latest
+      cpu: 2
+      memory: 4G
 
   env_script:
     - env
@@ -42,9 +46,11 @@ task:
 
 task:
   name: Build
-  depends_on:
-    - Test
   timeout_in: 4h
+  container:
+      image: inok2341/anu:latest
+      cpu: 12
+      memory: 120G
 
   show_script:
     - cat $CIRRUS_WORKING_DIR/build_rom.sh
@@ -185,9 +191,11 @@ task:
 
 task:
   name: Post Build
-  depends_on:
-    - Build
   timeout_in: 2m
+  container:
+      image: inok2341/anu:latest
+      cpu: 2
+      memory: 4G
 
   post_build_script:
     - set -e
