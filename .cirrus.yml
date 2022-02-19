@@ -28,7 +28,9 @@ task:
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
-  timeout_in: 480m  
+  depends_on:
+    - Syncing
+  timeout_in: 4h  
   container:
       image: inok2341/anu:latest
       cpu: 8
