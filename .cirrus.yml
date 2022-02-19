@@ -33,7 +33,7 @@ task:
       - cd rom
       - git clone --depth=1 https://github.com/ariffjenong/local_manifest.git -b Nusantara-11 .repo/local_manifests
       - repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest -b 11 -g default,-mips,-darwin,-notdefault
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -$(nproc --all)
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -$j(nproc --all)
 
   Build_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
