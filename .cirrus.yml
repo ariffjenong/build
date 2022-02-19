@@ -39,7 +39,7 @@ task:
       - ccache -M 40G
       - . build/envsetup.sh && export ALLOW_MISSING_DEPENDENCIES=true && export SELINUX_IGNORE_NEVERALLOW=true
       - blissify -v $LUNCH && curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
       - echo "============================"
       - echo "Build Completed!"
       - echo "============================="
@@ -48,13 +48,13 @@ task:
       - echo "============================"
       - echo "Mengunggah Build...."
       - echo "============================"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd /rom/out/target/product/maple_dsds/ && ls *.zip)"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd rom/out/target/product/maple_dsds/ && ls *.zip)"
       - cd out/target/product/maple_dsds
       - ls -lh
       - pwd
       - chmod 777 *
-      - curl --upload-file *.zip https://transfer.sh/$(cd /rom/out/target/product/maple_dsds/ && ls *.zip)
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /rom/out/target/product/maple_dsds/ && ls *.zip) Uploaded Successfully!"
+      - curl --upload-file *.zip https://transfer.sh/$(cd rom/out/target/product/maple_dsds/ && ls *.zip)
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd rom/out/target/product/maple_dsds/ && ls *.zip) Uploaded Successfully!"
       - echo " "
       - echo "============================"
       - echo "Build Berhasil Diunggah!"
