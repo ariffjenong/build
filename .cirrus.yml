@@ -15,16 +15,13 @@ task:
 
   Sync_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build baru terdeteksi!"
-      - echo "============================"
-      - echo "Menyinkronkan Sumber..."
-      - echo "============================"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai sinkronisasi Sumber..."
       - cd ~
       - mkdir rom
       - cd rom
-      - repo init --depth=1 --no-repo-verify -u https://github.com/BlissRoms/platform_manifest.git -b arcadia -g default,-mips,-darwin,-notdefault
-      - git clone --depth=1 https://github.com/ariffjenong/local_manifest.git -b Bliss .repo/local_manifests
-      - repo sync -c --force-sync --no-tags --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune
+      - git clone --depth=1 https://github.com/ariffjenong/local_manifest.git -b Nusantara-11 .repo/local_manifests
+      - repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest -b 11 -g default,-mips,-darwin,-notdefault
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -40,21 +37,20 @@ task:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
 
   Build_script:
-      - echo "============================"
-      - echo "Starting the Build..."
-      - echo "============================"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai Membangun Project"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai Membangun ROM Baru"
+      - git submodule sync
+      - git submodule deinit -f .
+      - git submodule update --init --recursive
       - cd ~
       - cd rom
-      - DEBIAN_FRONTEND=noninteractive
       - export USE_CCACHE=1 >> ~/.bashrc
       - ccache -M 40G
-      - . build/envsetup.sh && export ALLOW_MISSING_DEPENDENCIES=true && export SELINUX_IGNORE_NEVERALLOW=true
-      - blissify -v $LUNCH && curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
-      - echo "============================"
-      - echo "Build Completed!"
-      - echo "============================="
+      - . build/envsetup.sh
+      - lunch $LUNCH
+      - export ALLOW_MISSING_DEPENDENCIES=true
+      - mka $MAKE && curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
 
   Upload_script:
       - echo "============================"
