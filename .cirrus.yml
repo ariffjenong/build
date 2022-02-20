@@ -15,22 +15,18 @@ task:
  
   Sync_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build baru terdeteksi!"
-      - echo "============================"
-      - echo "Menyinkronkan Sumber..."
-      - echo "============================"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai sinkronisasi Sumber..."
       - cd ~
-      - mkdir rom
-      - cd rom
       - mkdir Bliss
       - cd Bliss
-      - git clone --depth=1 https://github.com/ariffjenong/local_manifest.git -b Bliss .repo/local_manifests
       - repo init --depth=1 --no-repo-verify -u https://github.com/BlissRoms/platform_manifest.git -b arcadia -g default,-mips,-darwin,-notdefault
+      - git clone --depth=1 https://github.com/ariffjenong/local_manifest.git -b Bliss .repo/local_manifests
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
   Build_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai Membangun Project"
+      - cd ~ && cd
       - DEBIAN_FRONTEND=noninteractive
       - export USE_CCACHE=1 >> ~/.bashrc
       - ccache -M 40G
