@@ -31,7 +31,6 @@ task:
   Build_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai Membangun Project"
-      - cd Bliss
       - DEBIAN_FRONTEND=noninteractive
       - export USE_CCACHE=1 >> ~/.bashrc
       - ccache -M 40G
