@@ -7,14 +7,17 @@ env:
  
 task:
   name: "Syncing"
-  timeout_in: 20m  
+  timeout_in: 2m  
   container:
       image: inok2341/anu:latest
       cpu: 2
-      memory: 8G
+      memory: 4G
 
   Sync_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build baru terdeteksi!"
+      - echo "============================"
+      - echo "Menyinkronkan Sumber..."
+      - echo "============================"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai sinkronisasi Sumber..."
 
 task:
@@ -24,35 +27,30 @@ task:
   timeout_in: 4h  
   container:
       image: inok2341/anu:latest
-      cpu: 8
+      cpu: $(nproc --all)
       memory: 32G
 
   Sync_script:
       - cd ~
       - mkdir rom
       - cd rom
-      - git clone --depth=1 https://github.com/ariffjenong/local_manifest.git -b Nusantara-11 .repo/local_manifests
-      - repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest -b 11 -g default,-mips,-darwin,-notdefault
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -$j(nproc --all)
+      - repo init --depth=1 --no-repo-verify -u https://github.com/BlissRoms/platform_manifest.git -b arcadia -g default,-mips,-darwin,-notdefault
+      - git clone --depth=1 https://github.com/ariffjenong/local_manifest.git -b Bliss .repo/local_manifests
+      - repo sync -c --force-sync --no-tags --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune
 
   Build_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai Membangun ROM Baru"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai Membangun Project"
       - cd ~
       - cd rom
+      - DEBIAN_FRONTEND=noninteractive
       - export USE_CCACHE=1 >> ~/.bashrc
       - ccache -M 40G
-      - . build/envsetup.sh
-      - lunch $LUNCH
-      - export ALLOW_MISSING_DEPENDENCIES=true
-      - mka nad -j$(nproc --all) && curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
+      - . build/envsetup.sh && export ALLOW_MISSING_DEPENDENCIES=true && export SELINUX_IGNORE_NEVERALLOW=true
+      - blissify -v $LUNCH && curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
 
   Upload_script:
-      - echo "============================"
-      - echo "Mengunggah Build...."
-      - echo "============================"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd rom/out/target/product/maple_dsds/ && ls *.zip)"
       - cd out/target/product/maple_dsds
       - ls -lh
@@ -60,12 +58,6 @@ task:
       - chmod 777 *
       - curl --upload-file *.zip https://transfer.sh/$(cd rom/out/target/product/maple_dsds/ && ls *.zip)
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd rom/out/target/product/maple_dsds/ && ls *.zip) Uploaded Successfully!"
-      - echo " "
-      - echo "============================"
-      - echo "Build Berhasil Diunggah!"
-      - echo "============================"
-      - echo "----------------------------"
       - cat link.txt && echo " "
-      - echo "============================"
  
  
