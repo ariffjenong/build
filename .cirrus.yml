@@ -29,7 +29,7 @@ task:
       image: inok2341/anu:latest
       cpu: 8
       memory: 32G
-
+ 
   Sync_script:
       - cd ~
       - mkdir rom
