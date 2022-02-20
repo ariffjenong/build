@@ -34,8 +34,8 @@ task:
       - cd ~
       - mkdir rom
       - cd rom
-      - repo init --depth=1 --no-repo-verify -u https://github.com/BlissRoms/platform_manifest.git -b arcadia -g default,-mips,-darwin,-notdefault
       - git clone --depth=1 https://github.com/ariffjenong/local_manifest.git -b Bliss .repo/local_manifests
+      - repo init --depth=1 --no-repo-verify -u https://github.com/BlissRoms/platform_manifest.git -b arcadia -g default,-mips,-darwin,-notdefault
       - repo sync -c --force-sync --no-tags --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune
 
   Build_script:
