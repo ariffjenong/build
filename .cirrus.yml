@@ -19,8 +19,7 @@ task:
       - cd ~
       - mkdir Bliss
       - cd Bliss
-      - repo init --depth=1 --no-repo-verify -u https://github.com/BlissRoms/platform_manifest.git -b arcadia -g default,-mips,-darwin,-notdefault
-      - git clone --depth=1 https://github.com/ariffjenong/local_manifest.git -b Bliss .repo/local_manifests
+      - repo init --depth=1 --no-repo-verify -u https://github.com/ariffjenong/platform_manifest.git -b arcadia -g default,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
   Build_script:
