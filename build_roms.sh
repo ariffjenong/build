@@ -15,4 +15,4 @@ env
  lunch bliss_maple_dsds-userdebug
  export SELINUX_IGNORE_NEVERALLOWS = true
  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
- export SELINUX_IGNORE_NEVERALLOWS=true && blissify -v maple_dsds -j8
+ export SELINUX_IGNORE_NEVERALLOWS=true && blissify -v maple_dsds
