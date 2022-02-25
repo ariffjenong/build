@@ -7,9 +7,6 @@ cat /etc/os*
 env
 
  cd ~/rom/Nusantara
- DEBIAN_FRONTEND=noninteractive
- export USE_CCACHE=1 >> ~/.bashrc
- ccache -M 40G
  . build/envsetup.sh
  lunch nad_maple_dsds-userdebug
  export CCACHE_DIR=~/rom/ccache
