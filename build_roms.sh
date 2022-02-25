@@ -11,7 +11,7 @@ env
  lunch nad_maple_dsds-userdebug
  export SELINUX_IGNORE_NEVERALLOWS=true
  export CCACHE_DIR=~/znxt/ccache
- export CCACHE_EXEC=~/znxt/ccache
+ export CCACHE_EXEC=$(which ccache)
  export USE_CCACHE=1
  ccache -M 20G
  ccache -o compression=true
@@ -19,4 +19,10 @@ env
  export ALLOW_MISSING_DEPENDENCIES=true
  export TZ=Asia/Jakarta
  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
- make nad -j8
+make api-stubs-docs || echo no problem, we need ccache
+make hiddenapi-lists-docs || echo no problem, we need ccache
+make system-api-stubs-docs || echo no problem we need ccache
+make test-api-stubs-docs || echo no problem, we need ccache
+make nad -j10 & # dont remove that '&'
+sleep 85m
+kill %1

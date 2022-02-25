@@ -11,19 +11,19 @@ task:
       cpu: 8
       memory: 32G
 
-  Download_script:
+ # Download_script:
       - url=https://roms.apon77.workers.dev/ccache/ci3/ccache.tar.gz
       - cd ~
       - mkdir -p ~/rom
       - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
       - echo "$rcloneconfig" > ~/.config/rclone/.rclone.conf
-      - cd ~/znxt
-      - time aria2c $url -x16 -s50
-      - time tar xf ccache.tar.gz
-      - rm -rf ccache.tar.gz
-      - cd ~/znxt/ccache
-      - ls -lh
+ #     - cd ~/znxt
+  #    - time aria2c $url -x16 -s50
+  #    - time tar xf ccache.tar.gz
+   #   - rm -rf ccache.tar.gz
+    #  - cd ~/znxt/ccache
+     # - ls -lh
 
   Sync_script:
       - cd ~/rom
