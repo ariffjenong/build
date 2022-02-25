@@ -11,7 +11,7 @@ env
  lunch nad_maple_dsds-userdebug
  export SELINUX_IGNORE_NEVERALLOWS=true
  export CCACHE_DIR=~/znxt/ccache
- export CCACHE_EXEC=$(which ccache)
+ export CCACHE_EXEC=~/znxt/ccache
  export USE_CCACHE=1
  ccache -M 20G
  ccache -o compression=true
