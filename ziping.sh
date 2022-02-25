@@ -1,6 +1,8 @@
 #!/bin/bash
 
-cd ~/ccache
+cd ~/znxt/ccache
+
+sleep 1m
 
 com ()
 {

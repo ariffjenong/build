@@ -9,9 +9,9 @@ env
  cd ~/rom/Nusantara
  . build/envsetup.sh
  lunch nad_maple_dsds-userdebug
- export CCACHE_DIR=~/ccache
+ export CCACHE_DIR=~/znxt/ccache
  export CCACHE_EXEC=$(which ccache)
- export USE_CCACHE=1 >> ~/ccache/.bashrc
+ export USE_CCACHE=1 >> ~/znxt/ccache/.bashrc
  ccache -M 20G # It took only 6.4GB for mido
  ccache -o compression=true # Will save times and data to download and upload ccache, also negligible performance issue
  ccache -z # Clear old stats, so monitor script will provide real ccache statistics

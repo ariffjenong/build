@@ -15,11 +15,10 @@ task:
       - url=https://roms.apon77.workers.dev/ccache/ci3/ccache.tar.gz
       - cd ~
       - mkdir -p ~/rom/Nusantara
-      - mkdir -p ~/ccache
-      - mkdir -p ~/.config/rclone
+      - mkdir -p ~/znxt/ccache
       - mkdir -p ~/.config/rclone
       - echo "$rcloneconfig" > ~/.config/rclone/.rclone.conf
-      - cd ~/ccache
+      - cd ~/znxt/ccache
       - time aria2c $url -x16 -s50
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
@@ -40,16 +39,16 @@ task:
       - make nad && curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd out/target/product/maple_dsds/ && ls *.zip) Completed!"
 
   Upload_script:
-      - cd ~/ccache
+      - cd ~/znxt/ccache
       - ls -lh
       - ./ziping.sh
       - ls -lh
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache...."
-      - rclone copy ccache.tar.gz znxt:nad -P
+      - rclone copy ccache.tar.gz znxt:ccache -P
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache Success"
-      - cd ~/rom/Nusantara
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd out/target/product/maple_dsds/ && ls *.zip)"
-      - curl --upload-file ~/rom/Nusantara/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot/Image.gz-dtb https://transfer.sh/Image.gz-dtb
+      - cd ~/rom/Nusantara/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd ~/rom/Nusantara/out/target/product/maple_dsds/out/target/product/maple_dsds/ && ls *.zip)"
+      - curl --upload-file Image.gz-dtb https://transfer.sh/Image.gz-dtb
       - cd ~/rom/Nusantara/out/target/product/maple_dsds
       - ls -lh
       - pwd
