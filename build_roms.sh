@@ -19,10 +19,29 @@ env
  export ALLOW_MISSING_DEPENDENCIES=true
  export TZ=Asia/Jakarta
  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
+ make sepolicy
+ make bootimage
+ make init
 make api-stubs-docs || echo no problem, we need ccache
 make hiddenapi-lists-docs || echo no problem, we need ccache
 make system-api-stubs-docs || echo no problem we need ccache
 make test-api-stubs-docs || echo no problem, we need ccache
-make nad -j10 & # dont remove that '&'
+make nad -j8 & # dont remove that '&'
 sleep 85m
 kill %1
+ccache -s
+
+cd ~/znxt
+
+sleep 1m
+
+com ()
+{
+    tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
+}
+
+time com ccache 1
+
+curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache...."
+time rclone copy ccache.tar.gz znxt:ccache/nad12 -P
+curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache Success"

@@ -12,14 +12,13 @@ task:
       memory: 32G
 
   Download_script:
-      - url=https://roms.apon77.workers.dev/ccache/ci3/ccache.tar.gz
       - cd ~
       - mkdir -p ~/rom
       - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
       - echo "$rcloneconfig" > ~/.config/rclone/.rclone.conf
  #     - cd ~/znxt
-  #    - time aria2c $url -x16 -s50
+  #    - rclone copy znxt:maple_dsds/ccache.tar.gz
   #    - time tar xf ccache.tar.gz
    #   - rm -rf ccache.tar.gz
     #  - cd ~/znxt/ccache
@@ -37,20 +36,20 @@ task:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai Membangun Project"
       - ./build_roms.sh
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
+#      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
 
   Upload_script:
       - cd ~/znxt/ccache
       - ls -lh
-      - ./ziping.sh
-      - cd ~/rom/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot
-      - curl --upload-file Image.gz-dtb https://transfer.sh/Image.gz-dtb
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd ~/rom/out/target/product/maple_dsds/out/target/product/maple_dsds/ && ls *.zip)"
-      - cd ~/rom/out/target/product/maple_dsds
-      - ls -lh
-      - pwd
-      - chmod 777 *
-      - curl --upload-file *.zip https://transfer.sh/$(ls *.zip)
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(ls *.zip) Uploaded Successfully!"
-      - cat link.txt && echo " "
+   #   - ./ziping.sh
+  #    - cd ~/rom/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot
+#      - curl --upload-file Image.gz-dtb https://transfer.sh/Image.gz-dtb
+   #   - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd ~/rom/out/target/product/maple_dsds/out/target/product/maple_dsds/ && ls *.zip)"
+#      - cd ~/rom/out/target/product/maple_dsds
+  #    - ls -lh
+  #    - pwd
+#      - chmod 777 *
+   #   - curl --upload-file *.zip https://transfer.sh/$(ls *.zip)
+   #   - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(ls *.zip) Uploaded Successfully!"
+   #   - cat link.txt && echo " "
   
