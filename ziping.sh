@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/rom
+cd ~/ccache
 
 com ()
 {
