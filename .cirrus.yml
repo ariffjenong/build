@@ -37,6 +37,7 @@ task:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai Membangun Project"
       - ./build_roms.sh
+      - cd ~/rom
       - make nad && curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd out/target/product/maple_dsds/ && ls *.zip) Completed!"
 
   Upload_script:
