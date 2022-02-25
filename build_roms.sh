@@ -6,7 +6,7 @@ nproc
 cat /etc/os*
 env
 
- cd ~/rom/Nusantara
+ cd ~/rom
  . build/envsetup.sh
  lunch nad_maple_dsds-userdebug
  export CCACHE_DIR=~/znxt/ccache
