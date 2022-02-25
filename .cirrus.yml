@@ -36,13 +36,6 @@ task:
   Build_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai Membangun Project"
-      - cd ~
-      - df -h
-      - free -h
-      - nproc
-      - cat /etc/os*
-      - env
-      - cd ~/rom
       - . build/envsetup.sh
       - lunch nad_maple_dsds-userdebug
       - export CCACHE_DIR=~/znxt/ccache
@@ -54,7 +47,8 @@ task:
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export SELINUX_IGNORE_NEVERALLOWS=true
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
-      - make nad && curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd out/target/product/maple_dsds/ && ls *.zip) Completed!"
+      - make nad
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd out/target/product/maple_dsds/ && ls *.zip) Completed!"
 
   Upload_script:
       - cd ~/znxt/ccache
