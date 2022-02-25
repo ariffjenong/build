@@ -15,13 +15,14 @@ task:
       - url=https://roms.apon77.workers.dev/ccache/ci3/ccache.tar.gz
       - cd ~
       - mkdir -p ~/rom/Nusantara
-      - mkdir -p ~/znxt/ccache
+      - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
       - echo "$rcloneconfig" > ~/.config/rclone/.rclone.conf
-      - cd ~/znxt/ccache
+      - cd ~/znxt
       - time aria2c $url -x16 -s50
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
+      - cd ~/znxt/ccache
       - ls -lh
 
   Sync_script:
