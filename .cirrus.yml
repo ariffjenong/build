@@ -36,8 +36,24 @@ task:
   Build_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Mulai Membangun Project"
-      - ./build_roms.sh
+      - cd ~
+      - df -h
+      - free -h
+      - nproc
+      - cat /etc/os*
+      - env
       - cd ~/rom
+      - . build/envsetup.sh
+      - lunch nad_maple_dsds-userdebug
+      - export CCACHE_DIR=~/znxt/ccache
+      - export CCACHE_EXEC=$(which ccache)
+      - export USE_CCACHE=1 >> ~/znxt/ccache/.bashrc
+      - ccache -M 20G # It took only 6.4GB for mido
+      - ccache -o compression=true # Will save times and data to download and upload ccache, also negligible performance issue
+      - ccache -z # Clear old stats, so monitor script will provide real ccache statistics
+      - export ALLOW_MISSING_DEPENDENCIES=true
+      - export SELINUX_IGNORE_NEVERALLOWS=true
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
       - make nad && curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd out/target/product/maple_dsds/ && ls *.zip) Completed!"
 
   Upload_script:
@@ -49,8 +65,8 @@ task:
       - rclone copy ccache.tar.gz znxt:ccache -P
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache Success"
       - cd ~/rom/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd ~/rom/out/target/product/maple_dsds/out/target/product/maple_dsds/ && ls *.zip)"
       - curl --upload-file Image.gz-dtb https://transfer.sh/Image.gz-dtb
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd ~/rom/out/target/product/maple_dsds/out/target/product/maple_dsds/ && ls *.zip)"
       - cd ~/rom/out/target/product/maple_dsds
       - ls -lh
       - pwd
