@@ -15,4 +15,4 @@ env
  lunch nad_maple_dsds-userdebug
  export SELINUX_IGNORE_NEVERALLOWS = true
  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
- mka nad && export SELINUX_IGNORE_NEVERALLOWS=true
+ make nad
