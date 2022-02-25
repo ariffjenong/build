@@ -22,12 +22,8 @@ env
  make sepolicy
  make bootimage
  make init
-make api-stubs-docs || echo no problem, we need ccache
-make hiddenapi-lists-docs || echo no problem, we need ccache
-make system-api-stubs-docs || echo no problem we need ccache
-make test-api-stubs-docs || echo no problem, we need ccache
 make nad -j8 & # dont remove that '&'
-sleep 85m
+sleep 70m
 kill %1
 ccache -s
 
