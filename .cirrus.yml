@@ -13,7 +13,7 @@ task:
       cpu: 8
       memory: 32G
 
-  Sync_script:
+  Download_script:
       - url=https://roms.apon77.workers.dev/ccache/ci2/ccache.tar.gz
       - cd ~
       - mkdir -p rom/Nusantara
