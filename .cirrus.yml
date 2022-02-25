@@ -19,6 +19,7 @@ task:
       - time aria2c $url -x16 -s50
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
+      - ls -lh
 
   Sync_script:
       - cd ~/rom/Nusantara
