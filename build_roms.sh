@@ -6,13 +6,19 @@ nproc
 cat /etc/os*
 env
 
- cd ~/Nusantara
+ cd ~/rom/Nusantara
  DEBIAN_FRONTEND=noninteractive
  export USE_CCACHE=1 >> ~/.bashrc
  ccache -M 40G
  . build/envsetup.sh
- export ALLOW_MISSING_DEPENDENCIES=true
  lunch nad_maple_dsds-userdebug
- export SELINUX_IGNORE_NEVERALLOWS = true
+ export CCACHE_DIR=/rom/ccache
+ export CCACHE_EXEC=$(which ccache)
+ export USE_CCACHE=1
+ ccache -M 20G # It took only 6.4GB for mido
+ ccache -o compression=true # Will save times and data to download and upload ccache, also negligible performance issue
+ ccache -z # Clear old stats, so monitor script will provide real ccache statistics
+ export ALLOW_MISSING_DEPENDENCIES=true
+ export SELINUX_IGNORE_NEVERALLOWS=true
  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
  make nad
