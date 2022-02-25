@@ -17,5 +17,6 @@ env
  ccache -o compression=true
  ccache -z
  export ALLOW_MISSING_DEPENDENCIES=true
+ export TZ=Asia/Jakarta
  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
  make nad -j8
