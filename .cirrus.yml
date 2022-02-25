@@ -1,5 +1,5 @@
 env:
-    rcloneconfig: "ENCRYPTED[32b6ff68080e9be8c9324bc134955912eb5b784a3eb285433315c42a66be5afe1759c3eb1e182c32db213d86025bc58a]"
+    rcloneconfig: "ENCRYPTED[167bf9c8ad38e458c770c01052a0b9bfbf8edd8a77a8932eaa87fe9c67556261f9174eb2800a3a02541343eb9f108da4]"
     TG_TOKEN: "ENCRYPTED[7888fd688129c58fcd9a25086dad02a0c103986cfca92f0d1606b3873ab2e02fffacffe4a8a432b0d726eff81999323e]"
     TG_CHAT_ID: "ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]"
  
@@ -14,8 +14,11 @@ task:
   Download_script:
       - url=https://roms.apon77.workers.dev/ccache/ci3/ccache.tar.gz
       - cd ~
-      - mkdir -p rom/Nusantara
-      - cd rom
+      - mkdir -p ~/rom/Nusantara
+      - mkdir -p ~/ccache
+      - mkdir -p ~/.config/rclone
+      - echo "$rcloneconfig" > ~/.rclone.conf
+      - cd ccache
       - time aria2c $url -x16 -s50
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
@@ -38,11 +41,18 @@ task:
   Upload_script:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd out/target/product/maple_dsds/ && ls *.zip)"
       - curl --upload-file ~/rom/Nusantara/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot/Image.gz-dtb https://transfer.sh/Image.gz-dtb
-      - cd ~ && cd rom/Nusantara/out/target/product/maple_dsds
+      - cd ~/rom/Nusantara/out/target/product/maple_dsds
       - ls -lh
       - pwd
       - chmod 777 *
       - curl --upload-file *.zip https://transfer.sh/$(cd out/target/product/maple_dsds/ && ls *.zip)
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd out/target/product/maple_dsds/ && ls *.zip) Uploaded Successfully!"
       - cat link.txt && echo " "
+      - cd ~/rom
+      - ls -lh
+      - ./ziping.sh
+      - ls -lh
+      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading ccache...."
+      - rclone copy ccache.tar.gz znxt:nad -P
+      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading ccache Success"
   

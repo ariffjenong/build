@@ -9,7 +9,7 @@ env
  cd ~/rom/Nusantara
  . build/envsetup.sh
  lunch nad_maple_dsds-userdebug
- export CCACHE_DIR=~/rom/ccache
+ export CCACHE_DIR=~/ccache
  export CCACHE_EXEC=$(which ccache)
  export USE_CCACHE=1
  ccache -M 20G # It took only 6.4GB for mido
