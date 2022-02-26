@@ -14,8 +14,8 @@ task:
   Test_script:
       - cd ~
       - echo "testing"
-      - ./build_zip.sh & sleep 2s && kill %1
-      - ./test_telegram.sh & sleep 2s && kill %1
+      - ./build_zip.sh
+      - ./test_telegram.sh
       - echo "test passed"
 
   Download_script:
