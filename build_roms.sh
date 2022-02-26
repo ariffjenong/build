@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
  Lets see machine specifications and environments
 df -h
 free -h
