@@ -17,8 +17,8 @@ task:
       - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      - rclone copy znxt:nad12/ccache.tar.gz ~/znxt -P
       - cd ~/znxt
+      - rclone copy znxt:nad12/ccache.tar.gz
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
       - cd ~/znxt/ccache
