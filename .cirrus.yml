@@ -12,7 +12,6 @@ task:
       memory: 32G
 
   Test_script:
-      - cd ~
       - echo "testing"
       - bash build_zip.sh
       - bash test_telegram.sh
