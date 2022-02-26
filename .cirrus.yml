@@ -11,12 +11,6 @@ task:
       cpu: 8
       memory: 32G
 
-  Test_script:
-      - echo "testing"
-      - bash build_zip.sh
-      - bash test_telegram.sh
-      - echo "test passed"
-
   Download_script:
       - cd ~
       - mkdir -p ~/rom
