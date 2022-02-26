@@ -11,7 +11,7 @@ task:
       cpu: 8
       memory: 32G
 
-  Download_script:
+  Env_script:
       - cd ~
       - mkdir -p ~/rom
       - mkdir -p ~/znxt
@@ -41,7 +41,7 @@ task:
   Collect_ccache_script:
       - ./build_zip.sh
 
-  Upload_script:
+  Upload_file_script:
       - ./test_telegram.sh
       - cd ~/znxt/ccache
       - ls -lh
