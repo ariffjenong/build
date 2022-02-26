@@ -31,6 +31,9 @@ task:
       - repo init --depth=1 --no-repo-verify -u git://github.com/NusantaraProject-ROM/android_manifest.git -b 12 -g default,-mips,-darwin,-notdefault
       - git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b nad-12 .repo/local_manifests
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+ #     - grep -R 'allow system_server root_block_device:blk_file'
+#      - grep -R 'allow system_server xbl_block_device:blk_file'
+#      - grep -R 'allow system_server gpt_block_device:blk_file'
 
   Build_script:
  #     - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Sinkronisasi Selesai!"
@@ -40,17 +43,17 @@ task:
 
   Upload_file_script:
       - ./build_zip.sh
-      - rom_output=~/rom/out/target/product/maple_dsds/*.zip
-      - curl -F document=@$rom_output https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID &&  cd ~/rom/out/target/product/maple_dsds
-      - ls -lh
-      - cd ~/znxt/ccache
-      - ls -lh
+#      - rom_output=~/rom/out/target/product/maple_dsds/*.zip
+#      - curl -F document=@$rom_output https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID &&  cd ~/rom/out/target/product/maple_dsds
+ #     - ls -lh
+  #    - cd ~/znxt/ccache
+  #    - ls -lh
 #      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd ~/rom/out/target/product/maple_dsds/out/target/product/maple_dsds/ && ls *.zip)"
       - cd ~/rom/out/target/product/maple_dsds
       - ls -lh
       - pwd
-      - chmod 777 *
-      - curl --upload-file *.zip https://transfer.sh/$(ls *.zip)
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(ls *.zip) Uploaded Successfully!"
-      - cat link.txt && echo " "
+#      - chmod 777 *
+#      - curl --upload-file *.zip https://transfer.sh/$(ls *.zip)
+   #   - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(ls *.zip) Uploaded Successfully!"
+     # - cat link.txt && echo " "
   

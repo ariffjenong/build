@@ -1,5 +1,5 @@
 #!/bin/bash
- Lets see machine specifications and environments
+# Lets see machine specifications and environments
 df -h
 free -h
 nproc
@@ -19,15 +19,15 @@ env
  export ALLOW_MISSING_DEPENDENCIES=true
  export TZ=Asia/Jakarta
  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
-# make sepolicy
-# make bootimage
-# make init
-#make nad -j12 &  #dont remove that '&'
+#make sepolicy
+#make bootimage
+#make init
+make nad -j12 &  #dont remove that '&'
 #sleep 85m #first running
-#sleep 98m #second running
+sleep 105m #second running
 #kill %1
 
-make nad -j12  \
-      &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
+#make nad -j12  \
+#      &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
       
 ccache -s
