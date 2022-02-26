@@ -1,8 +1,6 @@
 #!/bin/bash
-
+ls -lh
 cd ~/znxt
-
-sleep 1m
 
 com ()
 {
@@ -11,6 +9,8 @@ com ()
 
 time com ccache 1
 
+mkdir -p ~/.config/rclone
+echo "$rclone_config" > ~/.config/rclone/rclone.conf
 curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache...."
-time rclone copy ccache.tar.gz znxt:ccache/maple_dsds -P
+time rclone copy ccache.tar.gz znxt:ccache/nad12
 curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache Success"

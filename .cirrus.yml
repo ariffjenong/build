@@ -15,12 +15,12 @@ task:
       - cd ~
       - mkdir -p ~/rom
       - mkdir -p ~/znxt
- #     - cd ~/znxt
-#      - time rclone copy znxt:nad12/ccache.tar.gz
- #     - time tar xf ccache.tar.gz
- #     - rm -rf ccache.tar.gz
-#      - cd ~/znxt/ccache
-   #   - ls -lh
+      - cd ~/znxt
+      - time rclone copy znxt:nad12/ccache.tar.gz
+      - time tar xf ccache.tar.gz
+      - rm -rf ccache.tar.gz
+      - cd ~/znxt/ccache
+      - ls -lh
 
   Sync_script:
       - cd ~/rom
@@ -37,14 +37,15 @@ task:
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *.zip) Completed!"
 
   Upload_script:
+      - /build_zip.sh
       - cd ~/znxt/ccache
       - ls -lh
-   #   - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd ~/rom/out/target/product/maple_dsds/out/target/product/maple_dsds/ && ls *.zip)"
-    #  - cd ~/rom/out/target/product/maple_dsds
-  #    - ls -lh
-  #    - pwd
- #     - chmod 777 *
-    #  - curl --upload-file *.zip https://transfer.sh/$(ls *.zip)
-   #   - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(ls *.zip) Uploaded Successfully!"
-  #    - cat link.txt && echo " "
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Build $(cd ~/rom/out/target/product/maple_dsds/out/target/product/maple_dsds/ && ls *.zip)"
+      - cd ~/rom/out/target/product/maple_dsds
+      - ls -lh
+      - pwd
+      - chmod 777 *
+      - curl --upload-file *.zip https://transfer.sh/$(ls *.zip)
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(ls *.zip) Uploaded Successfully!"
+      - cat link.txt && echo " "
   
