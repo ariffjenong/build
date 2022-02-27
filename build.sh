@@ -24,7 +24,7 @@ env
 #make init
 make nad -j10 &  #dont remove that '&'
 #sleep 85m #first running
-sleep 104m #second running
+sleep 102m #second running
 kill %1
 
 #make nad -j12  \
