@@ -13,8 +13,7 @@ env
  export CCACHE_DIR=~/znxt/ccache
  export CCACHE_EXEC=$(which ccache)
  export USE_CCACHE=1
- ccache -M 20G
- ccache -o compression=true
+ ccache -M 10G
  ccache -z
  export ALLOW_MISSING_DEPENDENCIES=true
  export TZ=Asia/Jakarta
@@ -23,8 +22,8 @@ env
 #make bootimage
 #make init
 make nad -j30 &  #dont remove that '&'
-sleep 90m #first running
-#sleep 105m #second running
+#sleep 90m #first running
+sleep 105m #second running
 kill %1
 
 #make nad -j30  \
