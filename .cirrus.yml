@@ -46,7 +46,7 @@ task:
 #      - cd ~/znxt/ccache
  #     - ls -lh
 #      - cd ~/rom/out/target/product/maple_dsds
-      - ls -lh
+  #    - ls -lh
 #      - pwd
 #      - chmod 777 *
       - curl --upload-file Nusantara*.zip https://transfer.sh/$(ls Nusantara*.zip)
