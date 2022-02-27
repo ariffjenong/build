@@ -28,7 +28,7 @@ task:
       - cd ~/rom
       - repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest.git -b 12 -g default,-mips,-darwin,-notdefault
       - git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b nad-12 .repo/local_manifests
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j12
  #     - grep -R 'allow system_server root_block_device:blk_file'
 #      - grep -R 'allow system_server xbl_block_device:blk_file'
 #      - grep -R 'allow system_server gpt_block_device:blk_file'
@@ -43,6 +43,7 @@ task:
       - md=~/rom/out/target/product/maple_dsds/*.md5sum
       - curl -F document=@$md https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID &&  cd ~/rom/out/target/product/maple_dsds
       - ls -lh
+      - rclone copy Nusantara*.zip znxt:maple_dsds/nad
 #      - cd ~/znxt/ccache
  #     - ls -lh
 #      - cd ~/rom/out/target/product/maple_dsds
