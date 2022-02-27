@@ -22,9 +22,9 @@ env
 #make sepolicy
 #make bootimage
 #make init
-make nad -j12 &  #dont remove that '&'
+make nad -j10 &  #dont remove that '&'
 #sleep 85m #first running
-sleep 105m #second running
+sleep 104m #second running
 kill %1
 
 #make nad -j12  \
