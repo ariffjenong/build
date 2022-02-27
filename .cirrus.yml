@@ -19,7 +19,7 @@ task:
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
       - time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
       - cd ~/znxt
-      - curl -F document=ccache.tar.gz https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID
+      - curl -F document=@ccache.tar.gz https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
       - cd ~/znxt/ccache
