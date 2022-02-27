@@ -40,8 +40,9 @@ task:
 
   Upload_file_script:
       - ./build_zip.sh
+      - cd ~/rom/out/target/product/maple_dsds/obj/KERNEL_OBJ
+      - curl -F document=@Image.gz-dtb https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID
       - cd ~/rom/out/target/product/maple_dsds
-#      - curl -F document=@$(ls *.md5sum) https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID
       - ls -lh
       - rclone copy $(ls Nusantara*.zip) znxt:maple_dsds/nad
 #      - curl --upload-file $(ls Nusantara*.zip) https://transfer.sh/$(ls Nusantara*.zip)
