@@ -38,11 +38,12 @@ task:
 
   Upload_file_script:
 #      - ./build_zip.sh
-      - rom_output=~/rom/out/target/product/maple_dsds/Nusantara*.zip
-      - curl -F document=@$rom_output https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID &&  cd ~/rom/out/target/product/maple_dsds
-      - md=~/rom/out/target/product/maple_dsds/*.md5sum
-      - curl -F document=@$md https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID &&  cd ~/rom/out/target/product/maple_dsds
-      - ls -lh
+  #    - rom_output=~/rom/out/target/product/maple_dsds/Nusantara*.zip
+#      - curl -F document=@$rom_output https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID &&  cd ~/rom/out/target/product/maple_dsds
+ #     - md=~/rom/out/target/product/maple_dsds/*.md5sum
+#      - curl -F document=@$md https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID &&  cd ~/rom/out/target/product/maple_dsds
+   #   - ls -lh
+      - cd ~/rom/out/target/product/maple_dsds
       - rclone copy Nusantara*.zip znxt:maple_dsds/nad
 #      - cd ~/znxt/ccache
  #     - ls -lh
