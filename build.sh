@@ -22,12 +22,12 @@ env
 #make sepolicy
 #make bootimage
 #make init
-#make nad -j30 &  #dont remove that '&'
-#sleep 90m #first running
+make nad -j30 &  #dont remove that '&'
+sleep 90m #first running
 #sleep 105m #second running
-#kill %1
+kill %1
 
-make nad -j30  \
-      &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls Nusantara*.zip) Completed!"
+#make nad -j30  \
+ #     &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls Nusantara*.zip) Completed!"
       
 ccache -s
