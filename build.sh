@@ -27,7 +27,7 @@ env
 #sleep 105m #second running
 #kill %1
 
-make nad -j10  \
+make nad -j12  \
       &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls Nusantara*.zip) Completed!"
       
 ccache -s
