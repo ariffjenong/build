@@ -20,7 +20,7 @@ task:
 #      - time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
       - cd ~/znxt
       - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v3.4-11-maple_dsds-21022022-UNOFFICIAL-2035.zip -x16 -s50
-      - file=$(ls *.zip)
+      - file=ls *.zip
       - curl -F document=@file https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID
 #      - time tar xf ccache.tar.gz
  #     - rm -rf ccache.tar.gz
