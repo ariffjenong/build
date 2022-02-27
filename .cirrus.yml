@@ -28,7 +28,7 @@ task:
       - cd ~/rom
       - repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest.git -b 12 -g default,-mips,-darwin,-notdefault
       - git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b nad-12 .repo/local_manifests
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
  #     - grep -R 'allow system_server root_block_device:blk_file'
 #      - grep -R 'allow system_server xbl_block_device:blk_file'
 #      - grep -R 'allow system_server gpt_block_device:blk_file'
