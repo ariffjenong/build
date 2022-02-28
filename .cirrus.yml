@@ -2,6 +2,8 @@ env:
     rclone_config: "ENCRYPTED[4922bc14514c7f61d60c12b9e1f9bf4d93bd95dc0ea4f51a5569580948e8404a427dd178aa07413e6fbd784459a0c828]"
     TG_TOKEN: "ENCRYPTED[7888fd688129c58fcd9a25086dad02a0c103986cfca92f0d1606b3873ab2e02fffacffe4a8a432b0d726eff81999323e]"
     TG_CHAT_ID: "ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]"
+    SF_USERNAME: "ENCRYPTED[9b9deac88b090b7dc4e69a058e79360e8832c782b9bd46499a7f1401e66e219bad7c9c901a85eeb0d154f717cfc5f148]"
+    SF_PASS: "ENCRYPTED[9d4e6509f1294d4d9b39c9f092f32123bef7cdf2c773cda6f80867a329c629d6ab9f1cee0db0c38184bd13d8e8a5556f]"
  
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -13,41 +15,38 @@ task:
 
   Env_script:
       - apt install git curl python zip mailutils expect -y
-      - curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
-      - chmod a+rx /usr/local/bin/repo
-      - bash android_build_env.sh
-      - apt-get install -y schedtool
-      - cd ~
-      - mkdir -p ~/rom
+      #- cd ~
+      #- mkdir -p ~/rom
       - mkdir -p ~/znxt
-      - mkdir -p ~/.config/rclone
-      - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      - time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
+      #- mkdir -p ~/.config/rclone
+      #- echo "$rclone_config" > ~/.config/rclone/rclone.conf
+      #- time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
       - cd ~/znxt
-#      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v3.4-11-maple_dsds-21022022-UNOFFICIAL-2035.zip -x16 -s50
-#      - curl -F document=@$(ls *.zip) https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID
-      - time tar xf ccache.tar.gz
-      - rm -rf ccache.tar.gz
-      - cd ~/znxt/ccache
-      - ls -lh
+      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v3.4-11-maple_dsds-21022022-UNOFFICIAL-2035.zip -x16 -s50
+      #- curl -F document=@$(ls *.zip) https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID
+      #- time tar xf ccache.tar.gz
+      #- rm -rf ccache.tar.gz
+      #- cd ~/znxt/ccache
+      #- ls -lh
 
   Sync_script:
-      - cd ~/rom
-      - repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest.git -b 12 -g default,-mips,-darwin,-notdefault
-      - git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b nad-12 .repo/local_manifests
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
+      #- cd ~/rom
+      #- repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest.git -b 12 -g default,-mips,-darwin,-notdefault
+      #- git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b nad-12 .repo/local_manifests
+      #- repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
 
   Build_script:
-      - ./build.sh
+      #- ./build.sh
 
   Upload_file_script:
-      - ./build_zip.sh
-      - cd ~/rom/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot
-      - ls -lh
-      - curl -F document=@Image.gz-dtb https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID && cd ~/rom/out/target/product/maple_dsds
-      - ls -lh
-      - rclone copy $(ls Nusantara*.zip) znxt:maple_dsds/nad
-      - curl --upload-file $(ls Nusantara*.zip) https://transfer.sh/$(ls Nusantara*.zip)
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(ls Nusantara*.zip) Uploaded Successfully!"
-#      - cat link.txt && echo " "
+      - ./sf.sh
+      #- ./build_zip.sh
+      #- cd ~/rom/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot
+      #- ls -lh
+      #- curl -F document=@Image.gz-dtb https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID && cd ~/rom/out/target/product/maple_dsds
+      #- ls -lh
+      #- rclone copy $(ls Nusantara*.zip) znxt:maple_dsds/nad
+      #- curl --upload-file $(ls Nusantara*.zip) https://transfer.sh/$(ls Nusantara*.zip)
+      #- curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(ls Nusantara*.zip) Uploaded Successfully!"
+      #- cat link.txt && echo " "
   
