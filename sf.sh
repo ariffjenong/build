@@ -1,4 +1,6 @@
     cd ~/znxt
+    nad=$(ls Nusantara*.zip)
+    arrow=$(ls Arrow*.zip)
     
 	# Upload
 	expect -c "
@@ -13,7 +15,7 @@
 	expect \"sftp>\"
 	send \"cd '/home/pfs/project/maple_dsds/nusantara-11'\r\"
 	set timeout -1
-	send \"put Nusantara*.zip\r\"
+	send \"put $nad\r\"
 	expect \"Uploading\"
 	expect \"100%\"
 	expect \"sftp>\"
@@ -33,7 +35,7 @@
 	expect \"sftp>\"
 	send \"cd '/home/pfs/project/maple_dsds/arrow-12.0'\r\"
 	set timeout -1
-	send \"put Arrow*.zip\r\"
+	send \"put $arrow\r\"
 	expect \"Uploading\"
 	expect \"100%\"
 	expect \"sftp>\"
@@ -44,21 +46,19 @@
 	curl -s -v -F "chat_id=$TG_CHAT_ID" -F "parse_mode=html" -F text="Build completed successfully..!!!
 	Link: https://sourceforge.net/p/maple_dsds/nusantara-11/$(ls Nusantara*.zip)
 	Dev : Arif JeNong
-	Product : ==== $(ls Nusantara*.zip) ====
+	Product : ==== $nad ====
 	Device : maple_dsds
 	Server Host : cirrus-ci
 	Build Type : UNOFFICIAL
 	Android : 11
-	Date : $(env TZ=Asia/Jakarta date)" https://api.telegram.org/$TG_TOKEN/sendDocument
 	Date : $(env TZ=Asia/Jakarta date)" https://api.telegram.org/$TG_TOKEN/sendMessage
 
 	curl -s -v -F "chat_id=$TG_CHAT_ID" -F "parse_mode=html" -F text="Build completed successfully..!!!
 	Link: https://sourceforge.net/p/maple_dsds/arrow-12.0/$(ls Arrow*.zip)
 	Dev : Arif JeNong
-	Product : ==== $(ls Arrow*.zip) ====
+	Product : ==== $arrow ====
 	Device : maple_dsds
 	Server Host : cirrus-ci
 	Build Type : UNOFFICIAL
 	Android : 12
-	Date : $(env TZ=Asia/Jakarta date)" https://api.telegram.org/$TG_TOKEN/sendDocument
 	Date : $(env TZ=Asia/Jakarta date)" https://api.telegram.org/$TG_TOKEN/sendMessage
