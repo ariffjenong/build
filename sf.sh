@@ -12,6 +12,9 @@
 	expect \"Password\"
 	send \"$SF_PASS\r\"
 	expect \"sftp>\"
+	send \"ls /home/pfs/project\r\"
+	set timeout -1
+	expect \"sftp>\"
 	send \"cd /home/pfs/project/znxt-project/maple_dsds\r\"
 	set timeout -1
 	expect \"sftp> \"
