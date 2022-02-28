@@ -14,7 +14,6 @@ task:
       memory: 32G
 
   Env_script:
-      - expect
       #- cd ~
       #- mkdir -p ~/rom
       - mkdir -p ~/znxt

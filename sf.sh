@@ -1,3 +1,5 @@
+    apt install expect -y
+    
     cd ~/znxt
     nad=$(ls Nusantara*.zip)
     arrow=$(ls Arrow*.zip)
