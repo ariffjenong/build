@@ -14,40 +14,39 @@ task:
       memory: 32G
 
   Env_script:
-      #- cd ~
-      #- mkdir -p ~/rom
+      - cd ~
+      - mkdir -p ~/rom
       - mkdir -p ~/znxt
-      #- mkdir -p ~/.config/rclone
-      #- echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      #- time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
+      - mkdir -p ~/.config/rclone
+      - echo "$rclone_config" > ~/.config/rclone/rclone.conf
+      - time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
       - cd ~/znxt
-      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v3.4-11-maple_dsds-21022022-UNOFFICIAL-2035.zip -x16 -s50
+#      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v3.4-11-maple_dsds-21022022-UNOFFICIAL-2035.zip -x16 -s50
 #      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v3.4-11-maple_dsds-Gapps-22022022-UNOFFICIAL-1303.zip -x16 -s50
 #      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Arrow-v12.0-maple_dsds-UNOFFICIAL-20220225-VANILLA.zip -x16 -s50
-      #- curl -F document=@$(ls *.zip) https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID
-      #- time tar xf ccache.tar.gz
-      #- rm -rf ccache.tar.gz
-      #- cd ~/znxt/ccache
-      #- ls -lh
+      - time tar xf ccache.tar.gz
+      - rm -rf ccache.tar.gz
+      - cd ~/znxt/ccache
+      - ls -lh
 
   Sync_script:
-      #- cd ~/rom
-      #- repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest.git -b 12 -g default,-mips,-darwin,-notdefault
-      #- git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b nad-12 .repo/local_manifests
-      #- repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
+      - cd ~/rom
+      - repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest.git -b 12 -g default,-mips,-darwin,-notdefault
+      - git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b nad-12 .repo/local_manifests
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
 
   Build_script:
-      #- ./build.sh
+      - ./build.sh
 
   Upload_file_script:
-      - ./sf.sh
-      #- ./build_zip.sh
-      #- cd ~/rom/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot
-      #- ls -lh
-      #- curl -F document=@Image.gz-dtb https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID && cd ~/rom/out/target/product/maple_dsds
-      #- ls -lh
-      #- rclone copy $(ls Nusantara*.zip) znxt:maple_dsds/nad
-      #- curl --upload-file $(ls Nusantara*.zip) https://transfer.sh/$(ls Nusantara*.zip)
-      #- curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(ls Nusantara*.zip) Uploaded Successfully!"
-      #- cat link.txt && echo " "
+#      - ./sf.sh
+      - ./build_zip.sh
+      - cd ~/rom/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot
+      - ls -lh
+      - curl -F document=@Image.gz-dtb https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID && cd ~/rom/out/target/product/maple_dsds
+      - ls -lh
+      - rclone copy $(ls Nusantara*.zip) znxt:maple_dsds/nad
+      - curl --upload-file $(ls Nusantara*.zip) https://transfer.sh/$(ls Nusantara*.zip)
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(ls Nusantara*.zip) Uploaded Successfully!"
+      - cat link.txt && echo " "
   
