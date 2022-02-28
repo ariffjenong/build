@@ -14,7 +14,7 @@ task:
       memory: 32G
 
   Env_script:
-      - sudo apt install expect -y
+      - apt-get install expect -y
       #- cd ~
       #- mkdir -p ~/rom
       - mkdir -p ~/znxt
