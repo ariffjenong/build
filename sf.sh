@@ -1,7 +1,7 @@
-    apt install expect -y
-    
     cd ~/znxt
-    nad=$(ls Nusantara*.zip)
+    sudo apt-get update -y && sudo apt-get install expect -y
+
+    nad=$(ls Nusantara*Gapps*.zip)
     arrow=$(ls Arrow*.zip)
     
 	# Upload
