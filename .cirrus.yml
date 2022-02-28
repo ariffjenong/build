@@ -12,6 +12,11 @@ task:
       memory: 32G
 
   Env_script:
+      - apt install git curl python zip mailutils expect -y
+      - curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
+      - chmod a+rx /usr/local/bin/repo
+      - bash android_build_env.sh
+      - apt-get install -y schedtool
       - cd ~
       - mkdir -p ~/rom
       - mkdir -p ~/znxt
