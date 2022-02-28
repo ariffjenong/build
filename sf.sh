@@ -54,7 +54,7 @@
 	Date : $(env TZ=Asia/Jakarta date)" https://api.telegram.org/$TG_TOKEN/sendMessage
 
 	curl -s -v -F "chat_id=$TG_CHAT_ID" -F "parse_mode=html" -F text="Build completed successfully..!!!
-	Link: https://sourceforge.net/p/maple_dsds/arrow-12.0/$(ls Arrow*.zip)
+	Link: https://sourceforge.net/p/maple_dsds/arrow-12.0/$arrow
 	Dev : Arif JeNong
 	Product : ==== $arrow ====
 	Device : maple_dsds
