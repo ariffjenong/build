@@ -14,7 +14,6 @@ task:
       memory: 32G
 
   Env_script:
-      - apt install expect -y
       #- cd ~
       #- mkdir -p ~/rom
       - mkdir -p ~/znxt
@@ -22,6 +21,7 @@ task:
       #- echo "$rclone_config" > ~/.config/rclone/rclone.conf
       #- time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
       - cd ~/znxt
+      - apt install expect -y
       - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v3.4-11-maple_dsds-21022022-UNOFFICIAL-2035.zip -x16 -s50
       - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v3.4-11-maple_dsds-Gapps-22022022-UNOFFICIAL-1303.zip -x16 -s50
       - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Arrow-v12.0-maple_dsds-UNOFFICIAL-20220225-VANILLA.zip -x16 -s50
