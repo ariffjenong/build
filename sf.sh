@@ -6,14 +6,11 @@
     
 	# Upload
 	expect -c "
-	spawn sftp $SF_USERNAME@frs.sourceforge.net
+	spawn sftp $SF_USERNAME@frs.sourceforge.net:/home/pfs/project/znxt-project/maple_dsds/
 	expect \"yes/no\"
 	send \"yes\r\"
 	expect \"Password\"
 	send \"$SF_PASS\r\"
-	expect \"sftp>\"
-	send \"cd ~/home/pfs/project/znxt-project/maple_dsds/\r\"
-	set timeout -1
 	expect \"sftp> \"
 	send \"mkdir nusantara-11\r\"
 	set timeout -1
@@ -24,7 +21,7 @@
 	expect \"Uploading\"
 	expect \"100%\"
 	expect \"sftp>\"
-	send \"cd ~/home/pfs/project/znxt-project/maple_dsds/\r\"
+	send \"cd ..\r\"
 	set timeout -1
 	expect \"sftp>\"
 	send \"mkdir arrow-12.0/\r\"
