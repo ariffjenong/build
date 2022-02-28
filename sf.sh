@@ -15,7 +15,7 @@
 	send \"ls /home/pfs/project\r\"
 	set timeout -1
 	expect \"sftp>\"
-	send \"cd /home/pfs/project/znxt-project/maple_dsds\r\"
+	send \"cd /home/pfs/project/znxt_project/maple_dsds\r\"
 	set timeout -1
 	expect \"sftp> \"
 	send \"mkdir nusantara-11\r\"
@@ -27,7 +27,7 @@
 	expect \"Uploading\"
 	expect \"100%\"
 	expect \"sftp>\"
-	send \"cd /home/pfs/project/znxt-project/maple_dsds\r\"
+	send \"cd /home/pfs/project/znxt_project/maple_dsds\r\"
 	set timeout -1
 	expect \"sftp>\"
 	send \"mkdir arrow-12.0\r\"
