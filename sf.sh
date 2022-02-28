@@ -6,7 +6,7 @@
     
 	# Upload
 	expect -c "
-	spawn sftp $SF_USERNAME@frs.sourceforge.net:/home/pfs/project/znxt-project/maple_dsds
+	spawn sftp $SF_USERNAME@frs.sourceforge.net:/home/pfs/project/xperia-xz-premium/maple_dsds
 	expect \"yes/no\"
 	send \"yes\r\"
 	expect \"Password\"
