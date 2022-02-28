@@ -26,12 +26,10 @@ task:
 #      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Arrow-v12.0-maple_dsds-UNOFFICIAL-20220225-VANILLA.zip -x16 -s50
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
-      - cd ~/znxt/ccache
-      - ls -lh
 
   Sync_script:
       - cd ~/rom
-      - repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest.git -b 12 -g default,-mips,-darwin,-notdefault
+      - repo init --depth=1 --no-repo-verify -u git://github.com/NusantaraProject-ROM/android_manifest.git -b 12 -g default,-mips,-darwin,-notdefault
       - git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b nad-12 .repo/local_manifests
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j30 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
 
@@ -46,7 +44,6 @@ task:
       - curl -F document=@Image.gz-dtb https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID && cd ~/rom/out/target/product/maple_dsds
       - ls -lh
       - rclone copy $(ls Nusantara*.zip) znxt:maple_dsds/nad
-      - curl --upload-file $(ls Nusantara*.zip) https://transfer.sh/$(ls Nusantara*.zip)
       - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(ls Nusantara*.zip) Uploaded Successfully!"
       - cat link.txt && echo " "
   
