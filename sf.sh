@@ -11,20 +11,26 @@
 	send \"yes\r\"
 	expect \"Password\"
 	send \"$SF_PASS\r\"
+	expect \"sftp>\"
+	send \"cd '/home/pfs/project/znxt-project/maple_dsds'\r\"
+	set timeout -1
 	expect \"sftp> \"
-	send \"mkdir '-p /home/pfs/project/znxt-project/maple_dsds/nusantara-11'\r\"
+	send \"mkdir 'nusantara-11'\r\"
 	set timeout -1
 	expect \"sftp>\"
-	send \"cd '/home/pfs/project/znxt-project/maple_dsds/nusantara-11'\r\"
+	send \"cd '/nusantara-11'\r\"
 	set timeout -1
 	send \"put $nad\r\"
 	expect \"Uploading\"
 	expect \"100%\"
 	expect \"sftp>\"
-	send \"mkdir '-p /home/pfs/project/znxt-project/maple_dsds/arrow-12.0'\r\"
+	send \"cd '/home/pfs/project/znxt-project/maple_dsds'\r\"
 	set timeout -1
 	expect \"sftp>\"
-	send \"cd '/home/pfs/project/znxt-project/maple_dsds/arrow-12.0'\r\"
+	send \"mkdir 'arrow-12.0'\r\"
+	set timeout -1
+	expect \"sftp>\"
+	send \"cd '/arrow-12.0'\r\"
 	set timeout -1
 	send \"put $arrow\r\"
 	expect \"Uploading\"
