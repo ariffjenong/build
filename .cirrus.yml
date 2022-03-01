@@ -37,7 +37,7 @@ task:
       - rm -rf rom.tar.gz
 
   Sync_script:
-      #- ./sync_source.sh
+      - ./sync_source.sh
 
   Build_script:
       - ./build.sh
