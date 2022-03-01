@@ -30,7 +30,7 @@ task:
       - time rclone copy znxtproject:test/rom.tar.gz ~/rom -P
       - cd ~/rom
       - time tar xf rom.tar.gz
-      - rm -rf ccache.tar.gz
+      - rm -rf rom.tar.gz
 
   Sync_script:
       #- ./sync_source.sh
