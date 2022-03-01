@@ -16,6 +16,8 @@ task:
 
   Env_script:
       - cd ~
+      - rm -rf ~/rom
+      - rm -rf ~/znxt
       - mkdir -p ~/rom
       - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
