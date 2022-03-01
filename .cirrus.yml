@@ -35,6 +35,8 @@ task:
 
   Upload_file_script:
       - ./build_zip.sh
+      - cd ~
+      - rclone copy rom.tar.gz znxtproject:test
       #- kernel=~/rom/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot/Image.gz-dtb
       #- curl -F document=@$kernel https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID && cd ~/rom/out/target/product/maple_dsds
       #- ls -lh
