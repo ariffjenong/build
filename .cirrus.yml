@@ -18,7 +18,7 @@ task:
       - cd ~
       - mkdir -p ~/rom/out/target/product/maple_dsds
       - cd ~/rom/out/target/product/maple_dsds
-      - https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232.zip
+      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232.zip -x16 -s50
 
   SF_script:
       - ./sf.sh
