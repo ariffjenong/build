@@ -23,7 +23,7 @@ env
 #make init
 make nad -j30 &  #dont remove that '&'
 #sleep 90m #first running
-sleep 100m #second running
+sleep 105m #second running
 kill %1
 
 #make nad -j30  \
