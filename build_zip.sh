@@ -14,5 +14,4 @@ echo "$rclone_config" > ~/.config/rclone/rclone.conf
 cd ~
 time com rom 6
 ls -lh
-time rclone copy rom.tar.gz znxtproject:test
-curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Success"
+#curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Success"
