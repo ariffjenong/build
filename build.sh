@@ -17,16 +17,16 @@ env
  ccache -z
  export ALLOW_MISSING_DEPENDENCIES=true
  export TZ=Asia/Jakarta
-# curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
+ #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
 #make sepolicy
 #make bootimage
 #make init
-make nad -j24 &  #dont remove that '&'
+#make nad -j24 &  #dont remove that '&'
 #sleep 90m #first running
-sleep 102m #second running
-kill %1
+#sleep 102m #second running
+#kill %1
 
-#make nad -j30  \
- #     &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls Nusantara*.zip) Completed!"
+make nad -j24  \
+      &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *maple_dsds*UNOFFICIAL*.zip) Completed!"
       
 ccache -s
