@@ -16,4 +16,3 @@ time rclone copy ccache.tar.gz znxtproject:ccache/nad12 -P
 #time com rom 1
 ls -lh
 curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Success"
- 
