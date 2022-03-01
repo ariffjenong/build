@@ -27,7 +27,7 @@ task:
       - ccache -z
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      - time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
+      - time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -x16 -s50
       - cd ~/znxt
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
@@ -48,14 +48,14 @@ task:
       #- curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Success"
       #- rm -rf rom.tar.gz
       - cd ~/rom/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot/
-      - rclone copy Image.gz-dtb znxtproject:kernel12 -P
+      - rclone copy Image.gz-dtb znxtproject:kernel12 -x16 -s50
       - ls -lh
       - cd ~/rom/out/target/product/maple_dsds
       - ls -lh
       - product=$(ls *maple_dsds*UNOFFICIAL*.zip)
       - md5sum=$(ls *.md5sum)
-      - rclone copy $product znxtproject:nad -P
-      - rclone copy $md5sum znxtproject:nad -P
+      - rclone copy $product znxtproject:nad -x16 -s50
+      - rclone copy $md5sum znxtproject:nad -x16 -s50
 
   SF_script:
       - ./sf.sh
