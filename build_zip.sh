@@ -15,5 +15,5 @@ com ()
 cd ~
 time com rom 6
 ls -lh
-time rclone copy out.tar.gz znxtproject:nad
+time rclone copy rom.tar.gz znxtproject:test
 curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Success"
