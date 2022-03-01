@@ -26,7 +26,7 @@ task:
       #- ccache -M 10G
       #- ccache -z
       - mkdir -p ~/.config/rclone
-      #- echo "$rclone_config" > ~/.config/rclone/rclone.conf
+      - echo "$rclone_config" > ~/.config/rclone/rclone.conf
       #- time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
       #- cd ~/znxt
       #- time tar xf ccache.tar.gz
