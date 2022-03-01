@@ -7,12 +7,12 @@ env:
     ROM_PROJECT: "nad-12"
  
 task:
-  name: Test
-  timeout_in: 2m  
+  name: Syncing, Building and Uploading
+  timeout_in: 4h  
   container:
       image: inok2341/anu:latest
-      cpu: 2
-      memory: 4G
+      cpu: 8
+      memory: 32G
 
   Env_script:
       - cd ~
@@ -31,19 +31,8 @@ task:
       - cd ~/znxt
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
- 
-task:
-  name: Syncing, Building and Uploading
-  depends_on:
-    - Test
-  timeout_in: 4h  
-  container:
-      image: inok2341/anu:latest
-      cpu: 8
-      memory: 32G
 
   Sync_script:
-      - cd ~/znxt/ccache && ls -lh
       - cd ~/rom
       - repo init --depth=1 --no-repo-verify -u git://github.com/NusantaraProject-ROM/android_manifest.git -b 12 -g default,-mips,-darwin,-notdefault
       - git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b $ROM_PROJECT .repo/local_manifests
@@ -52,7 +41,7 @@ task:
   Build_script:
       - ./build.sh
 
-  Upload_file_script:
+  Upload_script:
       #- ./build_zip.sh
       #- cd ~
       #- rclone copy rom.tar.gz znxtproject:test
