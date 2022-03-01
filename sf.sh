@@ -6,7 +6,7 @@
 
     sudo apt-get install expect -y
 
-    product=$(ls UNOFFICIAL*.zip)
+    product=$(ls *UNOFFICIAL*.zip)
     project=xperia-xz-premium/maple_dsds
     
 	# Upload
