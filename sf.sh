@@ -1,11 +1,12 @@
 #!/bin/bash
 
-cd ~/rom/$rom_name/out/target/product/maple_dsds
+cd ~/rom/out/target/product/maple_dsds
 
 
 sudo apt-get update -y && sudo apt-get install expect -y
 
 product=$(ls *maple_dsds*UNOFFICIAL*.zip)
+md5sum=$(ls *.md5sum)
 project=xperia-xz-premium/maple_dsds
 
 # Upload
@@ -22,6 +23,10 @@ expect \"sftp> \"
 send \"cd $ROM_PROJECT\r\"
 set timeout -1
 send \"put $product\r\"
+expect \"Uploading\"
+expect \"100%\"
+expect \"sftp>\"
+send \"put $md5sum\r\"
 expect \"Uploading\"
 expect \"100%\"
 expect \"sftp>\"
