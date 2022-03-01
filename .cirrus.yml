@@ -20,11 +20,8 @@ task:
       - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      - time rclone copy znxt:ccache/nad/ccache.tar.gz ~/znxt -P
+      - time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
       - cd ~/znxt
-#      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v3.4-11-maple_dsds-21022022-UNOFFICIAL-2035.zip -x16 -s50
-#      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v3.4-11-maple_dsds-Gapps-22022022-UNOFFICIAL-1303.zip -x16 -s50
-#      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Arrow-v12.0-maple_dsds-UNOFFICIAL-20220225-VANILLA.zip -x16 -s50
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
 
@@ -39,7 +36,7 @@ task:
       - kernel=~/rom/out/target/product/maple_dsds/obj/KERNEL_OBJ/arch/arm64/boot/Image.gz-dtb
       - curl -F document=@$kernel https://api.telegram.org/TG_TOKEN/sendDocument?chat_id=TG_CHAT_ID && cd ~/rom/out/target/product/maple_dsds
       - ls -lh
-      - product=$(ls maple_dsds-*UNOFFICIAL*.zip)
+      - product=$(ls *maple_dsds*UNOFFICIAL*.zip)
       - rclone copy $product znxt:maple_dsds/nad
 
   SF_script:
