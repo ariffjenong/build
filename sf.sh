@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/rom/out/target/product/maple_dsds
+cd ~/rom/$rom_name/out/target/product/maple_dsds
 
 
 sudo apt-get update -y && sudo apt-get install expect -y
