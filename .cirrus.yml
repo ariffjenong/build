@@ -44,4 +44,4 @@ task:
   SF_script:
       #- ./sf.sh
       - cd ~/rom/out/target/product/maple_dsds
-      - time rclone copy $(ls Nusantara*.zip) znxtproject:rom/nusantara
+      - time rclone copy $(ls Nusantara*02032022*.zip) $(ls Nusantara*Gapps*.zip) znxtproject:rom/nusantara
