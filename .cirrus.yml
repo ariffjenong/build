@@ -23,16 +23,17 @@ task:
       - sudo apt-get update -y && sudo apt-get install unzip -y && sudo apt-get install zip -y
       - gap=$(ls *Gapps*.zip)
       - time unzip $gap -d Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
-      - rm -rf $gap
+      - rm $gap
       - van=$(ls *maple_dsds*.zip)
       - time unzip $van -d Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
-      - rm -rf $van
+      - rm $van
       - cd Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
-      - rm -rf boot.img && cd ..
+      - rm boot.img && cd ..
       - cd Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
       - mv boot.img ~/rom/out/target/product/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232/
       - cd ~/rom/out/target/product/maple_dsds
-      - name=Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
+      - rm -rf Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
+      - name=Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
       - time zip -r $name $name
 
   SF_script:
