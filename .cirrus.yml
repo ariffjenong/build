@@ -20,17 +20,12 @@ task:
       - rm -rf ~/znxt
       - mkdir -p ~/rom
       - mkdir -p ~/znxt
-      - export CCACHE_DIR=~/znxt/ccache
-      - export CCACHE_EXEC=$(which ccache)
-      - export USE_CCACHE=1
-      - ccache -M 10G
-      - ccache -z
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      - time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
-      - cd ~/znxt
-      - time tar xf ccache.tar.gz
-      - rm -rf ccache.tar.gz
+      #- time rclone copy znxtproject:ccache/nad12/ccache.tar.gz ~/znxt -P
+      #- cd ~/znxt
+      #- time tar xf ccache.tar.gz
+      #- rm -rf ccache.tar.gz
 
   Sync_script:
       - cd ~/rom
