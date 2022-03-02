@@ -12,7 +12,7 @@ task:
   container:
       image: inok2341/anu:latest
       cpu: 4
-      memory: 32G
+      memory: 8G
 
   Download_script:
       - cd ~
