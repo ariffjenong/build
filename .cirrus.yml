@@ -25,7 +25,7 @@ task:
       - time unzip $gap -d Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
       - rm -rf gap
       - van=$(ls *maple_dsds*.zip)
-      - time unzip van -d Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
+      - time unzip $van -d Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
       - rm -rf van
       - cd Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
       - rm -rf boot.img && cd ..
