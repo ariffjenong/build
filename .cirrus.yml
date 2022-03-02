@@ -1,5 +1,5 @@
 env:
-    rclone_config: "ENCRYPTED[3c83ff4e129f1ced7d697b973f99d3cf33fd7936b9ad27602c7ffa47c5d678da1c8cc1fcf2ab067b09fe35e501b6ad75]"
+    rclone_config: "ENCRYPTED[4922bc14514c7f61d60c12b9e1f9bf4d93bd95dc0ea4f51a5569580948e8404a427dd178aa07413e6fbd784459a0c828]"
     TG_TOKEN: "ENCRYPTED[7888fd688129c58fcd9a25086dad02a0c103986cfca92f0d1606b3873ab2e02fffacffe4a8a432b0d726eff81999323e]"
     TG_CHAT_ID: "ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]"
     SF_USERNAME: "ENCRYPTED[9b9deac88b090b7dc4e69a058e79360e8832c782b9bd46499a7f1401e66e219bad7c9c901a85eeb0d154f717cfc5f148]"
@@ -21,30 +21,8 @@ task:
       - mkdir -p ~/rom/out/target/product/maple_dsds
       - cd ~/rom/out/target/product/maple_dsds
       - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232.zip -x16 -s50
-      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719.zip -x16 -s50
-      - sudo apt-get update -y && sudo apt-get install unzip -y && sudo apt-get install zip -y
-      - gap=$(ls *Gapps*.zip)
-      - time unzip $gap -d Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
-      - rm $gap
-      - van=$(ls *maple_dsds*.zip)
-      - time unzip $van -d Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
-      - cd Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
-      - rm boot.img && cd ..
-      - ls -lh
-      - cd Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
-      - mv boot.img ~/rom/out/target/product/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232/
-      - cd ~/rom/out/target/product/maple_dsds
-      - rm -rf Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
-      - cd Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
-      - time zip -q Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232.zip *$(ls)
-      - mv $(ls *.zip) ~/rom/out/target/product/maple_dsds/
-      - cd ~/rom/out/target/product/maple_dsds
-      - rm -rf Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
-      - ls -lh
-      
 
   SF_script:
-      #- ./sf.sh
+      - ./sf.sh
       - cd ~/rom/out/target/product/maple_dsds
-      - time rclone copy $(ls Nusantara*02032022*.zip) znxtproject:rom/nusantara -P
-      - time rclone copy $(ls Nusantara*Gapps*.zip) znxtproject:rom/nusantara -P
+      - rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT
