@@ -22,8 +22,8 @@ env
 #make bootimage
 #make init
 make nad -j24 &  #dont remove that '&'
-#sleep 90m #first running
-sleep 100m #second running
+sleep 86m #first running
+#sleep 102m #second running
 kill %1
 
 #make nad -j30  \
