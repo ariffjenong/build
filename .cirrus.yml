@@ -17,8 +17,7 @@ task:
   Download_script:
       - cd ~
       - mkdir -p ~/rom/out/target/product/maple_dsds
-      - work=cd ~/rom/out/target/product/maple_dsds
-      - $work
+      - cd ~/rom/out/target/product/maple_dsds
       - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232.zip -x16 -s50
       - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719.zip -x16 -s50
       - sudo apt-get update -y && sudo apt-get install unzip -y && sudo apt-get install zip -y
@@ -29,10 +28,10 @@ task:
       - time unzip $van -d Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
       - rm -rf $van
       - cd Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
-      - rm -rf boot.img && $work
+      - rm -rf boot.img && cd ..
       - cd Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
       - mv boot.img ~/rom/out/target/product/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232/
-      - $work
+      - cd ~/rom/out/target/product/maple_dsds
       - name=Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
       - time zip -r $name $name
 
