@@ -33,9 +33,9 @@ task:
       - mv boot.img ~/rom/out/target/product/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232/
       - cd ~/rom/out/target/product/maple_dsds
       - rm -rf Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
-      - name=Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
-      - time zip -r $name $name.zip
-      - rm -rf $name
+      - time zip -r Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232 Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
+      - rm -rf Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
+      - ls -lh
       
 
   SF_script:
