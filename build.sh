@@ -22,7 +22,7 @@ make sepolicy
 make bootimage
 make init
 make nad -j24 &  #dont remove that '&'
-sleep 86m #first running
+sleep 85m #first running
 #sleep 102m #second running
 kill %1
 
