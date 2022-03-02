@@ -34,7 +34,9 @@ task:
       - cd ~/rom/out/target/product/maple_dsds
       - rm -rf Nusantara_v4.0-1-12-maple_dsds-02032022-UNOFFICIAL-0719
       - name=Nusantara_v4.0-1-12-maple_dsds-Gapps-01032022-UNOFFICIAL-0232
-      - time zip -r $name $name
+      - time zip -r $name $name.zip
+      - rm -rf $name
+      
 
   SF_script:
       #- ./sf.sh
