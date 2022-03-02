@@ -22,10 +22,10 @@ task:
       - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      #- time rclone copy znxtproject:ccache/nad12/ccache.tar.gz ~/znxt -P
-      #- cd ~/znxt
-      #- time tar xf ccache.tar.gz
-      #- rm -rf ccache.tar.gz
+      - time rclone copy znxt:ccache/nad12/ccache.tar.gz ~/znxt -P
+      - cd ~/znxt
+      - time tar xf ccache.tar.gz
+      - rm -rf ccache.tar.gz
 
   Sync_script:
       - cd ~/rom
