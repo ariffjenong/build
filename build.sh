@@ -21,6 +21,7 @@ env
 #make sepolicy -j24
 #make bootimage -j24
 #make init -j24
+#make services
 make nad -j24 &  #dont remove that '&'
 #sleep 83m #first running
 sleep 100m #second running
