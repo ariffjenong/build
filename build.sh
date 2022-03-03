@@ -13,7 +13,7 @@ env
  export CCACHE_DIR=~/znxt/ccache
  export CCACHE_EXEC=$(which ccache)
  export USE_CCACHE=1
- ccache -M 10G
+ ccache -M 8G
  ccache -z
  export ALLOW_MISSING_DEPENDENCIES=true
  export TZ=Asia/Jakarta
@@ -23,7 +23,7 @@ env
 #make init -j24
 make nad -j24 &  #dont remove that '&'
 #sleep 83m #first running
-sleep 103m #second running
+sleep 100m #second running
 #sleep 105m #third running
 kill %1
 
