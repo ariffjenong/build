@@ -22,13 +22,13 @@ env
 #make bootimage -j24
 #make init -j24
 #make services
-make nad -j24 &  #dont remove that '&'
+#make nad -j24 &  #dont remove that '&'
 #sleep 83m #first running
-sleep 100m #second running
+#sleep 100m #second running
 #sleep 105m #third running
-kill %1
+#kill %1
 
-#make nad -j30  \ #finall
-#      &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *maple_dsds*UNOFFICIAL*.zip) Completed!"
+make nad -j30  \ #finall
+      &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *maple_dsds*UNOFFICIAL*.zip) Completed!"
       
 ccache -s
