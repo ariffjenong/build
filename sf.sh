@@ -5,8 +5,8 @@ cd ~/rom/out/target/product/maple_dsds
 
 sudo apt-get update -y && sudo apt-get install expect -y
 
-product=$(ls *maple_dsds*Gapps*.zip)
-product2=$(ls *02032022-UNOFFICIAL*.zip)
+#product=$(ls *maple_dsds*Gapps*.zip)
+product=$(ls *UNOFFICIAL*.zip)
 project=xperia-xz-premium/maple_dsds
 
 # Upload
@@ -26,17 +26,12 @@ send \"put $product\r\"
 expect \"Uploading\"
 expect \"100%\"
 expect \"sftp>\"
-send \"put $product2\r\"
-expect \"Uploading\"
-expect \"100%\"
-expect \"sftp>\"
 send \"bye\r\"
 interact"
 
 # Post
 curl -s -v -F "chat_id=$TG_CHAT_ID" -F "parse_mode=html" -F text="Build completed successfully!!!
 Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple_dsds/$ROM_PROJECT/$product
-Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple_dsds/$ROM_PROJECT/$product2
 Dev : ""Arif JeNong""
 Product : ""$product""
 Device : ""maple_dsds""
