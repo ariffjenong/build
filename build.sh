@@ -23,7 +23,7 @@ make bootimage -j24
 make init -j24
 make services
 make art
-mka bacon -j24 &  #dont remove that '&'
+brunch maple_dsds -j24 &  #dont remove that '&'
 sleep 45m #first running
 #sleep 100m #second running
 kill %1
