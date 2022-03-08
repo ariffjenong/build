@@ -8,7 +8,7 @@ env
 
  cd ~/rom
  . build/envsetup.sh
- lunch nad_maple_dsds-userdebug
+ lunch cherish_maple_dsds-userdebug
  #export SELINUX_IGNORE_NEVERALLOWS=true
  export CCACHE_DIR=~/znxt/ccache
  export CCACHE_EXEC=$(which ccache)
@@ -18,17 +18,17 @@ env
  export ALLOW_MISSING_DEPENDENCIES=true
  export TZ=Asia/Jakarta
  #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
-#make sepolicy -j24
-#make bootimage -j24
-#make init -j24
-#make services
-#make nad -j24 &  #dont remove that '&'
-#sleep 83m #first running
+make sepolicy -j24
+make bootimage -j24
+make init -j24
+make services
+make art
+mka bacon -j24 &  #dont remove that '&'
+sleep 45m #first running
 #sleep 100m #second running
-#sleep 105m #third running
-#kill %1
+kill %1
 
-make nad -j30  \ #finall
+#make nad -j30  \ #finall
       &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *maple_dsds*UNOFFICIAL*.zip) Completed!"
       
 ccache -s
