@@ -20,7 +20,7 @@ task:
       #- echo "$rclone_config" > ~/.config/rclone/rclone.conf
       - mkdir -p ~/rom/out/target/product/maple_dsds
       - cd ~/rom/out/target/product/maple_dsds
-      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-08032022-UNOFFICIAL-0911.zip -x16 -s50
+      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-Gapps-08032022-UNOFFICIAL-1258.zip -x16 -s50
 
   SF_script:
       - ./sf.sh
