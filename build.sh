@@ -18,14 +18,14 @@ env
  export ALLOW_MISSING_DEPENDENCIES=true
  export TZ=Asia/Jakarta
  #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
-make sepolicy -j24
-make bootimage -j24
-make init -j24
-make services
-make art
-brunch maple_dsds -j24 &  #dont remove that '&'
-sleep 45m #first running
-#sleep 100m #second running
+#make sepolicy -j24
+#make bootimage -j24
+#make init -j24
+#make services
+#make art
+brunch maple_dsds &  #dont remove that '&'
+#sleep 45m #first running
+sleep 99 #second running
 kill %1
 
 #make nad -j30  \ #finall
