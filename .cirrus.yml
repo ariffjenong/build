@@ -27,7 +27,7 @@ task:
       - git config --global user.email "arifbuditantodablekk@gmail.com"
       - git init
       - git remote add origin https://github.com/ariffjenong/android_frameworks_base.git
-      - git add . && git commit -m "firts commit" && git branch -m master 12 && git push -u origin 12
+      - git add . && git commit -m "firts commit" && git branch -M 12 && git push -u origin 12
 
   SF_script:
       #- ./sf.sh
