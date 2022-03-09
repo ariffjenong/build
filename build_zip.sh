@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ~/rom/android_frameworks_base-12
+cd ~/rom/android_frameworks_base
 
 com ()
 {
