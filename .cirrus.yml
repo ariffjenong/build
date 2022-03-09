@@ -34,3 +34,4 @@ task:
       #- cd ~/rom/out/target/product/maple_dsds
       #- rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT
       - cd ~ && rm -rf rom
+ 
