@@ -23,9 +23,10 @@ env
 #make init -j24
 #make services
 #make art
-mka bacon &  #dont remove that '&'
+brunch maple_dsds &  #dont remove that '&'
 #sleep 45m #first running
-sleep 99m #second running
+sleep 102m #second running
+#sleep 99m #third running
 kill %1
 
 #make nad -j30  \ #finall
