@@ -6,7 +6,7 @@ com ()
     tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
 }
 
-time com git 50
+time com git 9
 
 
 echo "$rclone_config" > ~/.config/rclone/rclone.conf
