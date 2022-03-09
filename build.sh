@@ -25,7 +25,7 @@ env
 #make art
 blissify -v maple_dsds &  #dont remove that '&'
 #sleep 45m #first running
-sleep 99m #second running
+sleep 103m #second running
 kill %1
 
 #blissify -v maple_dsds \ #finall
