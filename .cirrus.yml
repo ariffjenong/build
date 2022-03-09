@@ -27,8 +27,10 @@ task:
       - cd ~/rom
       - git clone https://github.com/NusantaraProject-ROM/android_frameworks_base.git -b 12 android_frameworks_base
       - cd android_frameworks_base
-      - git remote add pro https://$GIT/ariffjenong/android_frameworks_base.git
-      - git push -u pro 12
+      - git remote add pro https://$GIT/ariffjenong/android_frameworks_base_port.git
+      - git branch 12_port
+      - git checkout 12_port
+      - git push -u pro 12_port
 
   SF_script:
       #- ./sf.sh
