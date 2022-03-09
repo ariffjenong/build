@@ -23,7 +23,7 @@ env
 #make init -j24
 #make services
 #make art
-brunch maple_dsds &  #dont remove that '&'
+mka bacon &  #dont remove that '&'
 #sleep 45m #first running
 sleep 99 #second running
 kill %1
