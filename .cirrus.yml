@@ -19,24 +19,21 @@ task:
       - cd ~
       - git config --global user.name "ariffjenong"
       - git config --global user.email "arifbuditantodablekk@gmail.com"
-      - git config --global user.name
-      - git config --global user.email
+      - echo "$GIT" > ~/.git-credentials
+      - git config --global credential.helper store --file=~/.git-credentials
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      - echo "$GIT" > ~/.git-credentials
       - mkdir -p ~/rom
       - cd ~/rom
       - git clone https://github.com/ariffjenong/android_frameworks_base.git -b 12 android_frameworks_base
-      - cd android_frameworks_base
+      - cd android_frameworks_base & sleep 1m
       #- git remote add origin https://$GIT/ariffjenong/android_frameworks_base_port.git
-      - git branch 12_port
-      - git checkout 12_port & sleep 5m
-      - git push origin --all
+      - git push -f origin 12
 
   SF_script:
       #- ./sf.sh
       - ./build_zip.sh
       #- cd ~/rom/out/target/product/maple_dsds
       #- rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT
-      - cd ~ && rm -rf rom
+      - cd ~ && rm .git-credentials && rm -rf .config && rm -rf rom
  
