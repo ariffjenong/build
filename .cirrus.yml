@@ -25,10 +25,11 @@ task:
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
       - mkdir -p ~/rom
       - cd ~/rom
-      - git clone https://github.com/ariffjenong/android_frameworks_base.git -b 12 android_frameworks_base
+      - git clone --depth=1 https://github.com/ariffjenong/android_frameworks_base.git -b 12 android_frameworks_base
       - ls -lh & sleep 1m
       - cd ~/rom/android_frameworks_base
-      #- git remote add origin https://$GIT/ariffjenong/android_frameworks_base_port.git
+      - git remote remove origin
+      - git remote add origin $GIT/ariffjenong/android_frameworks_base.git
       - git branch 12_port && git checkout 12_port
       - git branch -D 12
       - git push --set-upstream origin 12_port
