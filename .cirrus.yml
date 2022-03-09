@@ -22,7 +22,7 @@ task:
       - git config --global user.name
       - git config --global user.email
       - mkdir -p ~/.config/rclone
-      #- echo "$rclone_config" > ~/.config/rclone/rclone.conf
+      - echo "$rclone_config" > ~/.config/rclone/rclone.conf
       - mkdir -p ~/rom
       - cd ~/rom
       - git clone https://github.com/NusantaraProject-ROM/android_frameworks_base.git -b 12 android_frameworks_base
