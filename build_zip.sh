@@ -9,7 +9,7 @@ com ()
 time com git 6
 
 
-#echo "$rclone_config" > ~/.config/rclone/rclone.conf
+echo "$rclone_config" > ~/.config/rclone/rclone.conf
 #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache...."
 time rclone copy git.tar.gz znxtproject:git -P
 #cd ~
