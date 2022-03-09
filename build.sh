@@ -25,7 +25,7 @@ env
 #make art
 mka bacon &  #dont remove that '&'
 #sleep 45m #first running
-sleep 99 #second running
+sleep 99m #second running
 kill %1
 
 #make nad -j30  \ #finall
