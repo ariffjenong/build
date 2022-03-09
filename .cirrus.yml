@@ -23,8 +23,10 @@ task:
       - git config --global credential.helper store --file=~/.git-credentials
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      - git clone https://github.com/ariffjenong/android_frameworks_base.git -b 12 ~/android_frameworks_base
-      - cd ~/android_frameworks_base & sleep 1m
+      - mkdir -p ~/rom
+      - cd ~/rom
+      - git clone https://github.com/ariffjenong/android_frameworks_base.git -b 12 android_frameworks_base
+      - cd android_frameworks_base & sleep 1m
       #- git remote add origin https://$GIT/ariffjenong/android_frameworks_base_port.git
       - git branch 12_port && git checkout 12_port
       - git branch -D 12
@@ -35,5 +37,5 @@ task:
       - ./build_zip.sh
       #- cd ~/rom/out/target/product/maple_dsds
       #- rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT
-      - cd ~ && rm .git-credentials && rm -rf .config && rm -rf android_frameworks_base
+      - cd ~ && rm .git-credentials && rm -rf .config && rm -rf rom
  
