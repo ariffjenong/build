@@ -25,7 +25,7 @@ task:
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
       - mkdir -p ~/rom
       - cd ~/rom
-      - git clone --depth=1 https://github.com/ariffjenong/android_frameworks_base.git -b 12 android_frameworks_base
+      - git clone --depth=1 https://github.com/NusantaraProject-ROM/android_frameworks_base.git -b 12 android_frameworks_base
       - ls -lh & sleep 1m
       - cd ~/rom/android_frameworks_base
       - git remote remove origin
