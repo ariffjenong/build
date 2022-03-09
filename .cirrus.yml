@@ -25,12 +25,9 @@ task:
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
       - mkdir -p ~/rom
       - cd ~/rom
-      - time aria2c https://github.com/NusantaraProject-ROM/android_frameworks_base/archive/refs/heads/12.zip -x16 -s50
-      - time unzip android_frameworks_base-12.zip
-      - cd android_frameworks_base-12
-      - git init
-      - git remote add origin $GIT/ariffjenong/android_frameworks_base.git
-      - git add . && git commit -m "first commit" && git branch -M 12 && git push -u origin 12
+      - git clone --depth=1 https://github.com/ariffjenong/android_frameworks_base.git -b 12 android_frameworks_base
+      - cd ~/rom/android_frameworks_base
+      - mv .git git
 
   SF_script:
       #- ./sf.sh
