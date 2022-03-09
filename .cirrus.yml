@@ -16,14 +16,16 @@ task:
 
   Download_script:
       - cd ~
+      - git config --global user.name "ariffjenong"
+      - git config --global user.email "arifbuditantodablekk@gmail.com"
+      - git config --global user.name
+      - git config --global user.email
       - mkdir -p ~/.config/rclone
       #- echo "$rclone_config" > ~/.config/rclone/rclone.conf
       - mkdir -p ~/rom/out/target/product/maple_dsds
       - cd ~/rom/out/target/product/maple_dsds && sudo apt-get update -y && sudo apt-get install unzip -y
       - time aria2c https://github.com/NusantaraProject-ROM/android_frameworks_base/archive/refs/heads/12.zip -x16 -s50
       - time unzip android_frameworks_base-12.zip
-      - git config --global user.name "ariffjenong"
-      - git config --global user.email "arifbuditantodablekk@gmail.com"
       - cd android_frameworks_base-12
       - git init
       - git remote add origin https://github.com/ariffjenong/android_frameworks_base.git
