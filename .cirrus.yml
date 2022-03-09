@@ -17,22 +17,20 @@ task:
 
   Download_script:
       - cd ~
-      - git config --global user.name "ariffjenong"
-      - git config --global user.email "arifbuditantodablekk@gmail.com"
-      - echo "$GIT" > ~/.git-credentials
-      - git config --global credential.helper store --file=~/.git-credentials
-      - mkdir -p ~/.config/rclone
-      - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      - mkdir -p ~/rom
-      - cd ~/rom
-      - git clone --depth=1 https://github.com/ariffjenong/android_frameworks_base.git -b 12 android_frameworks_base
-      - cd ~/rom/android_frameworks_base
-      - mv .git git
+      #- git config --global user.name "ariffjenong"
+      #- git config --global user.email "arifbuditantodablekk@gmail.com"
+      #- echo "$GIT" > ~/.git-credentials
+      #- git config --global credential.helper store --file=~/.git-credentials
+      #- mkdir -p ~/.config/rclone
+      #- echo "$rclone_config" > ~/.config/rclone/rclone.conf
+      - mkdir -p ~/rom/out/target/product/maple_dsds
+      - cd ~/rom/out/target/product/maple_dsds
+      #- time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Nusantara_v4.0-1-12-maple_dsds-Gapps-08032022-UNOFFICIAL-1258.zip -x16 -s50
 
   SF_script:
       #- ./sf.sh
-      - ./build_zip.sh
+      #- ./build_zip.sh
       #- cd ~/rom/out/target/product/maple_dsds
       #- rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT
-      - cd ~ && rm .git-credentials && rm -rf .config && rm -rf rom
+      - cd ~ && rm -rf .config && rm -rf rom #&& rm .git-credentials
  
