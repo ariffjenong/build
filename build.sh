@@ -15,7 +15,9 @@ env
  export USE_CCACHE=1
  ccache -M 8G
  ccache -z
- export ALLOW_MISSING_DEPENDENCIES=true    
+ export ALLOW_MISSING_DEPENDENCIES=true
+ export BUILD_HOSTNAME=ArifJeNong
+ export BUILD_USERNAME=ArifJeNong
  export TZ=Asia/Jakarta
  #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
 #make sepolicy -j24
@@ -23,12 +25,12 @@ env
 #make init -j24
 #make services
 #make art
-blissify -v maple_dsds &  #dont remove that '&'
+#blissify -v maple_dsds &  #dont remove that '&'
 #sleep 45m #first running
-sleep 103m #second running
-kill %1
+#sleep 103m #second running
+#kill %1
 
-#blissify -v maple_dsds \ #finall
-#      &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *maple_dsds*UNOFFICIAL*.zip) Completed!"
+blissify -v maple_dsds \ #finall
+      &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *maple_dsds*UNOFFICIAL*.zip) Completed!"
       
 ccache -s

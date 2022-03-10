@@ -17,10 +17,10 @@ send \"yes\r\"
 expect \"Password\"
 send \"$SF_PASS\r\"
 expect \"sftp> \"
-send \"mkdir $ROM_PROJECT\r\"
+send \"mkdir bliss-12\r\"
 set timeout -1
 expect \"sftp> \"
-send \"cd $ROM_PROJECT\r\"
+send \"cd bliss-12\r\"
 set timeout -1
 send \"put $product\r\"
 expect \"Uploading\"
@@ -35,7 +35,7 @@ interact"
 
 # Post
 curl -s -v -F "chat_id=$TG_CHAT_ID" -F "parse_mode=html" -F text="Build completed successfully!!!
-Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple_dsds/$ROM_PROJECT/$product
+Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple_dsds/bliss-12/$product
 Dev : ""Arif JeNong""
 Product : ""$product""
 Device : ""maple_dsds""
