@@ -32,7 +32,7 @@ env
 #sleep 102m #third running
 #kill %1
 
-brunch maple_dsds -j30  \ #finall
+brunch maple_dsds  \ #finall
       &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *maple_dsds*UNOFFICIAL*.zip) Completed!"
       
 ccache -s
