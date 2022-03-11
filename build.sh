@@ -16,6 +16,7 @@ env
  ccache -M 8G
  ccache -z
  export ALLOW_MISSING_DEPENDENCIES=true
+ export SELINUX_IGNORE_NEVERALLOWS=true
  export BUILD_HOSTNAME=ArifJeNong
  export BUILD_USERNAME=ArifJeNong
  export TZ=Asia/Jakarta
