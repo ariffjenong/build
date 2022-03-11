@@ -26,12 +26,12 @@ env
 #make init -j24
 #make services
 #make art
-#blissify -v maple_dsds &  #dont remove that '&'
+blissify -v maple_dsds &  #dont remove that '&'
 #sleep 45m #first running
-#sleep 101m #second running
-#kill %1
+sleep 101m #second running
+kill %1
 
-blissify -v maple_dsds #finall
+#blissify -v maple_dsds #finall
 #      &&  curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *maple_dsds*UNOFFICIAL*.zip) Completed!"
       
 ccache -s
