@@ -8,7 +8,7 @@ env
 
  cd ~/rom
  . build/envsetup.sh
- lunch cherish_maple_dsds-userdebug
+ lunch cherish_maple-userdebug
  #export SELINUX_IGNORE_NEVERALLOWS=true
  export CCACHE_DIR=~/znxt/ccache
  export CCACHE_EXEC=$(which ccache)
@@ -26,13 +26,13 @@ env
 #make init -j24
 #make services
 #make art
-#brunch maple_dsds &  #dont remove that '&'
+#brunch maple &  #dont remove that '&'
 #sleep 50m #first running
 #sleep 99m #second running
 #sleep 102m #third running
 #kill %1
 
-brunch maple_dsds
-curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds/ && ls *maple_dsds*UNOFFICIAL*.zip) Completed!"
+brunch maple
+curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple/ && ls *maple*UNOFFICIAL*.zip) Completed!"
       
 ccache -s
