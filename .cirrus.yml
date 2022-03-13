@@ -32,7 +32,7 @@ task:
       - git cherry-pick 3020980a21cf11fe780f9544dff4c975d8e1932f
       - git cherry-pick 61494f74ff31289dc62fff2dcf2d222b99c8b881 && rm maple_dsds-vendor.mk
       - rm maple-vendor.mk
-      - rclone copy maple-vendor.mk znxtproject:maple ~/github/vendor_maple
+      - rclone copy znxtproject:maple/maple-vendor.mk ~/github/vendor_maple
       - git add .
       - git cherry-pick continue
       - git push origin test
