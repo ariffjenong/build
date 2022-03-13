@@ -26,11 +26,31 @@ task:
       - git config --global credential.helper store --file=~/.git-credentials
       - mkdir -p ~/github/vendor_maple
       - cd ~/github
-      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b cherish-12 vendor_maple
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b lineage-19.0 vendor_maple
       - cd ~/github/vendor_maple
+      - git remote add derf https://github.com/Classic-Phone-Devs/android_vendor_sony_maple.git
+      - git remote add ar https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git
+      - git fetch ar
+      - git cherry-pick 3020980a21cf11fe780f9544dff4c975d8e1932f
+      - git fetch derf
+      - git cherry-pick eeaa34ddb0d56958c61a8ffd2df1836bcf35b46d && rm proprietary/vendor/lib/libperipheral_client.so && rm proprietary/vendor/bin/pm-service && rm proprietary/vendor/bin/pm-proxy && rm proprietary/vendor/lib64/libperipheral_client.so && rm proprietary/vendor/etc/init/taimport_vendor.rc
+      - rm .gitignore
       - cd proprietary/vendor/lib
-      - wget https://github.com/AndroidBlobs/vendor_sony_maple/raw/maple-user-9-YOSHINO-2.2.0-190725-0908-1-dev-keys/proprietary/vendor/lib/libminksocket.so
-      - git add . && git commit -m 'maple: add blobs'
+      - wget https://github.com/AndroidBlobs/vendor_sony_maple/raw/maple-user-9-YOSHINO-2.2.0-190725-0908-1-dev-keys/proprietary/vendor/lib/libminksocket.so && cd ..
+      - cd lib64
+      - wget https://github.com/AndroidBlobs/vendor_sony_maple/raw/maple-user-9-YOSHINO-2.2.0-190725-0908-1-dev-keys/proprietary/vendor/lib64/libminksocket.so
+      - cd ~/github/vendor_maple
+      - git add . && git commit
+      - git push origin lineage-19.0
+      - git branch cherish-12 && git checkout cherish-12
+      - rm maple-vendor.mk
+      - rclone copy znxtproject:maple/maple-vendor.mk ~/github/vendor_maple
+      - cd ~/github/vendor_maple/proprietary/vendor/lib64
+      - wget https://github.com/ariffjenong/android_vendor_sony_maple_dsds/raw/61494f74ff31289dc62fff2dcf2d222b99c8b881/proprietary/vendor/lib/libtinyxml.so
+      - cd ~/github/vendor_maple/proprietary/vendor/lib
+      - wget https://github.com/ariffjenong/android_vendor_sony_maple_dsds/raw/61494f74ff31289dc62fff2dcf2d222b99c8b881/proprietary/vendor/lib64/libtinyxml.so
+      - cd ~/github/vendor_maple
+      - git add . && git commit -m 'maple: Import libtinyxml from LA.UM.9.6.2.r1-04100-89xx.0' -m '- As the repo is missing from source, we cant really build it. So, better add it prebuilt from the same CAF tag as possessed by Post Processing blobs.' -m '- Eliminates the following log spam' -m '  ' -m 'F linker  : CANNOT LINK EXECUTABLE :/system/vendor/bin/mm-pp-dpps: library *libtinyxml.so* not found: needed by main executable'
       - git push origin cherish-12
 
   SF_script:
