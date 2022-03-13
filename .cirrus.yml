@@ -27,6 +27,7 @@ task:
       - cd ~/github/vendor_maple
       - git fetch https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git
       - git cherry-pick 3020980a21cf11fe780f9544dff4c975d8e1932f
+      - git cherry-pick 61494f74ff31289dc62fff2dcf2d222b99c8b881
       - git push origin test
 
   SF_script:
