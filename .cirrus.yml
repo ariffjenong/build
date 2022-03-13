@@ -36,4 +36,5 @@ task:
 
   SF_script:
       - cd ~ && rm -rf .config && rm -rf rom && rm .git-credentials
+
  
