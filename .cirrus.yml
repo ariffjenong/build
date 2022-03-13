@@ -28,10 +28,15 @@ task:
       - cd ~/github
       - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b lineage-19.0 vendor_maple
       - cd ~/github/vendor_maple
+      - git remote add derf https://github.com/kgvarunkanth/android_vendor_sony_maple-new.git
       - git remote add ar https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git
       - git fetch ar
       - git cherry-pick 3020980a21cf11fe780f9544dff4c975d8e1932f
+      - git fetch derf
+      - git cherry-pick a52636c169b604f11cd0b10c0b0d3ba0fa8b3347
       - git push origin lineage-19.0
+      - git branch cherish-12 && git checkout cherish-12
+      - git push origin cherish-12
 
   SF_script:
       - cd ~ && rm -rf .config && rm -rf github && rm .git-credentials
