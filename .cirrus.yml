@@ -26,7 +26,7 @@ task:
       - git config --global credential.helper store --file=~/.git-credentials
       - mkdir -p ~/github/vendor_maple
       - cd ~/github
-      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git vendor_maple
+      - git clone https://github.com/ariffjenong/android_vendor_sony_maple.git vendor_maple
       - cd ~/github/vendor_maple
       - git checkout lineage-19.0
       - git remote add derf https://github.com/kgvarunkanth/android_vendor_sony_maple-new.git
