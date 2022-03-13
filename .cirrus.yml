@@ -28,23 +28,11 @@ task:
       - cd ~/github
       - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b lineage-19.0 vendor_maple
       - cd ~/github/vendor_maple
-      - git branch cherish-12 && git checkout cherish-12
       - git fetch https://github.com/shuxiangfan/android_vendor_sony_maple
       - rm .gitignore
       - git cherry-pick cc8b0e5b3bfa8c4bbeac4a735f9ef759ca6bbb20 && rm proprietary/vendor/lib/libperipheral_client.so && rm proprietary/vendor/bin/pm-service && rm proprietary/vendor/bin/pm-proxy && rm proprietary/vendor/lib64/libperipheral_client.so && rm proprietary/vendor/etc/init/taimport_vendor.rc
       - git add . && git commit
-      - git remote add ar https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git
-      - git fetch ar
-      - git cherry-pick 3020980a21cf11fe780f9544dff4c975d8e1932f
-      - rm maple-vendor.mk
-      - rclone copy znxtproject:maple/maple-vendor.mk ~/github/vendor_maple
-      - cd ~/github/vendor_maple/proprietary/vendor/lib64
-      - wget https://github.com/ariffjenong/android_vendor_sony_maple_dsds/raw/61494f74ff31289dc62fff2dcf2d222b99c8b881/proprietary/vendor/lib/libtinyxml.so
-      - cd ~/github/vendor_maple/proprietary/vendor/lib
-      - wget https://github.com/ariffjenong/android_vendor_sony_maple_dsds/raw/61494f74ff31289dc62fff2dcf2d222b99c8b881/proprietary/vendor/lib64/libtinyxml.so
-      - cd ~/github/vendor_maple
-      - git add . && git commit -m 'maple: Import libtinyxml from LA.UM.9.6.2.r1-04100-89xx.0' -m '- As the repo is missing from source, we cant really build it. So, better add it prebuilt from the same CAF tag as possessed by Post Processing blobs.'
-      - git push origin cherish-12
+      - git push origin lineage-19.0
 
   SF_script:
       - cd ~ && rm -rf .config && rm -rf github && rm .git-credentials
