@@ -26,13 +26,13 @@ task:
       - git config --global credential.helper store --file=~/.git-credentials
       - mkdir -p ~/github/vendor_maple
       - cd ~/github
-      - git clone https://github.com/ariffjenong/android_vendor_sony_maple.git vendor_maple
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b cherish-12 vendor_maple
       - cd ~/github/vendor_maple
-      - git checkout cherish-12
-      - git remote add derf https://github.com/kgvarunkanth/android_vendor_sony_maple-new.git
-      - git fetch derf
-      - git cherry-pick a52636c169b604f11cd0b10c0b0d3ba0fa8b3347 && rm proprietary/vendor/lib64/mediadrm/libwvdrmengine.so && rm proprietary/vendor/lib64/libwvhidl.so && rm proprietary/vendor/lib64/libsettings.so && rm proprietary/vendor/lib64/libperipheral_client.so && rm proprietary/vendor/lib/mediadrm/libwvdrmengine.so && rm proprietary/vendor/lib/libwvhidl.so && rm proprietary/vendor/lib/libsettings.so && rm proprietary/vendor/lib/libperipheral_client.so && rm proprietary/vendor/bin/pm-service && rm proprietary/vendor/bin/pm-proxy && rm proprietary/vendor/bin/energy-awareness && rm proprietary/vendor/app/TimeService/TimeService.apk && rm proprietary/product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk && rm proprietary/product/priv-app/ims/ims.apk && rm proprietary/product/framework/qcrilhook.jar && rm proprietary/product/app/embms/embms.apk && rm proprietary/product/app/datastatusnotification/datastatusnotification.apk && rm proprietary/product/app/QtiTelephonyService/QtiTelephonyService.apk && rm proprietary/framework/com.fingerprints.extension.jar
-      - git add . && git commit
+      - cd proprietary/vendor/lib
+      - wget https://github.com/AndroidBlobs/vendor_sony_maple/raw/maple-user-9-YOSHINO-2.2.0-190725-0908-1-dev-keys/proprietary/vendor/lib/libminksocket.so
+      - cd ~/github/vendor_maple/proprietary/vendor/lib64
+      - wget https://github.com/AndroidBlobs/vendor_sony_maple/raw/maple-user-9-YOSHINO-2.2.0-190725-0908-1-dev-keys/proprietary/vendor/lib64/libminksocket.so
+      - git add . && git commit -m 'maple: add blobs'
       - git push origin cherish-12
 
   SF_script:
