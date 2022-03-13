@@ -23,17 +23,13 @@ task:
       - git config --global credential.helper store --file=~/.git-credentials
       - mkdir -p ~/github/vendor_maple
       - cd ~/github
-      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b lineage-19.0 vendor_maple
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b test vendor_maple
       - cd ~/github/vendor_maple
-      - git branch test && git checkout test
-      - rm .gitignore
-      - git fetch https://github.com/shuxiangfan/android_vendor_sony_maple.git
-      - git cherry-pick cc8b0e5b3bfa8c4bbeac4a735f9ef759ca6bbb20 && rm proprietary/vendor/lib/libperipheral_client.so && rm proprietary/vendor/bin/pm-service && rm proprietary/vendor/bin/pm-proxy && rm proprietary/vendor/lib64/libperipheral_client.so && rm proprietary/vendor/etc/init/taimport_vendor.rc
-      - git add .
-      - git cherry-pick --continue
+      - git fetch https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git
+      - git cherry-pick 3020980a21cf11fe780f9544dff4c975d8e1932f
       - git push origin test
 
   SF_script:
-      - cd ~ && rm -rf .config && rm -rf rom && rm .git-credentials
+      - cd ~ && rm -rf .config && rm -rf github && rm .git-credentials
 
  
