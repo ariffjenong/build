@@ -27,6 +27,7 @@ task:
       - cd ~/github/vendor_maple
       - git fetch https://github.com/shuxiangfan/android_vendor_sony_maple.git
       - git cherry-pick cc8b0e5b3bfa8c4bbeac4a735f9ef759ca6bbb20 && rm .gitignore
+      - git add -f .gitignore
       - git add proprietary/vendor/lib/libperipheral_client.so
       - git add proprietary/vendor/bin/pm-service
       - git add proprietary/vendor/bin/pm-proxy
