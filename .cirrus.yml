@@ -30,8 +30,6 @@ task:
       - cd ~/github/vendor_maple
       - cd proprietary/vendor/lib
       - wget https://github.com/AndroidBlobs/vendor_sony_maple/raw/maple-user-9-YOSHINO-2.2.0-190725-0908-1-dev-keys/proprietary/vendor/lib/libminksocket.so
-      - cd ~/github/vendor_maple/proprietary/vendor/lib64
-      - wget https://github.com/AndroidBlobs/vendor_sony_maple/raw/maple-user-9-YOSHINO-2.2.0-190725-0908-1-dev-keys/proprietary/vendor/lib64/libminksocket.so
       - git add . && git commit -m 'maple: add blobs'
       - git push origin cherish-12
 
