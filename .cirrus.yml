@@ -56,4 +56,3 @@ task:
   SF_script:
       - cd ~ && rm -rf .config && rm -rf github && rm .git-credentials
 
- 
