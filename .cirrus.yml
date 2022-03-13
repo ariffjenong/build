@@ -13,7 +13,7 @@ task:
   timeout_in: 1h  
   container:
       image: inok2341/anu:lacherish
-      cpu: 4
+      cpu: 2
       memory: 8G
 
   Download_script:
