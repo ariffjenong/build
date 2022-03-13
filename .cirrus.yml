@@ -50,7 +50,7 @@ task:
       - cd ~/github/vendor_maple/proprietary/vendor/lib
       - wget https://github.com/ariffjenong/android_vendor_sony_maple_dsds/raw/61494f74ff31289dc62fff2dcf2d222b99c8b881/proprietary/vendor/lib64/libtinyxml.so
       - cd ~/github/vendor_maple
-      - git add . && git commit -m 'maple: Import libtinyxml from LA.UM.9.6.2.r1-04100-89xx.0' -m '- As the repo is missing from source, we cant really build it. So, better add it prebuilt from the same CAF tag as possessed by Post Processing blobs.' '- Eliminates the following log spam' 'F linker  : CANNOT LINK EXECUTABLE :/system/vendor/bin/mm-pp-dpps: library *libtinyxml.so* not found: needed by main executable'
+      - git add . && git commit -m 'maple: Import libtinyxml from LA.UM.9.6.2.r1-04100-89xx.0' -m '- As the repo is missing from source, we cant really build it. So, better add it prebuilt from the same CAF tag as possessed by Post Processing blobs.             - Eliminates the following log spam           F linker  : CANNOT LINK EXECUTABLE :/system/vendor/bin/mm-pp-dpps: library *libtinyxml.so* not found: needed by main executable'
       - git push origin cherish-12
 
   SF_script:
