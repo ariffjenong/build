@@ -5,6 +5,7 @@ env:
     SF_USERNAME: "ENCRYPTED[9b9deac88b090b7dc4e69a058e79360e8832c782b9bd46499a7f1401e66e219bad7c9c901a85eeb0d154f717cfc5f148]"
     SF_PASS: "ENCRYPTED[9d4e6509f1294d4d9b39c9f092f32123bef7cdf2c773cda6f80867a329c629d6ab9f1cee0db0c38184bd13d8e8a5556f]"
     GIT: "ENCRYPTED[293e9962b531796f7d2c267cb481cbb126e69405c451abeb85e1645fe29f7d32c6cb22c2a7b6d186c347aefd666d3e3b]"
+    mk: "ENCRYPTED[7597df22e91ef7cb3cab44bf23c111ac54fd31a1e108c4e377d95b1736a711b2ed36947702f86c98ac3dfc6f0d8cad3e]"
     ROM_PROJECT: "nusantara-12"
  
 task:
@@ -28,7 +29,9 @@ task:
       - git remote add ar https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git
       - git fetch ar
       - git cherry-pick 3020980a21cf11fe780f9544dff4c975d8e1932f
-      - git cherry-pick 61494f74ff31289dc62fff2dcf2d222b99c8b881
+      - git cherry-pick 61494f74ff31289dc62fff2dcf2d222b99c8b881 && rm maple_dsds-vendor.mk
+      - rm maple-vendor.mk
+      - echo "$mk" > ~/github/vendor_maple/maple-vendor.mk
       - git push origin test
 
   SF_script:
