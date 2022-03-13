@@ -25,10 +25,9 @@ task:
       - cd ~/github
       - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b lineage-19.0 vendor_maple
       - cd ~/github/vendor_maple
+      - rm .gitignore
       - git fetch https://github.com/shuxiangfan/android_vendor_sony_maple.git
-      - git cherry-pick cc8b0e5b3bfa8c4bbeac4a735f9ef759ca6bbb20 && rm .gitignore
-      - git add -f .gitignore
-      - git add proprietary/vendor/lib/libperipheral_client.so
+      - git cherry-pick cc8b0e5b3bfa8c4bbeac4a735f9ef759ca6bbb20 && git add proprietary/vendor/lib/libperipheral_client.so
       - git add proprietary/vendor/bin/pm-service
       - git add proprietary/vendor/bin/pm-proxy
       - git add proprietary/vendor/lib64/libperipheral_client.so
