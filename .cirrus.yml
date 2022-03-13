@@ -23,7 +23,7 @@ task:
       - git config --global credential.helper store --file=~/.git-credentials
       - mkdir -p ~/github/vendor_maple
       - cd ~/github
-      - git clone --depth=1 https://github.com/ariffjenong/vendor_sony_maple.git -b lineage-19.0 vendor_maple
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b lineage-19.0 vendor_maple
       - cd ~/github/vendor_maple
       - rm .gitignore
       - git fetch https://github.com/shuxiangfan/android_vendor_sony_maple.git
