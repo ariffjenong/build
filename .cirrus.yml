@@ -14,7 +14,7 @@ task:
       cpu: 8
       memory: 32G
 
-  Env_script:
+  Env-Setup_background_script:
       - cd ~
       - rm -rf ~/$ROM_PROJECT
       - rm -rf ~/znxt
@@ -27,7 +27,7 @@ task:
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
 
-  Sync_script:
+  Sync_background_script:
       - cd ~/$ROM_PROJECT
       - repo init --depth=1 --no-repo-verify -u git://github.com/ariffjenong/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault
       - git clone https://github.com/ariffjenong/local_manifest.git --depth=1 -b LOS19 .repo/local_manifests
