@@ -24,10 +24,10 @@ task:
       - cd ~/znxt
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
-      #- time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
-      #- cd ~/$ROM_PROJECT
-      #- time tar xf out.tar.gz
-      #- rm -rf out.tar.gz
+      - time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
+      - cd ~/$ROM_PROJECT
+      - time tar xf out.tar.gz
+      - rm -rf out.tar.gz
 
   Sync_script:
       - cd ~/$ROM_PROJECT
@@ -39,14 +39,14 @@ task:
       - ./build.sh
 
   Upload_script:
-      #- ./build_zip.sh
-      - ./ziper.sh
-      #- cd ~/$ROM_PROJECT/out/target/product/maple_dsds
-     # - ls -lh
-      #- product=$(ls *maple*UNOFFICIAL*.zip)
-      #- md5sum=$(ls *.md5sum)
-      #- rclone copy $product znxtproject:rom/$ROM_PROJECT -P
-      #- rclone copy $md5sum znxtproject:rom/$ROM_PROJECT -P
+      - ./build_zip.sh
+      #- ./ziper.sh
+      - cd ~/$ROM_PROJECT/out/target/product/maple_dsds
+      - ls -lh
+      - product=$(ls *maple*UNOFFICIAL*.zip)
+      - md5sum=$(ls *.md5sum)
+      - rclone copy $product znxtproject:rom/$ROM_PROJECT -P
+      - rclone copy $md5sum znxtproject:rom/$ROM_PROJECT -P
 
   SF_script:
       #- ./sf.sh
