@@ -16,9 +16,9 @@ task:
 
   Env_script:
       - cd ~
-      - rm -rf ~/rom
+      - rm -rf ~/$ROM_PROJECT
       - rm -rf ~/znxt
-      - mkdir -p ~/rom
+      - mkdir -p ~/$ROM_PROJECT
       - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
@@ -28,7 +28,7 @@ task:
       - rm -rf ccache.tar.gz
 
   Sync_script:
-      - cd ~/rom
+      - cd ~/$ROM_PROJECT
       - repo init --depth=1 --no-repo-verify -u git://github.com/ariffjenong/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault
       - git clone https://github.com/ariffjenong/local_manifest.git --depth=1 -b LOS19 .repo/local_manifests
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j12
@@ -38,7 +38,7 @@ task:
 
   Upload_script:
       - ./build_zip.sh
-      #- cd ~/rom/out/target/product/maple_dsds
+      #- cd ~/$ROM_PROJECT/out/target/product/maple_dsds
       #- ls -lh
       #- product=$(ls *maple*UNOFFICIAL*.zip)
       #- md5sum=$(ls *.md5sum)
@@ -47,6 +47,6 @@ task:
 
   SF_script:
       #- ./sf.sh
-      #- curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/rom/out/target/product/maple_dsds && ls *UNOFFICIAL*.zip) Uploaded Successfully!"
+      #- curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/$ROM_PROJECT/out/target/product/maple_dsds && ls *UNOFFICIAL*.zip) Uploaded Successfully!"
       - cd ~ && rm -rf rom && rm -rf znxt
  
