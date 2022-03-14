@@ -38,15 +38,14 @@ task:
   Build_script:
       - ./build.sh
 
+  Uploading_background_script:
+      - cd ~/$ROM_PROJECT/out/target/product/maple_dsds
+      - ls -lh
+      - rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
+
   Upload_script:
       - ./build_zip.sh
       #- ./ziper.sh
-      - cd ~/$ROM_PROJECT/out/target/product/maple_dsds
-      - ls -lh
-      - product=$(ls *maple*UNOFFICIAL*.zip)
-      - md5sum=$(ls *.md5sum)
-      - rclone copy $product znxtproject:rom/$ROM_PROJECT -P
-      - rclone copy $md5sum znxtproject:rom/$ROM_PROJECT -P
 
   SF_script:
       #- ./sf.sh
