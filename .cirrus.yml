@@ -14,7 +14,7 @@ task:
       cpu: 8
       memory: 32G
 
-  Env-Setup_background_script:
+  Env_background_script:
       - cd ~
       - rm -rf ~/$ROM_PROJECT
       - rm -rf ~/znxt
@@ -26,6 +26,10 @@ task:
       - cd ~/znxt
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
+
+  ziping_background_script:
+      - sleep 110m
+      - ./ziper.sh
 
   Sync_script:
       - cd ~/$ROM_PROJECT

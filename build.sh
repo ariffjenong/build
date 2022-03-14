@@ -28,7 +28,7 @@ env
 make bacon -j12 &  #dont remove that '&'
 #sleep 50m #first running
 #sleep 99m #second running
-sleep 101m #third running
+sleep 105m #third running
 #kill %1
 
 #make bacon -j12
