@@ -28,7 +28,7 @@ make services
 make art
 make frameworks
 make bacon -j12 &  #dont remove that '&'
-#sleep 50m #first running
+sleep 40m #first running
 #sleep 99m #second running
 #sleep 102m #third running
 #kill %1
