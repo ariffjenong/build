@@ -13,7 +13,7 @@ env
  export CCACHE_DIR=~/znxt/ccache
  export CCACHE_EXEC=$(which ccache)
  export USE_CCACHE=1
- ccache -M 10G
+ ccache -M 15G
  ccache -z
  export ALLOW_MISSING_DEPENDENCIES=true
  export WITH_GMS=false
@@ -27,7 +27,7 @@ env
 #make services
 make bacon -j12 &  #dont remove that '&'
 #sleep 50m #first running
-sleep 95m #second running
+sleep 90m #second running
 #sleep 105m #third running
 kill %1
 

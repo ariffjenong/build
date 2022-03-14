@@ -6,6 +6,8 @@ com ()
     tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
 }
 
+rm -rf ~/$ROM_PROJECT/out/target/product/maple_dsds
+
 time com out 1
 
 
