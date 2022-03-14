@@ -16,8 +16,6 @@ task:
 
   Env_background_script:
       - cd ~
-      - rm -rf ~/$ROM_PROJECT
-      - rm -rf ~/znxt
       - mkdir -p ~/$ROM_PROJECT
       - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
@@ -26,24 +24,25 @@ task:
       - cd ~/znxt
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
-
-  ziping_background_script:
-      - sleep 110m
-      - ./ziper.sh
+      #- time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
+      #- cd ~/$ROM_PROJECT
+      #- time tar xf out.tar.gz
+      #- rm -rf out.tar.gz
 
   Sync_script:
       - cd ~/$ROM_PROJECT
       - repo init --depth=1 --no-repo-verify -u git://github.com/ariffjenong/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault
       - git clone https://github.com/ariffjenong/local_manifest.git --depth=1 -b LOS19 .repo/local_manifests
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j12
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
 
   Build_script:
       - ./build.sh
 
   Upload_script:
-      - ./build_zip.sh
+      #- ./build_zip.sh
+      - ./ziper.sh
       #- cd ~/$ROM_PROJECT/out/target/product/maple_dsds
-      #- ls -lh
+     # - ls -lh
       #- product=$(ls *maple*UNOFFICIAL*.zip)
       #- md5sum=$(ls *.md5sum)
       #- rclone copy $product znxtproject:rom/$ROM_PROJECT -P
