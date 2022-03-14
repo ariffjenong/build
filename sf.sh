@@ -1,13 +1,13 @@
 #!/bin/bash
 
-cd ~/rom/out/target/product/maple_dsds
+cd ~/rom/out/target/product/maple
 
 
 sudo apt-get update -y && sudo apt-get install expect -y
 
-#product=$(ls *maple_dsds*Gapps*.zip)
+#product=$(ls *maple*Gapps*.zip)
 product=$(ls *UNOFFICIAL*.zip)
-project=xperia-xz-premium/maple_dsds
+project=xperia-xz-premium/maple
 
 # Upload
 expect -c "
@@ -31,9 +31,9 @@ interact"
 
 # Post
 curl -s -v -F "chat_id=$TG_CHAT_ID" -F "parse_mode=html" -F text="Build completed successfully!!!
-Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple_dsds/$ROM_PROJECT/$product
+Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple/$ROM_PROJECT/$product
 Dev : ""Arif JeNong""
 Product : ""$product""
-Device : ""maple_dsds""
+Device : ""maple""
 Server Host : cirrus-ci
 Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendMessage

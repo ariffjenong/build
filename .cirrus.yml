@@ -23,14 +23,14 @@ task:
       #- git config --global credential.helper store --file=~/.git-credentials
       #- mkdir -p ~/.config/rclone
       #- echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      - mkdir -p ~/rom/out/target/product/maple_dsds
-      - cd ~/rom/out/target/product/maple_dsds
-      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Cherish-OS-v3.4.5-20220312-1712-maple_dsds-UNOFFICIAL-GApps.zip -x16 -s50
+      - mkdir -p ~/rom/out/target/product/maple
+      - cd ~/rom/out/target/product/maple
+      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple/Cherish-OS-v3.4.5-20220314-0226-maple-UNOFFICIAL-GApps.zip -x16 -s50
 
   SF_script:
       - ./sf.sh
       #- ./build_zip.sh
-      #- cd ~/rom/out/target/product/maple_dsds
+      #- cd ~/rom/out/target/product/maple
       #- rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT
       - cd ~ && rm -rf rom #&& rm .git-credentials
  
