@@ -26,6 +26,13 @@ task:
       - rm ccache.tar.gz
       - ls -lh
 
+  Download_background_script:
+      - time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
+      - cd ~/$ROM_PROJECT
+      - time tar xf out.tar.gz
+      - rm -rf out.tar.gz
+      - ls -lh
+
   Sync_script:
       - cd ~/$ROM_PROJECT
       - repo init --depth=1 --no-repo-verify -u git://github.com/ariffjenong/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault
