@@ -17,8 +17,6 @@ env:
   use_ssd: true # default to false
 
 task:
-  name: Syncing, Building and Uploading
-  timeout_in: 4h
 
   Env_background_script:
       - cd ~
