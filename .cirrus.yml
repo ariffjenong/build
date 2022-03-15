@@ -28,11 +28,12 @@ task:
       - ls -lh
 
   Download_background_script:
-      - time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
+      #- time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
+      #- cd ~/$ROM_PROJECT
+      #- time tar xf out.tar.gz
+      #- rm -rf out.tar.gz
+      - sleep 7m
       - cd ~/$ROM_PROJECT
-      - time tar xf out.tar.gz
-      - rm -rf out.tar.gz
-      - cd ~/$ROM_PROJECT/out
       - ls -lh
 
   Sync_script:
