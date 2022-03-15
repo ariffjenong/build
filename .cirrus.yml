@@ -8,26 +8,15 @@ env:
     ROM_PROJECT: "lineage-19.1"
  
 task:
-  gke_container: # for AWS, replace this with `aks_container`
-    image: docker:latest # This image can be any custom image. The only hard requirement is that it needs to have `docker-cli` installed.
-    cluster_name: cirrus-ci-cluster # your gke cluster name
-    zone: us-central1-b # zone of the cluster
-    namespace: cirrus-ci # namespace to use
-    cpu: 8
-    memory: 32G
-    additional_containers:
-      - name: dockerdaemon
-        privileged: true # docker-in-docker needs to run in privileged mode
-        cpu: 12
-        memory: 32G
-        image: docker:dind
-        port: 2375
-        env:
-          DOCKER_DRIVER: overlay2 # this speeds up the build
-  timeout_in: 4h  
+  name: Syncing, Building and Uploading
+  timeout_in: 4h
+  container:
+      image: inok2341/anu:latest
+      cpu: 8
+      memory: 32G
 
   Env_background_script:
-      - cd ~
+      - cd ~ && rm -rf $ROM_PROJECT && rm -rf znxt
       - mkdir -p ~/$ROM_PROJECT
       - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
