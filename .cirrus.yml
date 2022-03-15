@@ -37,18 +37,18 @@ task:
       - cd ~/$ROM_PROJECT
       - repo init --depth=1 --no-repo-verify -u git://github.com/ariffjenong/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault
       - git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b LOS19 .repo/local_manifests
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
 
   Build_script:
       #- ./ziper.sh
       - ./build.sh
 
-  Uploading_ROM_background_script:
+  UploadROM_background_script:
       - cd ~/$ROM_PROJECT/out/target/product/maple_dsds
       - ls -lh
       - rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
 
-  Upload_script:
+  UploadCc_script:
       - ./build_zip.sh
 
   SF_script:
