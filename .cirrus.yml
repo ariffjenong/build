@@ -8,8 +8,8 @@ env:
     ROM_PROJECT: "lineage-19.1"
  
 task:
-  name: Syncing, Building and Uploading
-  timeout_in: 4h
+ name: Syncing, Building and Uploading
+ timeout_in: 4h
  persistent_worker:
   isolation:
     container:
