@@ -1,18 +1,25 @@
 env:
+    gcp_credentials: "ENCRYPTED[7b72a7972b619f2ccfec053af8c33f2e7417eb81c30daeecdde82a6087ba6663aeb821bdd83c8f41e4efe915abd63e78]"
     rclone_config: "ENCRYPTED[3c83ff4e129f1ced7d697b973f99d3cf33fd7936b9ad27602c7ffa47c5d678da1c8cc1fcf2ab067b09fe35e501b6ad75]"
     TG_TOKEN: "ENCRYPTED[7888fd688129c58fcd9a25086dad02a0c103986cfca92f0d1606b3873ab2e02fffacffe4a8a432b0d726eff81999323e]"
     TG_CHAT_ID: "ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]"
     SF_USERNAME: "ENCRYPTED[9b9deac88b090b7dc4e69a058e79360e8832c782b9bd46499a7f1401e66e219bad7c9c901a85eeb0d154f717cfc5f148]"
     SF_PASS: "ENCRYPTED[9d4e6509f1294d4d9b39c9f092f32123bef7cdf2c773cda6f80867a329c629d6ab9f1cee0db0c38184bd13d8e8a5556f]"
     ROM_PROJECT: "lineage-19.1"
- 
+    
+
+ gce_instance:
+  image_project: ubuntu-os-cloud
+  image_name: ubuntu-1904-disco-v20190417
+  zone: us-central1-a
+  cpu: 8
+  memory: 40GB
+  disk: 60
+  use_ssd: true # default to false
+
 task:
   name: Syncing, Building and Uploading
-  timeout_in: 4h  
-  container:
-      image: inok2341/anu:latest
-      cpu: 8
-      memory: 32G
+  timeout_in: 4h
 
   Env_background_script:
       - cd ~
@@ -31,6 +38,7 @@ task:
       - cd ~/$ROM_PROJECT
       - time tar xf out.tar.gz
       - rm -rf out.tar.gz
+      - cd ~/$ROM_PROJECT/out
       - ls -lh
 
   Sync_script:
