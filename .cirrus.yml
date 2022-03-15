@@ -45,7 +45,7 @@ task:
       - ls -lh
       - rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
 
-  Upload_ccache_script:
+  Upload_script:
       - ./build_zip.sh
 
   SF_script:
