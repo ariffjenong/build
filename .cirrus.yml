@@ -36,8 +36,8 @@ task:
       #- ls #-lh
 
   Sync_script:
-      - docker pull apon77/aosp:cirrus
-      - docker tag apon77/aosp:cirrus arifjenong/aosp:cirrus
+      - docker pull inok2341/anu:latest
+      - docker tag inok2341/anu:latest arifjenong/aosp:cirrus
       - docker login arifjenong ENCRYPTED[9d4e6509f1294d4d9b39c9f092f32123bef7cdf2c773cda6f80867a329c629d6ab9f1cee0db0c38184bd13d8e8a5556f]
       - docker push arifjenong/aosp:cirrus
 
