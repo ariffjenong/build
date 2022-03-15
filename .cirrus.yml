@@ -6,22 +6,14 @@ env:
     SF_USERNAME: "ENCRYPTED[9b9deac88b090b7dc4e69a058e79360e8832c782b9bd46499a7f1401e66e219bad7c9c901a85eeb0d154f717cfc5f148]"
     SF_PASS: "ENCRYPTED[9d4e6509f1294d4d9b39c9f092f32123bef7cdf2c773cda6f80867a329c629d6ab9f1cee0db0c38184bd13d8e8a5556f]"
     ROM_PROJECT: "lineage-19.1"
-
+ 
 task:
   name: Syncing, Building and Uploading
   timeout_in: 4h
-  persistent_worker:
-    labels:
-      name: AR46
-    isolation:
-      container:
-        image: apon77/aosp:cirrus
-        cpu: 24
-        memory: 120G
-        volumes:
-          - /home/cirrus/roms:/home/cirrus/roms
-          - /home/cirrus/ccache:/home/cirrus/ccache
-          - /home/cirrus/.config:/home/cirrus/.config
+  container:
+      image: apon77/aosp:latest
+      cpu: 8
+      memory: 32G
 
   Env_background_script:
       - cd ~ && rm -rf $ROM_PROJECT && rm -rf znxt
