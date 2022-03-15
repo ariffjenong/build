@@ -12,7 +12,7 @@ task:
   timeout_in: 4h
   persistent_worker:
     labels:
-      name: AX61-1
+      name: AR46
     isolation:
       container:
         image: apon77/aosp:cirrus
