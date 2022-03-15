@@ -20,25 +20,32 @@ task:
       - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      - time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.gz ~/znxt -P
-      - cd ~/znxt
-      - time tar xf ccache.tar.gz
-      - rm ccache.tar.gz
-      - ls -lh
+      #- time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.gz ~/znxt -P
+      #- cd ~/znxt
+      #- time tar xf ccache.tar.gz
+      #- rm ccache.tar.gz
+      #- ls -lh
       #- time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
       #- cd ~/$ROM_PROJECT
       #- time tar xf out.tar.gz
       #- rm out.tar.gz
 
+  Env2_background_script:
+      #- cd ~
+      #- time rclone copy znxtproject:ccache/$ROM_PROJECT/$ROM_PROJECT.tar.gz ~ -P
+      #- time tar xf $ROM_PROJECT.tar.gz
+      #- rm $ROM_PROJECT.tar.gz
+
   Sync_script:
+      - sleep 5m
       - cd ~/$ROM_PROJECT
       - repo init --depth=1 --no-repo-verify -u git://github.com/ariffjenong/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault
       - git clone https://github.com/ariffjenong/local_manifest.git --depth=1 -b LOS19 .repo/local_manifests
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
-      - ./ziper.sh
 
   Build_script:
-      - ./build.sh
+      - ./ziper.sh
+      #- ./build.sh
 
   Uploading_ROM_background_script:
       - cd ~/$ROM_PROJECT/out/target/product/maple_dsds
@@ -46,7 +53,7 @@ task:
       - rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
 
   Upload_script:
-      - ./build_zip.sh
+      #- ./build_zip.sh
 
   SF_script:
       #- ./sf.sh
