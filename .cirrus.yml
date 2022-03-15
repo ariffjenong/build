@@ -24,10 +24,10 @@ task:
       - cd ~/znxt
       - time tar xf ccache.tar.gz
       - rm -rf ccache.tar.gz
-      - time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
-      - cd ~/$ROM_PROJECT
-      - time tar xf out.tar.gz
-      - rm -rf out.tar.gz
+      #- time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
+      #- cd ~/$ROM_PROJECT
+      #- time tar xf out.tar.gz
+      #- rm -rf out.tar.gz
 
   Sync_script:
       - cd ~/$ROM_PROJECT
