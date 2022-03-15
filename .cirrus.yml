@@ -11,14 +11,17 @@ task:
  name: Syncing, Building and Uploading
  timeout_in: 4h
  persistent_worker:
-  isolation:
-    container:
-      image: debian:latest
-      cpu: 24
-      memory: 128G
-      volumes:
-        - /path/on/host:/path/in/container
-        - /tmp/persistent-cache:/tmp/cache:ro
+    labels:
+      name: AX61-1
+    isolation:
+      container:
+        image: apon77/aosp:cirrus
+        cpu: 24
+        memory: 120G
+        volumes:
+          - /home/cirrus/roms:/home/cirrus/roms
+          - /home/cirrus/ccache:/home/cirrus/ccache
+          - /home/cirrus/.config:/home/cirrus/.config
 
   Env_background_script:
       - cd ~ && rm -rf $ROM_PROJECT && rm -rf znxt
