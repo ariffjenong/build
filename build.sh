@@ -25,10 +25,10 @@ env
 #make bootimage -j24
 #make init -j24
 #make services
-make bacon -j12 &  #dont remove that '&'
+make bacon -j24 &  #dont remove that '&'
 #sleep 50m #first running
 #sleep 90m #second running
-sleep 103m #third running
+sleep 104m #third running
 kill %1
  
 #make bacon -j12

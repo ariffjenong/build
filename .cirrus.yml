@@ -11,7 +11,7 @@ task:
   name: Syncing, Building and Uploading
   timeout_in: 4h
   container:
-      image: sandcarcass/lineagebuilder:latest
+      image: inok2341/anu:latest
       cpu: 8
       memory: 32G
 
@@ -32,7 +32,7 @@ task:
       #- cd ~/$ROM_PROJECT
       #- time tar xf out.tar.gz
       #- rm -rf out.tar.gz
-      - sleep 7m
+      - sleep 13m
       - cd ~/$ROM_PROJECT
       - ls -lh
 
@@ -40,7 +40,7 @@ task:
       - cd ~/$ROM_PROJECT
       - repo init --depth=1 --no-repo-verify -u https://github.com/ariffjenong/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault
       - git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b LOS19 .repo/local_manifests
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
 
   Build_script:
       #- ./ziper.sh
