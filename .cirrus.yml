@@ -11,20 +11,20 @@ task:
   name: Syncing, Building and Uploading
   timeout_in: 4h
   container:
-      image: mingc/android-build-box:latest
+      image: arifjenong/rom:latest
       cpu: 8
       memory: 32G
 
   Env_background_script:
       - cd ~ && rm -rf $ROM_PROJECT && rm -rf znxt
       - mkdir -p ~/$ROM_PROJECT
-      - mkdir -p ~/znxt
+      - mkdir -p ~/tmp
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
 
   Download_background_script:
-      - time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.gz ~/znxt -P
-      - cd ~/znxt
+      - time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.gz ~/tmp -P
+      - cd ~/tmp
       - time tar xf ccache.tar.gz
       - rm ccache.tar.gz
       #- time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
