@@ -21,20 +21,19 @@ task:
       - mkdir -p ~/znxt
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
+
+  Download_background_script:
       - time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.gz ~/znxt -P
       - cd ~/znxt
       - time tar xf ccache.tar.gz
       - rm ccache.tar.gz
-      - ls -lh
-
-  Download_background_script:
       #- time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
       #- cd ~/$ROM_PROJECT
       #- time tar xf out.tar.gz
       #- rm -rf out.tar.gz
-      - sleep 13m
-      - cd ~/$ROM_PROJECT
-      - ls -lh
+      #- sleep 13m
+      #- cd ~/$ROM_PROJECT
+      #- ls -lh
 
   Sync_script:
       - cd ~/$ROM_PROJECT
