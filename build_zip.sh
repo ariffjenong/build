@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ~/tmp
+cd ~/znxt
 
 com ()
 {

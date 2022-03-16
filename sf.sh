@@ -3,8 +3,6 @@
 cd ~/$ROM_PROJECT/out/target/product/maple_dsds
 
 
-sudo apt-get update -y && sudo apt-get install expect -y
-
 product=$(ls *maple_dsds*UNOFFICIAL*.zip)
 md5sum=$(ls *.md5sum)
 project=xperia-xz-premium/maple_dsds
