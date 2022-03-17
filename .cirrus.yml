@@ -7,7 +7,6 @@ env:
     SF_PASS: "ENCRYPTED[9d4e6509f1294d4d9b39c9f092f32123bef7cdf2c773cda6f80867a329c629d6ab9f1cee0db0c38184bd13d8e8a5556f]"
     ROM_PROJECT: "lineage-19.1"
     DOCKER_HUB_PWD: "ENCRYPTED[45147df4523a226976c523c65f2a84d3361dff9316c97a1cef1aee1ac524b430d5a4b48e18f28603109a27f52bc7a721]"
-    REPO: "ENCRYPTED[61138805473f259051252ef0f46c547affaf8fcc75ceb6a819b6ca2d8da2699ae1190fa33800371776cc04c05f624a81]"
  
 task:
   name: Syncing, Building and Uploading
@@ -44,10 +43,8 @@ task:
       #- ls -lh
 
   Sync_script:
+      - ./repo.sh
       - cd ~/$ROM_PROJECT
-      - repo init --depth=1 --no-repo-verify -u https://github.com/ariffjenong/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault
-      - git clone https://github.com/ariffjenong/local_manifest.git --depth=1 -b LOS19 .repo/local_manifests
-      - bash $REPO
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j12 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
   Build_script:
