@@ -1,12 +1,12 @@
 #!/bin/bash
-cd ~
+cd ~/$ROM_PROJECT/out/target/product/maple_dsds
 
 com ()
 {
     tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
 }
 
-time com $ROM_PROJECT 9
+time com obj 5
 
 
 #echo "$rclone_config" > ~/.config/rclone/rclone.conf
