@@ -28,18 +28,12 @@ task:
       - git config --global user.name "ariffjenong"
       - git config --global user.email "arifbuditantodablekk@gmail.com"
       - git config --global color.ui false
+
+  Download_background_script:
       - time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.gz ~/znxt -P
       - cd ~/znxt
       - time tar xf ccache.tar.gz
       - rm ccache.tar.gz
-
-  Download_background_script:
-      - time rclone copy znxtproject:ccache/$ROM_PROJECT/obj.tar.gz ~/$ROM_PROJECT/out/target/product/maple_dsds -P
-      - cd ~/$ROM_PROJECT/out/target/product/maple_dsds
-      - time tar xf obj.tar.gz
-      - rm obj.tar.gz
-      - cd ~/$ROM_PROJECT/out/target/product/maple_dsds/obj
-      - ls -lh
 
   Sync_script:
       - ./repo.sh
@@ -61,4 +55,4 @@ task:
   SF_script:
       #- ./sf.sh
       #- curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd ~/$ROM_PROJECT/out/target/product/maple_dsds && ls *UNOFFICIAL*.zip) Uploaded Successfully!"
-      - cd ~ && rm -rf $ROM_PROJECT && rm -rf znxt
+      - cd ~ && rm -rf $ROM_PROJECT znxt
