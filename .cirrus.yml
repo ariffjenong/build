@@ -48,8 +48,7 @@ task:
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j12 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
   Test_background_script:
-      - sleep 94m
-      - ./ziper.sh
+      - sleep 94m & ./ziper.sh
 
   Build_script:
       #- ./ziper.sh
