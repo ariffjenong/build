@@ -47,9 +47,6 @@ task:
       - cd ~/$ROM_PROJECT
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j12 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
-  Test_background_script:
-      - sleep 94m & ./ziper.sh
-
   Build_script:
       #- ./ziper.sh
       - ./build.sh
@@ -60,6 +57,7 @@ task:
       - rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
 
   UploadCc_script:
+      - ./ziper.sh
       #- ./build_zip.sh
 
   SF_script:
