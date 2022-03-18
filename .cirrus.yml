@@ -28,27 +28,25 @@ task:
       - git config --global user.name "ariffjenong"
       - git config --global user.email "arifbuditantodablekk@gmail.com"
       - git config --global color.ui false
-
-  Download_background_script:
       - time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.gz ~/znxt -P
       - cd ~/znxt
       - time tar xf ccache.tar.gz
       - rm ccache.tar.gz
-      #- time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.gz ~/$ROM_PROJECT -P
-      #- cd ~/$ROM_PROJECT
-      #- time tar xf out.tar.gz
-      #- rm -rf out.tar.gz
-      #- sleep 13m
-      #- cd ~/$ROM_PROJECT
-      #- ls -lh
+
+  Download_background_script:
+      - time rclone copy znxtproject:ccache/$ROM_PROJECT/obj.tar.gz ~/$ROM_PROJECT/out/target/product/maple_dsds -P
+      - cd ~/$ROM_PROJECT/out/target/product/maple_dsds
+      - time tar xf obj.tar.gz
+      - rm obj.tar.gz
+      - cd ~/$ROM_PROJECT/out/target/product/maple_dsds/obj
+      - ls -lh
 
   Sync_script:
       - ./repo.sh
       - cd ~/$ROM_PROJECT
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j12 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
   Build_script:
-      #- ./ziper.sh
       - ./build.sh
 
   UploadROM_background_script:
@@ -57,8 +55,8 @@ task:
       - rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
 
   UploadCc_script:
-      - ./ziper.sh
-      #- ./build_zip.sh
+      #- ./ziper.sh
+      - ./build_zip.sh
 
   SF_script:
       #- ./sf.sh
