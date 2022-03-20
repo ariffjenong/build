@@ -46,7 +46,7 @@ RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip \
 WORKDIR /tmp/rom
 
 RUN repo init --depth=1 --no-repo-verify -u https://github.com/CherishOS/android_manifest.git -b twelve-one -g default,-mips,-darwin,-notdefault \
-    && git clone https://github.com/ariffjenong/local_manifest.git --depth=1 -b $NAME .repo/local_manifests \
+    && git clone https://github.com/ariffjenong/local_manifest.git --depth=1 -b cherish-12.1 .repo/local_manifests \
     && repo sync frameworks/base kernel/sony/msm8998 device/sony/maple_dsds device/sony/yoshino-common vendor/sony/maple_dsds -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync frameworks/base kernel/sony/msm8998 device/sony/maple_dsds device/sony/yoshino-common vendor/sony/maple_dsds -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
 
 VOLUME ["/tmp/ccache", "/tmp/rom"]
