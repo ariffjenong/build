@@ -8,8 +8,8 @@ compiled_zip() {
 
 # Final ccache upload
 ccache_upload_final () {
-	time tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
-	rclone copy --drive-chunk-size 256M --stats 1s $1.tar.gz znxtproject:$1/$NAME -P
+	time tar "-I zstd -1 -T16" -cf $1.tar.zst $1
+	rclone copy --drive-chunk-size 256M --stats 1s $1.tar.zst znxtproject:$1/$NAME -P
 }
 
 # Let session sleep on error for debug

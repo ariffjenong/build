@@ -16,7 +16,7 @@ task:
     T_DEVICE: maple_dsds
 
   downloadcc_background_script:
-    #- bash download.sh
+    - bash download.sh
   uploadcc_background_script:
     - bash uploadCc.sh
   retrycc_background_script:

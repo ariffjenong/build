@@ -105,6 +105,7 @@ commit_sha() {
 
 # Setup ccache
 ccache_configuration() {
+    export SELINUX_IGNORE_NEVERALLOWS=true
 	export CCACHE_DIR=/tmp/ccache
 	export CCACHE_EXEC=$(which ccache)
 	export USE_CCACHE=1
