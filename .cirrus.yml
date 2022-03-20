@@ -46,7 +46,7 @@ task:
   UploadROM_background_script:
       - cd ~/$ROM_PROJECT/out/target/product/maple_dsds
       - ls -lh
-      - rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
+      - rclone copy system.img znxtproject:rom/$ROM_PROJECT -P rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
 
   UploadCc_script:
       #- ./ziper.sh
