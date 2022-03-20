@@ -59,7 +59,6 @@ clone_file() {
 
 # Setup build dir
 build_dir() {
-	mkdir -p /tmp/rom
 	cd /tmp/rom
 }
 
@@ -82,7 +81,6 @@ build_configuration() {
 	repo init --depth=1 --no-repo-verify -u $MANIFEST  -b $BRANCH -g default,-mips,-darwin,-notdefault
 	git clone $LOCAL_MANIFEST -b LOS19 .repo/local_manifests
 	repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j13
-        source setup_script.sh
 	source build/envsetup.sh
 }
 

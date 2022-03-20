@@ -45,7 +45,8 @@ RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip \
 
 WORKDIR /tmp/rom
 
-RUN repo init --depth=1 --no-repo-verify -u https://github.com/ariffjenong/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault
+RUN repo init --depth=1 --no-repo-verify -u https://github.com/ariffjenong/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault \
+    && repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 VOLUME ["/tmp/ccache", "/tmp/rom"]
 ENTRYPOINT ["/bin/bash"]
