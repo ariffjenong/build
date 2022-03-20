@@ -59,8 +59,6 @@ clone_file() {
 
 # Setup build dir
 build_dir() {
-	mkdir -p ~/.config/rclone
-	echo "$rclone_config" > ~/.config/rclone/rclone.conf
 	cd /tmp/rom
 }
 
