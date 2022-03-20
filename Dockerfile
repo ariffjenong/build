@@ -1,5 +1,5 @@
 FROM ubuntu:hirsute
-LABEL maintainer="GeoPD <geoemmanuelpd2001@gmail.com>"
+LABEL maintainer="ariffjenong <arifbuditantodablekk@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive
 
 WORKDIR /tmp

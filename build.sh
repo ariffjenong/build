@@ -1,29 +1,13 @@
 #!/bin/bash
 
-#
-# Copyright (C) 2022 GeoPD <geoemmanuelpd2001@gmail.com>
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
 # User
-GIT_USER="GeoPD"
+GIT_USER="ariffjenong"
 
 # Email
-GIT_EMAIL="geoemmanuelpd2001@gmail.com"
+GIT_EMAIL="arifbuditantodablekk@gmail.com
 
 # Local manifest
-LOCAL_MANIFEST=https://${TOKEN}@github.com/geopd/local_manifests
+LOCAL_MANIFEST=https://${TOKEN}@github.com/ariffjenong/local_manifest.git
 
 # ROM Manifest and Branch
 rom() {
@@ -34,6 +18,8 @@ rom() {
 		;;
 		"Evox-12") MANIFEST=https://github.com/Evolution-X/manifest.git BRANCH=snow
 		;;
+		"lineage-19.1") MANIFEST=https://github.com/ariffjenong/android.git BRANCH=lineage-19.1
+		;;
 		*) echo "Setup Rom manifest and branch name in case function"
  		exit 1
  		;;
@@ -43,11 +29,13 @@ rom() {
 # Build command for rom
 build_command() {
 	case "${NAME}" in
-		"AEX-12") lunch aosp_sakura-user && m aex -j20
+		"AEX-12") lunch aosp_maple_dsds-userdebug && m aex -j20
 		;;
-		"Crdroid-12") lunch lineage_sakura-user && m bacon -j20
+		"Crdroid-12") lunch lineage_maple_dsds-userdebug && m bacon -j20
 		;;
-		"Evox-12") lunch evolution_sakura-user && m evolution -j20
+		"Evox-12") lunch evolution_maple_dsds-userdebug && m evolution -j20
+		;;
+		"lineage-19.1") lunch lineage_maple_dsds-userdebug && m evolution -j20
 		;;
 		*) echo "Build commands need to be added!"
 		exit 1
@@ -58,15 +46,15 @@ build_command() {
 # Export tree paths
 tree_path() {
 	# Device,vendor & kernel Tree paths
-	DEVICE_TREE=device/xiaomi/sakura
-	VENDOR_TREE=vendor/xiaomi
-	KERNEL_TREE=kernel/xiaomi/msm8953
+	DEVICE_TREE=device/sony/maple_dsds
+	COMMON_TREE=device/sony/yoshino-common
+	VENDOR_TREE=vendor/sony/maple_dsds
+	KERNEL_TREE=kernel/sony/msm8998
 }
 
 # Clone needed misc scripts and ssh priv keys
 clone_file() {
-	rclone copy brrbrr:scripts/setup_script.sh /tmp/rom
-	rclone copy brrbrr:ssh/ssh_ci /tmp/rom
+	git clone https://github.com/akhilnarang/scripts /tmp/rom
 }
 
 # Setup build dir
@@ -79,10 +67,6 @@ build_dir() {
 git_setup() {
 	git config --global user.name $GIT_USER
 	git config --global user.email $GIT_EMAIL
-
-	# Establish Git cookies
-	echo "${GIT_COOKIES}" > ~/git_cookies.sh
-	bash ~/git_cookies.sh
 }
 
 # SSH configuration using priv key
@@ -114,7 +98,7 @@ time_diff() {
 # Branch name & Head commit sha for ease of tracking
 commit_sha() {
 	tree_path
-	for repo in ${DEVICE_TREE} ${VENDOR_TREE} ${KERNEL_TREE}
+	for repo in ${DEVICE_TREE} ${COMMON_TREE} ${VENDOR_TREE} ${KERNEL_TREE}
 	do
 		printf "[$(echo $repo | cut -d'/' -f1 )/$(git -C ./$repo/.git rev-parse --short=10 HEAD)]"
 	done
@@ -161,7 +145,6 @@ telegram_post_build() {
 
 	*ROM:* \`${ZIPNAME}\`
 	*MD5 Checksum:* \`${MD5CHECK}\`
-	*Download Link:* [Tdrive](${DWD})
 	*Size:* \`${ZIPSIZE}\`
 
 	*Commit SHA:* \`$(commit_sha)\`
@@ -187,8 +170,7 @@ compiled_zip() {
 # Post Build finished with Time,duration,md5,size&Tdrive link OR post build_error&trimmed build.log in TG
 telegram_post(){
 	if [ -f $(pwd)/out/target/product/${T_DEVICE}/${ZIPNAME} ]; then
-		rclone copy ${ZIP} brrbrr:rom -P
-		DWD=${TDRIVE}${ZIPNAME}
+		rclone copy ${ZIP} znxtproject:rom/${NAME} -P
 		telegram_post_build
 	else
 		echo "CHECK BUILD LOG" >> $(pwd)/out/build_error
@@ -203,7 +185,6 @@ compile_moments() {
 	build_dir
 	git_setup
 	clone_file
-	ssh_authenticate
 	time_sec SYNC_START
 	rom
 	build_configuration
