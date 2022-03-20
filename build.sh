@@ -4,7 +4,7 @@
 GIT_USER="ariffjenong"
 
 # Email
-GIT_EMAIL="arifbuditantodablekk@gmail.com
+GIT_EMAIL="arifbuditantodablekk@gmail.com"
 
 # Local manifest
 LOCAL_MANIFEST=https://${TOKEN}@github.com/ariffjenong/local_manifest.git
