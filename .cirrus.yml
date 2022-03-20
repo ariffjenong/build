@@ -19,6 +19,16 @@ task:
       cpu: 8
       memory: 32G
 
+  Env_background_script:
+      #- cd ~ && rm -rf $ROM_PROJECT && rm -rf znxt
+      - mkdir -p ~/$ROM_PROJECT
+      #- mkdir -p ~/znxt
+      #- mkdir -p ~/.config/rclone
+      #- echo "$rclone_config" > ~/.config/rclone/rclone.conf
+      #- git config --global user.name "ariffjenong"
+      #- git config --global user.email "arifbuditantodablekk@gmail.com"
+      #- git config --global color.ui false
+
   Download_background_script:
       - time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.gz ~/znxt -P
       - cd ~/znxt
