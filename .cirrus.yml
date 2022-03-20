@@ -16,13 +16,13 @@ task:
     T_DEVICE: maple_dsds
 
   downloadcc_background_script:
-    - bash download_ccache.sh
+    - bash download.sh
   uploadcc_background_script:
-    - bash upload_ccache.sh
+    - bash uploadCc.sh
   retrycc_background_script:
-    - bash retry_ccache.sh
+    - bash retryCc.sh
   build_script:
     - bash build.sh
   final_uploadcc_script:
-    - bash final_upload_ccache.sh
+    - bash final_uploadCc.sh
  
