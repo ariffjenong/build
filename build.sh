@@ -78,7 +78,6 @@ ssh_authenticate() {
 
 # Repo sync and additional configurations
 build_configuration() {
-	git clone $LOCAL_MANIFEST -b LOS19 .repo/local_manifests
 	repo forall -c "git reset --hard && git clean -fdx"
 	repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j13 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j13
 	source build/envsetup.sh
