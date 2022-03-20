@@ -35,7 +35,7 @@ build_command() {
 		;;
 		"Evox-12") lunch evolution_maple_dsds-userdebug && m evolution -j20
 		;;
-		"lineage-19.1") lunch lineage_maple_dsds-userdebug && m evolution -j20
+		"lineage-19.1") lunch lineage_maple_dsds-userdebug && make bacon -j20
 		;;
 		*) echo "Build commands need to be added!"
 		exit 1
@@ -80,7 +80,7 @@ ssh_authenticate() {
 # Repo sync and additional configurations
 build_configuration() {
 	repo init --depth=1 --no-repo-verify -u $MANIFEST  -b $BRANCH -g default,-mips,-darwin,-notdefault
-	git clone $LOCAL_MANIFEST -b $NAME .repo/local_manifests
+	git clone $LOCAL_MANIFEST -b LOS19 .repo/local_manifests
 	repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j13
         source setup_script.sh
 	source build/envsetup.sh
