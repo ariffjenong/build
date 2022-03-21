@@ -33,7 +33,7 @@ build_command() {
 		;;
 		"Crdroid-12") lunch lineage_maple_dsds-userdebug && m bacon -j20
 		;;
-		"cherish-12.1") lunch cherish_maple_dsds-userdebug && brunch maple_dsds -j20
+		"cherish-12.1") lunch cherish_maple_dsds-userdebug && mka bacon -j20
 		;;
 		"lineage-19.1") lunch lineage_maple_dsds-userdebug && make bacon -j20
 		;;
