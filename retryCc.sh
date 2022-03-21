@@ -8,13 +8,11 @@ compiled_zip() {
 
 # Retry the ccache fill for 99-100% hit rate
 retry_ccache () {
-    echo "$TOKEN" > ~/.git-credentials
-    git config --global credential.helper store --file=~/.git-credentials
 	export CCACHE_DIR=/tmp/ccache
 	export CCACHE_EXEC=$(which ccache)
 	hit_rate=$(ccache -s | awk '/hit rate/ {print $4}' | cut -d'.' -f1)
 	if [ $hit_rate -lt 99 ]; then
-		git clone https://github.com/ariffjenong/build -b Builder cirrus && cd $_
+		git clone --depth=1 ${TOKEN}/ariffjenong/build.git -b Builder cirrus && cd $_
 		git commit --allow-empty -m "Retry: Ccache loop $(date -u +"%D %T%p %Z")"
 		git push -q
 	else
