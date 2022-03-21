@@ -14,7 +14,7 @@ retry_ccache () {
 	export CCACHE_EXEC=$(which ccache)
 	hit_rate=$(ccache -s | awk '/hit rate/ {print $4}' | cut -d'.' -f1)
 	if [ $hit_rate -lt 99 ]; then
-		git clone https://github.com/ariffjenong/build -b cherish-12.1_new cirrus && cd $_
+		git clone https://github.com/ariffjenong/build -b Builder cirrus && cd $_
 		git commit --allow-empty -m "Retry: Ccache loop $(date -u +"%D %T%p %Z")"
 		git push -q
 	else
