@@ -29,6 +29,6 @@ retry_event() {
 	fi
 }
 
-cd /tmp/rom && sleep 113m
+cd /tmp/rom && sleep 119m
 compiled_zip
 retry_event
