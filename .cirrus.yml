@@ -1,8 +1,10 @@
+gcp_credentials: ENCRYPTED[6ca127db73f969a333d36c9b3afae672732323eaaefa517679eca2d4db05e851b26f1538493cc3ccc6de84187e58ad22]
+
 task:
 
   name: Builds
-  timeout_in: 120m
-  container:
+  timeout_in: 4h
+  gke_container:
     dockerfile: Dockerfile
     cpu: 8
     memory: 32G
