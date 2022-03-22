@@ -11,3 +11,4 @@ ccache_download () {
 cd /tmp
 ccache_download
 echo "CCACHE IS CONFIGURED"
+sudo apt-get update -y && sudo apt-get install expect -y
