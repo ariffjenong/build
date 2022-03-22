@@ -13,11 +13,6 @@ retry_ccache () {
 	hit_rate=$(ccache -s | awk '/hit rate/ {print $4}' | cut -d'.' -f1)
 	if [ $hit_rate -lt 99 ]; then
 		git clone ${TOKEN}/ariffjenong/build -b cherish-12.1_new cirrus && cd $_
-		folder=/tmp/rom/cirrus
-		rm retryCc.sh download.sh
-		time rclone copy znxtproject:github/retryCc.sh $folder -P
-		time rclone copy znxtproject:github/download.sh $folder -P
-		git add .
 		git commit --allow-empty -m "Retry: Ccache loop $(date -u +"%D %T%p %Z")"
 		git push -q
 	else
