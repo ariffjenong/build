@@ -5,9 +5,10 @@ ccache_download () {
 	echo "$rclone_config" > ~/.config/rclone/rclone.conf
 	time rclone copy znxtproject:ccache/$NAME/ccache.tar.zst /tmp -P
 	time tar -xaf ccache.tar.zst
-	time rm ccache.tar.zst
+	rm ccache.tar.zst
 }
 
 cd /tmp
 ccache_download
 echo "CCACHE IS CONFIGURED"
+sudo apt-get update -y && sudo apt-get install expect -y
