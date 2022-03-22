@@ -4,7 +4,7 @@ task:
 
   name: Builds
   timeout_in: 4h
-  gke_container:
+  container:
     dockerfile: Dockerfile
     cpu: 8
     memory: 32G
