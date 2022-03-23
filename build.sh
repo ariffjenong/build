@@ -106,9 +106,6 @@ ccache_configuration() {
 	export CCACHE_DIR=/tmp/ccache
 	export CCACHE_EXEC=$(which ccache)
 	export USE_CCACHE=1
-	export CCACHE_COMPRESS=true
-	export CCACHE_COMPRESSLEVEL=1
-	export CCACHE_LIMIT_MULTIPLE=0.9
 	export CCACHE_MAXSIZE=50G
 	ccache -z
 }
