@@ -12,7 +12,7 @@ task:
   name: Syncing, Building and Uploading
   timeout_in: 4h
   container:
-    image: Dockerfile
+    image: arifjenong/rom:cherish
     cpu: 8
     memory: 32G
 
