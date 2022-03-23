@@ -1,5 +1,6 @@
 #!/bin/bash
 sleep 115m
+kill %1
 cd /cirrus
 
 com ()
