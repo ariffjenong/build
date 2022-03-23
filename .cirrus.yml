@@ -30,8 +30,7 @@ task:
       - ./build_zip.sh
 
   Sync_script:
-      - cd /cirrus/rom
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+      - ./repo.sh
 
   Build_script:
       - ./build.sh
