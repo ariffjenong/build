@@ -32,13 +32,13 @@ task:
   Build_script:
       - ./build.sh
 
-  UploadCc_script:
-      - ./build_zip.sh
-
   UploadROM_background_script:
       - cd /cirrus/rom/out/target/product/maple_dsds
       - ls -lh
       - time rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && time rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
+
+  UploadCc_script:
+      - ./build_zip.sh
 
   SF_script:
       #- ./sf.sh
