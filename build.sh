@@ -16,7 +16,7 @@ rom() {
 		;;
 		"Crdroid-12") MANIFEST=https://github.com/crdroidandroid/android.git BRANCH=12.0
 		;;
-		"Evox-12") MANIFEST=https://github.com/Evolution-X/manifest.git BRANCH=snow
+		"cherish-12.1") MANIFEST=https://github.com/CherishOS/android_manifest.git BRANCH=twelve-one
 		;;
 		"lineage-19.1") MANIFEST=https://github.com/ariffjenong/android.git BRANCH=lineage-19.1
 		;;
@@ -33,7 +33,7 @@ build_command() {
 		;;
 		"Crdroid-12") lunch lineage_maple_dsds-userdebug && m bacon -j20
 		;;
-		"Evox-12") lunch evolution_maple_dsds-userdebug && m evolution -j20
+		"cherish-12.1") lunch evolution_maple_dsds-userdebug && mka bacon -j20
 		;;
 		"lineage-19.1") lunch lineage_maple_dsds-userdebug && make bacon -j20
 		;;
@@ -54,7 +54,7 @@ tree_path() {
 
 # Clone needed misc scripts and ssh priv keys
 clone_file() {
-	git clone https://github.com/akhilnarang/scripts /cirrus/rom
+	#git clone https://github.com/akhilnarang/scripts /cirrus/rom
 }
 
 # Setup build dir
