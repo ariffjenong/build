@@ -12,7 +12,7 @@ task:
   name: Builds
   timeout_in: 4h
   container:
-    dockerfile: Dockerfile
+    image: gcr.io/cirrus-ci-community/ariffjenong/build/dockerfile:c3fc0ecff6e1a28de0423d9bd9cfa2b0
     cpu: 8
     memory: 32G
 
