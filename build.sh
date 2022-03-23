@@ -8,14 +8,13 @@ env
 
  cd /cirrus/rom
  . build/envsetup.sh
- lunch cherish_maple_dsds-userdebug
+ lunch lineage_maple_dsds-userdebug
  export CCACHE_DIR=/cirrus/ccache
  export CCACHE_EXEC=$(which ccache)
  export USE_CCACHE=1
  ccache -M 15G
  ccache -z
- export ALLOW_MISSING_DEPENDENCIES=true
- export WITH_GMS=false
+ export SELINUX_IGNORE_NEVERALLOWS=true
  export BUILD_HOSTNAME=ArifJeNong
  export BUILD_USERNAME=ArifJeNong
  export TZ=Asia/Jakarta
@@ -25,7 +24,7 @@ env
 #make init -j24
 #make services
 #make systemimage &
-mka bacon -j24 & #dont remove that '&'
+make bacon -j24 & #dont remove that '&'
 #sleep 50m #first running
 #sleep 106m #second running
 sleep 105m #third running
