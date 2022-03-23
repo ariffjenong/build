@@ -31,6 +31,13 @@ task:
       - time tar xf ccache.tar.gz
       - rm ccache.tar.gz
 
+  Retry_background_script:
+      - ./retry.sh
+
+  UploadCc_script:
+      #- ./ziper.sh
+      - ./build_zip.sh
+
   Sync_script:
       #- ./repo.sh
       - cd /rom
@@ -43,10 +50,6 @@ task:
       - cd /rom/out/target/product/maple_dsds
       - ls -lh
       - rclone copy system.img znxtproject:rom/$ROM_PROJECT -P rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
-
-  UploadCc_script:
-      #- ./ziper.sh
-      - ./build_zip.sh
 
   SF_script:
       #- ./sf.sh

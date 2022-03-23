@@ -1,4 +1,5 @@
 #!/bin/bash
+sleep 110
 cd /cirrus
 
 com ()
