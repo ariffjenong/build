@@ -54,7 +54,7 @@ tree_path() {
 
 # Clone needed misc scripts and ssh priv keys
 clone_file() {
-	#git clone https://github.com/akhilnarang/scripts /cirrus/rom
+    rm -rf .repo/local_manifests
 }
 
 # Setup build dir
@@ -78,6 +78,8 @@ ssh_authenticate() {
 
 # Repo sync and additional configurations
 build_configuration() {
+    repo init --depth=1 --no-repo-verify -u https://github.com/LineageOS/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault
+    git clone https://github.com/ariffjenong/local_manifest.git --depth=1 -b LOS19 .repo/local_manifests
 	repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j13 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j13
 	source build/envsetup.sh
 }
