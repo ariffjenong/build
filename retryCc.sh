@@ -27,6 +27,6 @@ retry_event() {
 	fi
 }
 
-cd /cirrus/rom && sleep 7185
+cd /cirrus/rom && sleep 7187
 compiled_zip
 retry_event
