@@ -26,7 +26,7 @@ task:
   Retry_background_script:
       - ./retry.sh
 
-  UploadCc_script:
+  UploadCc_background_script:
       - ./build_zip.sh
 
   Sync_script:
@@ -38,7 +38,7 @@ task:
   UploadROM_background_script:
       - cd /cirrus/rom/out/target/product/maple_dsds
       - ls -lh
-      - rclone copy system.img znxtproject:rom/$ROM_PROJECT -P rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
+      - time rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && time rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
 
   SF_script:
       #- ./sf.sh
