@@ -17,13 +17,13 @@ task:
     memory: 32G
 
   DownloadCc_background_script:
-    - bash download.sh
+    - ./download.sh
   UploadCc_background_script:
-    - bash uploadCc.sh
+    - ./uploadCc.sh
   RetryCc_background_script:
-    - bash retryCc.sh
+    - ./retryCc.sh
   Build_script:
-    - bash build.sh
+    - ./build.sh
   Final_uploadCc_script:
-    - bash final_uploadCc.sh
+    - ./final_uploadCc.sh
  
