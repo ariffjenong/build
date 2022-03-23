@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/$ROM_PROJECT/out/target/product/maple_dsds
+cd /cirrus/rom/out/target/product/maple_dsds
 
 
 product=$(ls *maple_dsds*UNOFFICIAL*.zip)

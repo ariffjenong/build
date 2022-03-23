@@ -1,10 +1,10 @@
 #!/bin/bash
-cd ~/$ROM_PROJECT/out/target/product/maple_dsds
+cd /cirrus/rom/out/target/product/maple_dsds
 
 rm *txt *json *mk
 time rm -rf system kernel root recovery ramdisk cache debug_ramdisk
 
-cd ~/$ROM_PROJECT/out/target/product
+cd /cirrus/rom/out/target/product
 
 com ()
 {

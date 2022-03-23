@@ -40,14 +40,14 @@ task:
 
   Sync_script:
       #- ./repo.sh
-      - cd /rom
+      - cd /cirrus/rom
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
   Build_script:
       - ./build.sh
 
   UploadROM_background_script:
-      - cd /rom/out/target/product/maple_dsds
+      - cd /cirrus/rom/out/target/product/maple_dsds
       - ls -lh
       - rclone copy system.img znxtproject:rom/$ROM_PROJECT -P rclone copy $(ls *maple*UNOFFICIAL*.zip) znxtproject:rom/$ROM_PROJECT -P && rclone copy $(ls *.md5sum) znxtproject:rom/$ROM_PROJECT -P && ls -lh
 
