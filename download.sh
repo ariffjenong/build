@@ -5,7 +5,7 @@ ccache_download () {
 	echo "$rclone_config" > ~/.config/rclone/rclone.conf
 	time rclone copy znxtproject:ccache/$NAME/ccache.tar.gz /cirrus -P
 	time tar xf ccache.tar.gz
-	rm ccache.tar.zst
+	rm ccache.tar.gz
 }
 
 cd /cirrus

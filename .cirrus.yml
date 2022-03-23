@@ -1,7 +1,14 @@
 gcp_credentials: ENCRYPTED[6ca127db73f969a333d36c9b3afae672732323eaaefa517679eca2d4db05e851b26f1538493cc3ccc6de84187e58ad22]
 
-task:
+env:
+  rclone_config: ENCRYPTED[3c83ff4e129f1ced7d697b973f99d3cf33fd7936b9ad27602c7ffa47c5d678da1c8cc1fcf2ab067b09fe35e501b6ad75]
+  TOKEN: ENCRYPTED[d54cdbd8648be21a5afda47479c134fc824f12d8c3318f0a471f0720488015135663762ad3604cfa49704744ef58a04e]
+  CHATID: ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]
+  BOTTOKEN: ENCRYPTED[7888fd688129c58fcd9a25086dad02a0c103986cfca92f0d1606b3873ab2e02fffacffe4a8a432b0d726eff81999323e]
+  NAME: lineage-19.1
+  T_DEVICE: maple_dsds
 
+task:
   name: Builds
   timeout_in: 4h
   container:
@@ -9,22 +16,14 @@ task:
     cpu: 8
     memory: 32G
 
-  env:
-    rclone_config: ENCRYPTED[3c83ff4e129f1ced7d697b973f99d3cf33fd7936b9ad27602c7ffa47c5d678da1c8cc1fcf2ab067b09fe35e501b6ad75]
-    TOKEN: ENCRYPTED[d54cdbd8648be21a5afda47479c134fc824f12d8c3318f0a471f0720488015135663762ad3604cfa49704744ef58a04e]
-    CHATID: ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]
-    BOTTOKEN: ENCRYPTED[7888fd688129c58fcd9a25086dad02a0c103986cfca92f0d1606b3873ab2e02fffacffe4a8a432b0d726eff81999323e]
-    NAME: lineage-19.1
-    T_DEVICE: maple_dsds
-
-  downloadcc_background_script:
+  DownloadCc_background_script:
     - bash download.sh
-  uploadcc_background_script:
+  UploadCc_background_script:
     - bash uploadCc.sh
-  retrycc_background_script:
+  RetryCc_background_script:
     - bash retryCc.sh
-  build_script:
+  Build_script:
     - bash build.sh
-  final_uploadcc_script:
+  Final_uploadCc_script:
     - bash final_uploadCc.sh
  
