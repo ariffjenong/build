@@ -60,6 +60,7 @@ clone_file() {
 # Setup build dir
 build_dir() {
 	cd /cirrus/rom
+	ls -lh
 }
 
 # Git configuration values
