@@ -54,12 +54,12 @@ tree_path() {
 
 # Clone needed misc scripts and ssh priv keys
 clone_file() {
-	git clone https://github.com/akhilnarang/scripts /tmp/rom
+	git clone https://github.com/akhilnarang/scripts /cirrus/rom
 }
 
 # Setup build dir
 build_dir() {
-	cd /tmp/rom
+	cd /cirrus/rom
 }
 
 # Git configuration values
@@ -70,9 +70,9 @@ git_setup() {
 
 # SSH configuration using priv key
 ssh_authenticate() {
-	sudo chmod 0600 /tmp/rom/ssh_ci
+	sudo chmod 0600 /cirrus/rom/ssh_ci
 	sudo mkdir ~/.ssh && sudo chmod 0700 ~/.ssh
-	eval `ssh-agent -s` && ssh-add /tmp/rom/ssh_ci
+	eval `ssh-agent -s` && ssh-add /cirrus/rom/ssh_ci
 	ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 }
 
@@ -103,7 +103,7 @@ commit_sha() {
 # Setup ccache
 ccache_configuration() {
     export SELINUX_IGNORE_NEVERALLOWS=true
-	export CCACHE_DIR=/tmp/ccache
+	export CCACHE_DIR=/cirrus/ccache
 	export CCACHE_EXEC=$(which ccache)
 	export USE_CCACHE=1
 	export CCACHE_MAXSIZE=50G
