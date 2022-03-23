@@ -5,14 +5,14 @@ env:
     TG_CHAT_ID: "ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]"
     SF_USERNAME: "ENCRYPTED[9b9deac88b090b7dc4e69a058e79360e8832c782b9bd46499a7f1401e66e219bad7c9c901a85eeb0d154f717cfc5f148]"
     SF_PASS: "ENCRYPTED[9d4e6509f1294d4d9b39c9f092f32123bef7cdf2c773cda6f80867a329c629d6ab9f1cee0db0c38184bd13d8e8a5556f]"
-    ROM_PROJECT: "cherishos-12.1"
+    ROM_PROJECT: "lineage-19.1"
     DOCKER_HUB_PWD: "ENCRYPTED[45147df4523a226976c523c65f2a84d3361dff9316c97a1cef1aee1ac524b430d5a4b48e18f28603109a27f52bc7a721]"
  
 task:
   name: Syncing, Building and Uploading
   timeout_in: 4h
   container:
-    image: arifjenong/rom:cherish
+    image: arifjenong/rom:cirrus
     cpu: 8
     memory: 32G
 
