@@ -19,12 +19,15 @@ task:
   Env_background_script:
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
+      - cd /cirrus/rom
       - git config --global user.name "ariffjenong"
       - git config --global user.email "arifbuditantodablekk@gmail.com"
       - git config --global color.ui false
 
   Download_background_script:
+      - cd /cirrus
       - time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.gz /cirrus -P
+      - ls -lh
       - time tar xf ccache.tar.gz
       - rm ccache.tar.gz
 
