@@ -17,29 +17,19 @@ task:
     memory: 32G
 
   Env_background_script:
-      - mkdir -p ~/.config/rclone
-      - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      - cd /cirrus/rom
-      - git config --global user.name "ariffjenong"
-      - git config --global user.email "arifbuditantodablekk@gmail.com"
-      - git config --global color.ui false
+      - ./env.sh
 
   Download_background_script:
       - time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.gz /cirrus -P
-      - cd /cirrus
-      - ls -lh
-      - time tar xf ccache.tar.gz
-      - rm ccache.tar.gz
+      - ./setup.sh
 
   Retry_background_script:
       - ./retry.sh
 
   UploadCc_script:
-      #- ./ziper.sh
       - ./build_zip.sh
 
   Sync_script:
-      #- ./repo.sh
       - cd /cirrus/rom
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
