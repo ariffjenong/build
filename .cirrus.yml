@@ -26,4 +26,3 @@ task:
     - ./build.sh
   Final_uploadCc_script:
     - ./final_uploadCc.sh
- 
