@@ -12,7 +12,7 @@ env
  export CCACHE_DIR=/cirrus/ccache
  export CCACHE_EXEC=$(which ccache)
  export USE_CCACHE=1
- ccache -M 15G
+ ccache -M 25G
  ccache -z
  export ALLOW_MISSING_DEPENDENCIES=true
  export BUILD_HOSTNAME=ArifJeNong
