@@ -12,7 +12,7 @@ env
  export CCACHE_DIR=/cirrus/ccache
  export CCACHE_EXEC=$(which ccache)
  export USE_CCACHE=1
- ccache -M 45G
+ ccache -M 50G
  ccache -z
  export ALLOW_MISSING_DEPENDENCIES=true
  export BUILD_HOSTNAME=ArifJeNong
@@ -27,7 +27,7 @@ env
 mka bacon -j24 & #dont remove that '&'
 #sleep 50m #first running
 #sleep 106m #second running
-sleep 105m #third running
+sleep 104m #third running
 kill %1
  
 #make bacon -j12
