@@ -5,7 +5,7 @@ env:
     SF_USERNAME: "ENCRYPTED[9b9deac88b090b7dc4e69a058e79360e8832c782b9bd46499a7f1401e66e219bad7c9c901a85eeb0d154f717cfc5f148]"
     SF_PASS: "ENCRYPTED[9d4e6509f1294d4d9b39c9f092f32123bef7cdf2c773cda6f80867a329c629d6ab9f1cee0db0c38184bd13d8e8a5556f]"
     GIT: "ENCRYPTED[293e9962b531796f7d2c267cb481cbb126e69405c451abeb85e1645fe29f7d32c6cb22c2a7b6d186c347aefd666d3e3b]"
-    ROM_PROJECT: "cherish-12"
+    ROM_PROJECT: "cherish-12.1"
  
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -23,14 +23,19 @@ task:
       #- git config --global credential.helper store --file=~/.git-credentials
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
+      - mkdir -p ~/rom/out/target/product/maple
+      - cd ~/rom/out/target/product/maple
+      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple/Cherish-OS-v3.5.2-20220324-0526-maple-UNOFFICIAL-GApps.zip -x16 -s50
       - mkdir -p ~/rom/out/target/product/maple_dsds
       - cd ~/rom/out/target/product/maple_dsds
       - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Cherish-OS-v3.5.2-20220323-2119-maple_dsds-UNOFFICIAL-GApps.zip -x16 -s50
 
   SF_script:
       #- ./sf.sh
-      - ./build_zip.sh
-      #- cd ~/rom/out/target/product/maple
-      #- rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT
+      #- ./build_zip.sh
+      - cd ~/rom/out/target/product/maple
+      - rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT/maple
+      - cd ~/rom/out/target/product/maple_dsds
+      - rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT/maple_dsds
       - cd ~ && rm -rf rom #&& rm .git-credentials
  
