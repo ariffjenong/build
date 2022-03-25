@@ -28,8 +28,8 @@ task:
       - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Cherish-OS-v3.5.2-20220323-2119-maple_dsds-UNOFFICIAL-GApps.zip -x16 -s50
 
   SF_script:
-      - ./sf.sh
-      #- ./build_zip.sh
+      #- ./sf.sh
+      - ./build_zip.sh
       #- cd ~/rom/out/target/product/maple
       #- rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT
       - cd ~ && rm -rf rom #&& rm .git-credentials
