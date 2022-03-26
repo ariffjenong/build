@@ -32,5 +32,5 @@ env
  
 mka bacon -j24
 #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /rom/out/target/product/maple_dsds/ && ls *maple*UNOFFICIAL*.zip) Completed!"
-      
+
 ccache -s
