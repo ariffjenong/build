@@ -17,6 +17,9 @@ retry_ccache () {
 		git push -q
 	else
 		echo "Ccache is fully configured"
+		git clone ${TOKEN}/ariffjenong/build -b $ROM_PROJECT clone && cd clone
+		git commit --allow-empty -m "Retry Build $(date -u +"%D %T%p %Z")"
+		git push -q
 	fi
 }
 
@@ -29,6 +32,6 @@ retry_event() {
 	fi
 }
 
-cd /cirrus/rom && sleep 7290
+cd /cirrus/rom && sleep 117m
 compiled_zip
 retry_event
