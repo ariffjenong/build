@@ -8,4 +8,9 @@ sync () {
     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
 }
 
-sync && echo "done"
+compile () {
+    sync
+    echo "done"
+}
+
+compile
