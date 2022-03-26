@@ -43,5 +43,4 @@ task:
 
   SF_script:
       #- ./sf.sh
-      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd cirrus/rom/out/target/product/maple_dsds && ls *UNOFFICIAL*.zip) Uploaded Successfully!"
-      - sleep 2m
+      - curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /cirrus/rom/out/target/product/maple_dsds && ls *UNOFFICIAL*.zip) Uploaded Successfully!"
