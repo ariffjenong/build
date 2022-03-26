@@ -8,6 +8,8 @@ compiled_zip() {
 
 # Retry the ccache fill for 99-100% hit rate
 retry_ccache () {
+    export CCACHE_DIR=/cirrus/ccache
+    export CCACHE_EXEC=$(which ccache)
 	hit_rate=$(ccache -s | awk '/hit rate/ {print $4}' | cut -d'.' -f1)
 	if [ $hit_rate -lt 99 ]; then
 		git clone ${TOKEN}/ariffjenong/build -b $ROM_PROJECT clone && cd clone
@@ -27,6 +29,6 @@ retry_event() {
 	fi
 }
 
-cd /cirrus/rom && sleep 118m
+cd /cirrus/rom && sleep 7290
 compiled_zip
 retry_event
