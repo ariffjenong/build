@@ -12,7 +12,7 @@ env
  export CCACHE_DIR=/cirrus/ccache
  export CCACHE_EXEC=$(which ccache)
  export USE_CCACHE=1
- ccache -M 50G
+ ccache -M 80G
  ccache -z
  export SELINUX_IGNORE_NEVERALLOWS=true
  export BUILD_HOSTNAME=ArifJeNong
