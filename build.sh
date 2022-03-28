@@ -24,13 +24,13 @@ env
 #make init -j24
 #make services
 #make systemimage &
-#mka bacon -j24 & #dont remove that '&'
+mka bacon -j24 & #dont remove that '&'
 #sleep 50m #first running
 #sleep 105m #second running
-#sleep 103m #third running
-#kill %1
+sleep 106m #third running
+kill %1
  
-mka bacon -j24
+#mka bacon -j24
 #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Build $(cd /rom/out/target/product/maple_dsds/ && ls *maple*UNOFFICIAL*.zip) Completed!"
 
 ccache -s
