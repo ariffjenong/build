@@ -28,7 +28,8 @@ task:
       - cd ~/github
       - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998.git -b lineage-19.0_bpf_backport_new kernel
       - cd ~/github/kernel
-      - git cherry-pick https://github.com/pundiramit/linux/commit/825ea28fda354359711720879aeedc57d1c03641
+      - git fetch https://github.com/pundiramit/linux
+      - git cherry-pick 825ea28fda354359711720879aeedc57d1c03641
       #- git remote add derf https://github.com/Classic-Phone-Devs/android_vendor_sony_maple.git
       #- git remote add ar https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git
       #- git fetch ar
