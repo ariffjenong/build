@@ -26,7 +26,7 @@ env
 #make systemimage &
 make bacon -j24 & #dont remove that '&'
 #sleep 50m #first running
-sleep 106m #second running
+sleep 107m #second running
 #sleep 103m #third running
 kill %1
  
