@@ -25,7 +25,7 @@ task:
       - ./setup.sh
 
   Retry_background_script:
-      - ./retry.sh
+      #- ./retry.sh
 
   Sync_script:
       - ./repo.sh
