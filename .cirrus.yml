@@ -29,11 +29,10 @@ task:
       - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998.git -b lineage-19.0_bpf_backport_new kernel
       - cd ~/github/kernel
       - git remote add what https://github.com/whatawurst/android_kernel_sony_msm8998
-      - git fetch what
       - git checkout what/lineage-19.1
       - git switch -c lineage-19.1
       - git remote add Am https://github.com/Amy07i/android_kernel_sony_msm8998
-      - git fetch Am
+      - git fetch Am lineage-19.1
       - git cherry-pick 12892d5b9a3dc9c3f3673178e3d88dc6581a91c6
       - git cherry-pick 1a8517e4114baad147bf50c6f251bc5042d2ea0d
       - git cherry-pick d601d5ad7dbfa91de2bed6f74fce2296fd6810c1
