@@ -12,12 +12,14 @@ retry_ccache () {
     export CCACHE_EXEC=$(which ccache)
 	hit_rate=$(ccache -s | awk '/hit rate/ {print $4}' | cut -d'.' -f1)
 	if [ $hit_rate -lt 99 ]; then
-		git clone ${TOKEN}/ariffjenong/build -b $ROM_PROJECT_vanilla clone && cd clone
+		git clone --depth=1 ${TOKEN}/ariffjenong/build.git -b cherish-12.1_vanilla clone
+        cd clone
 		git commit --allow-empty -m "Retry: Ccache loop $(date -u +"%D %T%p %Z")"
 		git push -q
 	else
 		echo "Ccache is fully configured"
-		git clone ${TOKEN}/ariffjenong/build -b $ROM_PROJECT_vanilla clone && cd clone
+		git clone --depth=1 ${TOKEN}/ariffjenong/build.git -b cherish-12.1_vanilla clone
+        cd clone
 		git commit --allow-empty -m "Retry Build $(date -u +"%D %T%p %Z")"
 		git push -q
 	fi
