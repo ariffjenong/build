@@ -32,7 +32,7 @@ task:
       - git fetch what
       - git checkout what/lineage-19.1
       - git switch -c lineage-19.1
-      - git git remote add Am https://github.com/Amy07i/android_kernel_sony_msm8998
+      - git git remote add Am https://github.com/Amy07i/android_kernel_sony_msm8998/tree/lineage-19.1
       - git fetch Am
       - git cherry-pick 12892d5b9a3dc9c3f3673178e3d88dc6581a91c6
       - git cherry-pick 1a8517e4114baad147bf50c6f251bc5042d2ea0d
