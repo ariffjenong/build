@@ -14,7 +14,7 @@ env
  export USE_CCACHE=1
  ccache -M 50G
  ccache -z
- export CHERISH_VANILLA=true
+ #export CHERISH_VANILLA=true
  export ALLOW_MISSING_DEPENDENCIES=true
  export BUILD_HOSTNAME=ArifJeNong
  export BUILD_USERNAME=ArifJeNong
