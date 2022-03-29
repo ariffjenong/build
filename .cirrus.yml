@@ -28,8 +28,76 @@ task:
       - cd ~/github
       - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998.git -b lineage-19.0_bpf_backport_new kernel
       - cd ~/github/kernel
-      - git fetch https://github.com/pundiramit/linux
-      - git cherry-pick 825ea28fda354359711720879aeedc57d1c03641
+      - git remote add what https://github.com/ariffjenong/android_kernel_sony_msm8998
+      - git fetch what
+      - git checkout what/lineage-19.1
+      - git switch -c lineage-19.1
+      - git git remote add Am https://github.com/Amy07i/android_kernel_sony_msm8998
+      - git fetch Am
+      - git cherry-pick 12892d5b9a3dc9c3f3673178e3d88dc6581a91c6
+      - git cherry-pick 1a8517e4114baad147bf50c6f251bc5042d2ea0d
+      - git cherry-pick d601d5ad7dbfa91de2bed6f74fce2296fd6810c1
+      - git cherry-pick 6fee91920828c065216adb784d8e4daab1f93d93
+      - git cherry-pick 7fa1940139380761d544f397012b60c7d8d64ac0
+      - git cherry-pick 9f646a1e5dbe9db6e3cb16b681bab8f9822d2429
+      - git cherry-pick 5b0a0439e42f27b36099198b210d906835b9d1e8
+      - git cherry-pick ba98c5fa0b4f83f554e128053bc7b9e128b8f6fc
+      - git cherry-pick 58878f5034853aef92fe337c255427b574abb715
+      - git cherry-pick 2de7901f82fc70de4444a57d740c388a9c83685e
+      - git cherry-pick f0f32160029774c77f4c1099e7efd56f38f60f21
+      - git cherry-pick 166d6541f395f721e84169851e50af69b8d7b826
+      - git cherry-pick e562542c9d0cb4638a6348216fb56f9f4c73151e
+      - git cherry-pick 96a0a43a047050df2830be53e8bb9d010dc1517d
+      - git cherry-pick b1a9776fa7dc3a01831d29b5d617f0b5a8cdbd6d
+      - git cherry-pick a942e62812503bb528bf165049f6a5addc809ba3
+      - git cherry-pick 464bbf4e89b2765ba134d32512d0d65e878e0b1a
+      - git cherry-pick 1322f2f6f91575437b7fab682a4eed83de559a27
+      - git cherry-pick 5488327e3b30dd1bdd05b6eee42fe006a346e9df
+      - git cherry-pick 10978c013256e9a25eb16af5cf9d2ec18318340f
+      - git cherry-pick 29d3b85b0889e7f762075febaac9c92fb8bca829
+      - git cherry-pick d80723e1effac69fbac291a1f56fe7fa308414b3
+      - git cherry-pick ed46f2dff7d484cf1a3768ca4306d632c613fcf6
+      - git cherry-pick 6f1a5c0f95795668ec5e23d3fe9abeb19aeb4569
+      - git cherry-pick 37c1aff9a08c21e34ba50c113cf63e76e9c15dbe
+      - git cherry-pick 23fd349620a54058489646998b68810bbdffa2b6
+      - git cherry-pick 0d3c0c1193bf41ba0b2889c3691a85262dda08df
+      - git cherry-pick 5da2feee36e2d09fce682dfd5fdf44834ab22bdc
+      - git cherry-pick c3bf2bee814ab98245ff52596b3023432912d688
+      - git cherry-pick 4cf38393de04efcada0626833dc5ee7e0597d66d
+      - git cherry-pick 3b7a560540b2aed6e9a3824d810da3d37108266a
+      - git cherry-pick b31949ff409111fd58297b5dc1131e48a0b18597
+      - git cherry-pick 0a97b0ec4f58614e79da24297cb8ae3b138ecdcd
+      - git cherry-pick 56ac3ec0cd5b3d95b4de3df9f8080fcd1cc5cd6b
+      - git cherry-pick 9a1410b07a01baac3a9df5f9f30adf3992adfcc5
+      - git cherry-pick 9a571dca3156247e39a5a0dbc36fdc30697d028e
+      - git cherry-pick ce372b860a29aa05f490963696507f94ec797852
+      - git cherry-pick abad589c0bc02b4a536b3433b3ff9a33583eb4b3
+      - git cherry-pick 2ba6f62c944604ffbfb719205744ef2ea4424e93
+      - git cherry-pick 8e44a733be39299ef6a9a5f45783951cadeed49d
+      - git cherry-pick 4f8ffd471a936ba1a2965a8e4cbb50669e7b8af4
+      - git cherry-pick 1bce4108b5543f61fdba2a281779dfd6ac33b7d3
+      - git cherry-pick 8a5e9267377e82cf09b8107c024535fc7006c162
+      - git cherry-pick 0ac863c541f80d4d7675471d7f6004dd0df554c7
+      - git cherry-pick 7289a7e370f1baa47211ff3a844064c9561644e1
+      - git cherry-pick 1ac4074e0c7ebabb42b7e752ef078930acd5cfeb
+      - git cherry-pick 80c8dfc85c9c29dde066e00981901f2c3f32a677
+      - git cherry-pick 5380de95f7ac594f1334ba3df285a34ebc741cad
+      - git cherry-pick cc5c53a76b559e7fddc0bb30bb9d8be530554f6b
+      - git cherry-pick 5e2d59c17b6f0bc61b689a6e995606211ec3157c
+      - git cherry-pick 6d1e6ec903795a529602b3213d912120a210d2f1
+      - git cherry-pick 7a2588b2112ad82f26beb03a44bbb8d5f6ab02d3
+      - git cherry-pick 3ea3431fb05b5518f6399438d0875936917a88a9
+      - git cherry-pick 3e22e5b7e69626c171519c9a1904674a5fd56cf2
+      - git cherry-pick a85af0d436fe99daca78d78e658b12228d26f4e6
+      - git cherry-pick 29ef768eccc78b0deebc4df48d72f53726c7ce8f
+      - git cherry-pick 3f5f55607ac530928d68d1538b9a4f58828e54f7
+      - git cherry-pick 9d61b8b987d2caca0e9cb081536cf842dfb2ed1c
+      - git cherry-pick 317711987072643ead8c7610f57e25cf0fae86ef
+      - git cherry-pick c9583cd76c7520366f7f2f4491af58ee8fcfb157
+      - git cherry-pick 3230881d7cc72b21a7f8f91e4a3ddeff9d87b2be
+      - git cherry-pick 0c10e97138fedb8536557da5a269ff50da64695d
+      - git cherry-pick b8877fa9ee91001098511106535ff82bfc66711d
+      - git cherry-pick 4acf90ac7173587c3905529e2abef0209b1f2f26 
       #- git remote add derf https://github.com/Classic-Phone-Devs/android_vendor_sony_maple.git
       #- git remote add ar https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git
       #- git fetch ar
@@ -44,7 +112,7 @@ task:
       #- cd ~/github/vendor_maple
       #- git add . && git commit
       #- git push origin lineage-19.0
-      - git push origin lineage-19.0_bpf_backport_new
+      - git push origin lineage-19.1
 
   SF_script:
       - cd ~ && rm -rf .config && rm -rf github && rm .git-credentials
