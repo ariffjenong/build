@@ -10,7 +10,7 @@ sync () {
 
 compile () {
     sync
-    echo "done"
+    echo "done."
 }
 
 compile
