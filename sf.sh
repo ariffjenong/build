@@ -17,6 +17,8 @@ send \"yes\r\"
 expect \"Password\"
 send \"${SF_PASS}\r\"
 expect \"sftp> \"
+send \"mkdir $ROM_PROJECT\r\"
+expect \"sftp> \"
 send \"cd $ROM_PROJECT\r\"
 set timeout -1
 send \"put $product\r\"
@@ -50,6 +52,8 @@ expect -c "
 spawn sftp $SF_USERNAME@frs.sourceforge.net:/home/pfs/project/$projectmaple
 expect \"Password\"
 send \"${SF_PASS}\r\"
+expect \"sftp> \"
+send \"mkdir $ROM_PROJECT\r\"
 expect \"sftp> \"
 send \"cd $ROM_PROJECT\r\"
 set timeout -1
