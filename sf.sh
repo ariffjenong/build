@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cd ~/rom/out/target/product/maple_dsds
-
 
 sudo apt-get update -y && sudo apt-get install expect -y
+
+cd ~/rom/out/target/product/maple_dsds
 
 GAPPS=$(ls *GApps*.zip)
 product=$(ls *Vanilla*.zip)
@@ -14,7 +14,7 @@ expect -c "
 spawn sftp $SF_USERNAME@frs.sourceforge.net:/home/pfs/project/$project
 expect \"yes/no\"
 send \"yes\r\"
-expect \"Password:\"
+expect \"Password \"
 send \"${SF_PASS}\r\"
 expect \"sftp> \"
 send \"cd $ROM_PROJECT\r\"
