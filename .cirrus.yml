@@ -25,13 +25,14 @@ task:
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
       - mkdir -p ~/rom/out/target/product/maple
       - cd ~/rom/out/target/product/maple
-      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple/Cherish-OS-v3.5.2-20220324-0526-maple-UNOFFICIAL-GApps.zip -x16 -s50
+      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple/Cherish-OS-v3.5.5-20220330-2336-maple-UNOFFICIAL-GApps.zip -x16 -s50
       - mkdir -p ~/rom/out/target/product/maple_dsds
       - cd ~/rom/out/target/product/maple_dsds
-      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Cherish-OS-v3.5.2-20220323-2119-maple_dsds-UNOFFICIAL-GApps.zip -x16 -s50
+      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Cherish-OS-v3.5.5-20220331-0112-maple_dsds-UNOFFICIAL-GApps.zip -x16 -s50
+      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Cherish-OS-v3.5.5-20220330-1957-maple_dsds-UNOFFICIAL-Vanilla.zip -x16 -s50
 
   SF_script:
-      #- ./sf.sh
+      - ./sf.sh
       #- ./build_zip.sh
       - cd ~/rom/out/target/product/maple
       - rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT/maple
