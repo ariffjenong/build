@@ -15,7 +15,8 @@ spawn sftp $SF_USERNAME@frs.sourceforge.net:/home/pfs/project/$project
 expect \"yes/no\"
 send \"yes\r\"
 expect \"Password\"
-send \"$SF_PASS\r\"
+send \"${SF_PASS}\r\"
+set timeout -1
 expect \"sftp> \"
 send \"cd $ROM_PROJECT\r\"
 set timeout -1
