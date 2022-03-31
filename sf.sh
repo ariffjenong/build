@@ -14,7 +14,7 @@ expect -c "
 spawn sftp $SF_USERNAME@frs.sourceforge.net:/home/pfs/project/$project
 expect \"yes/no\"
 send \"yes\r\"
-expect \"Password\"
+expect \"Password:\"
 send \"${SF_PASS}\r\"
 expect \"sftp> \"
 send \"cd $ROM_PROJECT\r\"
