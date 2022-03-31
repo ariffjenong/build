@@ -6,7 +6,7 @@ cd ~/rom/out/target/product/maple_dsds
 sudo apt-get update -y && sudo apt-get install expect -y
 
 GAPPS=$(ls *GApps*.zip)
-product=$(ls *VANILLA*.zip)
+product=$(ls *Vanilla*.zip)
 project=xperia-xz-premium/maple_dsds
 
 # Upload
@@ -19,7 +19,7 @@ send \"$SF_PASS\r\"
 expect \"sftp> \"
 send \"cd $ROM_PROJECT\r\"
 set timeout -1
-send \"put $VANILLA\r\"
+send \"put $product\r\"
 expect \"Uploading\"
 expect \"100%\"
 expect \"sftp>\"
@@ -42,7 +42,7 @@ Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendM
 cd ~/rom/out/target/product/maple
 
 productGAPPS=$(ls *GApps*.zip)
-#productmaple=$(ls *VANILLA*.zip)
+#productmaple=$(ls *Vanilla*.zip)
 projectmaple=xperia-xz-premium/maple
 
 # Upload
