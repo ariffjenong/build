@@ -16,9 +16,9 @@ retry_ccache () {
 		git commit --allow-empty -m "Retry: Ccache loop $(date -u +"%D %T%p %Z")"
 		git push -q
 	else
-		echo "======================"
+		echo "========================="
 		echo " Ccache is fully configured"
-		echo "======================"
+		echo "========================="
 		echo "clone...."
 		git clone ${TOKEN}/ariffjenong/build -b los-19.1 clone && cd $_
 		git commit --allow-empty -m "Retry Build $(date -u +"%D %T%p %Z")"
@@ -29,9 +29,9 @@ retry_ccache () {
 # Trigger retry only if compilation is not finished
 retry_event() {
 	if [ -f $(pwd)/out/target/product/maple_dsds/${ZIPNAME} ]; then
-		echo "============="
+		echo "================"
 		echo "Successful Build"
-		echo "============="
+		echo "================"
 	else
 		retry_ccache
 	fi
