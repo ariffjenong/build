@@ -3,7 +3,8 @@ cd /cirrus
 
 com ()
 {
-    tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
+    #tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
+    tar "-I zstd -1 -T2" -cf $1.tar.zst $1
 }
 
 time com ccache 1
@@ -11,7 +12,7 @@ time com ccache 1
 
 #echo "$rclone_config" > ~/.config/rclone/rclone.conf
 #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache...."
-time rclone copy ccache.tar.gz znxtproject:ccache/${ROM_PROJECT}_vanilla -P
+time rclone copy $(ls ccache.tar.*) znxtproject:ccache/${ROM_PROJECT}_vanilla -P
 #cd ~
 #time com rom 1
 ls -lh
