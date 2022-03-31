@@ -14,7 +14,7 @@ expect -c "
 spawn sftp $SF_USERNAME@frs.sourceforge.net:/home/pfs/project/$project
 expect \"yes/no\"
 send \"yes\r\"
-expect \"Password\"
+expect \"Password \"
 send \"${SF_PASS}\r\"
 expect \"sftp> \"
 send \"mkdir $ROM_PROJECT\r\"
@@ -50,7 +50,7 @@ projectmaple=xperia-xz-premium/maple
 # Upload
 expect -c "
 spawn sftp $SF_USERNAME@frs.sourceforge.net:/home/pfs/project/$projectmaple
-expect \"Password\"
+expect \"Password \"
 send \"${SF_PASS}\r\"
 expect \"sftp> \"
 send \"mkdir $ROM_PROJECT\r\"
