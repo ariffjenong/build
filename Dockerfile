@@ -54,8 +54,6 @@ RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip \
     && sudo cp rclone /usr/bin/ && sudo chown root:root /usr/bin/rclone \
     && sudo chmod 755 /usr/bin/rclone
 
-RUN rm zstd-1.5.2.tar.gz rclone-current-linux-amd64.zip
-
 WORKDIR /cirrus/script
 
 RUN bash setup/android_build_env.sh
