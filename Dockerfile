@@ -1,6 +1,14 @@
 FROM ubuntu:focal
 LABEL maintainer="ariffjenong <arifbuditantodablekk@gmail.com>"
+
 ENV DEBIAN_FRONTEND noninteractive
+ENV USE_CCACHE 1
+ENV LC_ALL C
+ENV CCACHE_COMPRESS 1
+ENV CCACHE_SIZE 50G
+ENV CCACHE_DIR /cirrus/ccache
+ENV CCACHE_EXEC /usr/bin/ccache 
+ENV USE_CCACHE true
 
 WORKDIR /cirrus
 
@@ -51,5 +59,13 @@ WORKDIR /cirrus/script
 
 RUN bash setup/android_build_env.sh
 
+WORKDIR /cirrus
+
+RUN rm zstd-1.5.2.tar.gz rclone-current-linux-amd64.zip \
+    && rm -rf brotli kati make ninja nsjail rclone-v1.58.0-linux-amd64 script zstd-1.5.2
+
 VOLUME ["/cirrus/ccache", "/cirrus/rom"]
+
+WORKDIR /cirrus/rom
+
 ENTRYPOINT ["/bin/bash"]
