@@ -7,7 +7,8 @@ upload_maple_dsds () {
 cd ~/rom/out/target/product/maple_dsds
 
 GAPPS=$(ls *GApps*.zip)
-product=$(ls *Vanilla*.zip)
+#product=$(ls *Vanilla*.zip)
+product=$(ls *UNOFFICIAL*.zip)
 project=xperia-xz-premium/maple_dsds
 
 # Upload
@@ -23,10 +24,6 @@ expect \"sftp> \"
 send \"cd $ROM_PROJECT\r\"
 set timeout -1
 send \"put $product\r\"
-expect \"Uploading\"
-expect \"100%\"
-expect \"sftp>\"
-send \"put $GAPPS\r\"
 expect \"Uploading\"
 expect \"100%\"
 expect \"sftp>\"
@@ -77,5 +74,5 @@ Server Host : cirrus-ci
 Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendMessage
 }
 
-#upload_maple_dsds
-upload_maple
+upload_maple_dsds
+#upload_maple
