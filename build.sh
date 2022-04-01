@@ -14,7 +14,7 @@ env
  export USE_CCACHE=1
  ccache -M 80G
  ccache -z
- export SELINUX_IGNORE_NEVERALLOWS=true
+ #export SELINUX_IGNORE_NEVERALLOWS=true
  export BUILD_HOSTNAME=ArifJeNong
  export BUILD_USERNAME=ArifJeNong
  export TZ=Asia/Jakarta
