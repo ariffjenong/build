@@ -1,6 +1,15 @@
-FROM ubuntu:focal
+FROM ubuntu:18.04
 LABEL maintainer="ariffjenong <arifbuditantodablekk@gmail.com>"
+
 ENV DEBIAN_FRONTEND noninteractive
+ENV USE_CCACHE 1
+ENV LC_ALL C
+ENV CCACHE_COMPRESS 1
+ENV CCACHE_SIZE 50G
+ENV CCACHE_DIR /cirrus/ccache
+ENV CCACHE_EXEC /usr/bin/ccache 
+ENV USE_CCACHE true
+
 
 WORKDIR /cirrus
 
@@ -49,7 +58,7 @@ WORKDIR /cirrus/rom
 
 RUN repo init --depth=1 --no-repo-verify -u https://github.com/LineageOS/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault \
     && git clone https://github.com/ariffjenong/local_manifest.git --depth=1 -b LOS19 .repo/local_manifests \
-    && repo sync hardware/qcom/wlan prebuilts/runtime prebuilts/rust build/make system/apex system/bt system/core system/media device/qcom/sepolicy device/qcom/sepolicy-legacy-um hardware/qcom-caf/msm8998/audio hardware/qcom/audio bionic art sdk prebuilts/extract-tools prebuilts/tools-lineage vendor/lineage frameworks/native frameworks/av frameworks/base kernel/sony/msm8998 device/sony/maple_dsds device/sony/yoshino-common vendor/sony/maple_dsds -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24 || repo sync hardware/qcom/wlan prebuilts/runtime prebuilts/rust build/make system/apex system/bt system/core system/media device/qcom/sepolicy device/qcom/sepolicy-legacy-um hardware/qcom-caf/msm8998/audio hardware/qcom/audio bionic art sdk prebuilts/extract-tools prebuilts/tools-lineage vendor/lineage frameworks/native frameworks/av frameworks/base kernel/sony/msm8998 device/sony/maple_dsds device/sony/yoshino-common vendor/sony/maple_dsds -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
+    && repo sync external/lottie external/ims external/icing external/icu system/linkerconfig system/libvintf system/libbase external/json-c external/ant-wireless/hidl external/ant-wireless/ant_service external/ant-wireless/ant_native external/ant-wireless/ant_client hardware/qcom-caf/common hardware/qcom-caf/wlan hardware/qcom-caf/vr hardware/qcom-caf/thermal lineage/scripts vendor/codeaurora/telephony lineage/crowdin android device/lineage/atv device/lineage/car device/lineage/sepolicy external/bash external/chromium-webview external/exfatprogs external/htop external/libncurses external/nano external/tinyxml hardware/lineage/interfaces hardware/lineage/livedisplay external/vim prebuilts/runtime prebuilts/rust build/make system/apex system/bt system/core system/media device/qcom/sepolicy device/qcom/sepolicy-legacy-um hardware/qcom-caf/msm8998/audio hardware/qcom/audio bionic art sdk prebuilts/extract-tools prebuilts/tools-lineage vendor/lineage frameworks/native frameworks/av frameworks/base kernel/sony/msm8998 device/sony/maple_dsds device/sony/yoshino-common vendor/sony/maple_dsds -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
 
 WORKDIR /cirrus/script
 
@@ -61,4 +70,7 @@ RUN rm zstd-1.5.2.tar.gz rclone-current-linux-amd64.zip \
     && rm -rf brotli kati make ninja nsjail rclone-v1.58.0-linux-amd64 script zstd-1.5.2
 
 VOLUME ["/cirrus/ccache", "/cirrus/rom"]
+
+WORKDIR /cirrus/rom
+
 ENTRYPOINT ["/bin/bash"]
