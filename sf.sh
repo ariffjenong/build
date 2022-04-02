@@ -5,7 +5,7 @@ cd /cirrus/rom/out/target/product/maple_dsds
 
 product=$(ls *maple_dsds*UNOFFICIAL*.zip)
 md5sum=$(ls *.md5sum)
-project=xperia-xz-premium/maple_dsds
+project=xperia-xz-premium
 
 # Upload
 expect -c "
@@ -14,6 +14,12 @@ expect \"yes/no\"
 send \"yes\r\"
 expect \"Password\"
 send \"$SF_PASS\r\"
+expect \"sftp> \"
+send \"mkdir XdroidOS\r\"
+set timeout -1
+expect \"sftp> \"
+send \"cd XdroidOS\r\"
+set timeout -1
 expect \"sftp> \"
 send \"mkdir $ROM_PROJECT\r\"
 set timeout -1
