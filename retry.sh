@@ -2,7 +2,7 @@
 
 # Sorting final zip
 compiled_zip() {
-	ZIP=$(find $(pwd)/out/target/product/maple_dsds/ -maxdepth 1 -name "*maple_dsds*.zip" | perl -e 'print sort { length($b) <=> length($a) } <>' | head -n 1)
+	ZIP=$(find $(pwd)/out/target/product/maple_dsds/system/vendor/etc -maxdepth 1 -name "selinux" | perl -e 'print sort { length($b) <=> length($a) } <>' | head -n 1)
 	ZIPNAME=$(basename ${ZIP})
 }
 
