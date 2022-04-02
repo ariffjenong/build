@@ -15,9 +15,10 @@ ENV TZ=Asia/Jakarta
 
 WORKDIR /cirrus
 
-RUN apt-get -yqq update
-RUN apt-get -yqq upgrade
-RUN apt-get install  --no-install-recommends -yqq expect git-core gnupg flex bison build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig     ca-certificates bc cpio imagemagick bsdmainutils python2 python-is-python3 lz4 aria2 ccache rclone ssh-client libncurses5 libssl-dev rsync schedtool sudo lld zstd libzstd \
+RUN set -x \
+  && apt-get -yqq update \
+  && apt-get -yqq upgrade \
+  && apt-get install  --no-install-recommends -yqq expect git-core gnupg flex bison build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig     ca-certificates bc cpio imagemagick bsdmainutils python2 python-is-python3 lz4 aria2 ccache rclone ssh-client libncurses5 libssl-dev rsync schedtool sudo lld zstd libzstd \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /var/cache/apt/archives \
