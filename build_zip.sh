@@ -51,6 +51,7 @@ get_selinux () {
   system
   product
   system-ext
+  vendor
   root
 }
 
