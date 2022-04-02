@@ -7,9 +7,10 @@
  export USE_CCACHE=1
  ccache -M 50G
  ccache -z
- export BUILD_HOSTNAME=ArifJeNong
+ export BUILD_HOSTNAME=ubuntu
  export BUILD_USERNAME=ArifJeNong
  export XDROID_BOOT=1080
+ export XDROID_MAINTAINER=ArifJeNong
  export TZ=Asia/Jakarta
 
 #get ccache first
