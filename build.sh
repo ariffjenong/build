@@ -15,7 +15,7 @@
 
 #get ccache first
 make xd  -j24 &
-sleep 106m #first running
+sleep 105m #first running
 #sleep 106m
 kill %1
  
