@@ -12,17 +12,11 @@
  export BUILD_HOSTNAME=linux
  export BUILD_USERNAME=ArifJeNong
  export TZ=Asia/Jakarta
- #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
-#make sepolicy -j24
-#make bootimage -j24
-#make init -j24
-#make services
-#make systemimage &
 mka bacon -j24 & #dont remove that '&'
-#sleep 50m #first running
-#sleep 103m #second running
-sleep 104m #third running
+sleep 106m #first running
+#sleep 105m #second running
+#sleep 104m #third running
 kill %1
  
 #mka bacon -j24
-ccache -s
+#ccache -s
