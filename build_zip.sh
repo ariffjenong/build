@@ -18,6 +18,7 @@ system () {
   ls -lh
   time com selinux 1
   time rclone copy selinux.tar.* znxtproject:rom/CherishOS/$ROM_PROJECT/system/etc -P
+  rm *tar*
 }
 
 product () {
@@ -25,6 +26,7 @@ product () {
   ls -lh
   time com selinux 1
   time rclone copy selinux.tar.* znxtproject:rom/CherishOS/$ROM_PROJECT/system/product/etc -P
+  rm *tar*
 }
 
 system-ext () {
@@ -32,6 +34,7 @@ system-ext () {
   ls -lh
   time com selinux 1
   time rclone copy selinux.tar.* znxtproject:rom/CherishOS/$ROM_PROJECT/system/system-ext/etc -P
+  rm *tar*
 }
 
 vendor () {
@@ -39,6 +42,7 @@ vendor () {
   ls -lh
   time com selinux 1
   time rclone copy selinux.tar.* znxtproject:rom/CherishOS/$ROM_PROJECT/system/vendor/etc -P
+  rm *tar*
 }
 
 root () {
