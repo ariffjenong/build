@@ -1,27 +1,26 @@
 #!/bin/bash
+
  cd /cirrus/rom
  . build/envsetup.sh
- lunch cherish_maple_dsds-userdebug
- export CCACHE_DIR=/cirrus/ccache
+ lunch nad_maple_dsds-userdebug
+ export CCACHE_DIR=~/znxt/ccache
  export CCACHE_EXEC=$(which ccache)
  export USE_CCACHE=1
  ccache -M 50G
  ccache -z
- #export CHERISH_VANILLA=true
  #export ALLOW_MISSING_DEPENDENCIES=true
- export BUILD_HOSTNAME=linux
- export BUILD_USERNAME=ArifJeNong
+ export USE_GAPPS=true
  export TZ=Asia/Jakarta
+ #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
 #make sepolicy -j24
 #make bootimage -j24
 #make init -j24
 #make services
-make systemimage &
-#mka bacon -j24 & #dont remove that '&'
-#sleep 50m #first running
-#sleep 104m #second running
+make nad &  #dont remove that '&'
+#sleep 83m #first running
+#sleep 100m #second running
 sleep 105m #third running
 kill %1
- 
-#mka bacon
+
+#make nad -j30 #finall
 ccache -s
