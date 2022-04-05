@@ -28,7 +28,6 @@ patch () {
 
 ls -lh
 compile
-patch
 
 # Lets see machine specifications and environments
 df -h
