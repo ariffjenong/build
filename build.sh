@@ -16,7 +16,7 @@
 #get ccache first
 make systemimage &
 #make xd  -j24 &
-sleep 105m #first running
+sleep 104m #first running
 #sleep 106m
 kill %1
  
