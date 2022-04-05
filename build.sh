@@ -3,7 +3,7 @@
  cd /cirrus/rom
  . build/envsetup.sh
  lunch nad_maple_dsds-userdebug
- export CCACHE_DIR=~/znxt/ccache
+ export CCACHE_DIR=/cirrus/ccache
  export CCACHE_EXEC=$(which ccache)
  export USE_CCACHE=1
  ccache -M 50G
@@ -19,7 +19,7 @@
 make nad &  #dont remove that '&'
 #sleep 83m #first running
 #sleep 100m #second running
-sleep 105m #third running
+sleep 106m #third running
 kill %1
 
 #make nad -j30 #finall
