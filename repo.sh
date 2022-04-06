@@ -3,8 +3,8 @@ cd /cirrus/rom
     
 sync () {
     #rm -rf .repo/local_manifests
-    #repo init --depth=1 --no-repo-verify -u https://github.com/NusantaraProject-ROM/android_manifest.git -b 12 -g default,-mips,-darwin,-notdefault
-    #git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b nad-12 .repo/local_manifests
+    repo init --depth=1 --no-repo-verify -u https://github.com/BlissRoms/platform_manifest.git -b arcadia -g default,-mips,-darwin,-notdefault
+    git clone https://github.com/ariffjenong/local_manifest.git --depth 1 -b $ROM_PROJECT .repo/local_manifests
     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j24
 }
 
@@ -28,6 +28,7 @@ patch () {
 
 ls -lh
 compile
+cherry_pick
 
 # Lets see machine specifications and environments
 df -h
