@@ -14,7 +14,7 @@
  export TZ=Asia/Jakarta
 
 #get ccache first
-make systemimage &
+make systemimage -j24 &
 #make xd  -j24 &
 sleep 104m #first running
 #sleep 106m
