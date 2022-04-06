@@ -7,8 +7,8 @@
  export USE_CCACHE=1
  ccache -M 50G
  ccache -z
- export BUILD_HOSTNAME=ubuntu
- export BUILD_USERNAME=ArifJeNong
+ export BUILD_HOSTNAME=znxt
+ export BUILD_USERNAME=znxt
  export XDROID_BOOT=1080
  export XDROID_MAINTAINER=ArifJeNong
  export TZ=Asia/Jakarta
@@ -16,7 +16,7 @@
 #get ccache first
 make systemimage -j24 &
 #make xd  -j24 &
-sleep 104m #first running
+sleep 103m #first running
 #sleep 106m
 kill %1
  
