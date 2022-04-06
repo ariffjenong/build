@@ -14,16 +14,12 @@ compile () {
 }
 
 cherry_pick () {
-  cd frameworks/base
-  git remote add fork https://github.com/ariffjenong/android_frameworks_base-1.git
-  git fetch fork twelve-one && git cherry-pick 8880cb54eed9277a9e3581aa3ad55ba718f7e012 && git cherry-pick 6c0124275d947c784b2f021d8d64b9918a31b369
-}
-
-patch () {
-  cd device/sony/maple_dsds
-  wget https://raw.githubusercontent.com/Flamefire/android_device_sony_lilac/lineage-19.0/patches/applyPatches.sh
-  wget https://raw.githubusercontent.com/Flamefire/android_device_sony_lilac/lineage-19.0/patches/workaround_egl_lib_symbols.patch
-  git add . && git commit -m 'apply path'
+  cd build
+  git fetch https://github.com/LineageOS/android_build refs/changes/79/322579/1 && git cherry-pick FETCH_HEAD
+  cd ../bionic
+  git fetch https://github.com/LineageOS/android_bionic refs/changes/80/322580/2 && git cherry-pick FETCH_HEAD
+  cd ../build/soong
+  git fetch https://github.com/LineageOS/android_build_soong refs/changes/78/322578/1 && git cherry-pick FETCH_HEAD
 }
 
 ls -lh
