@@ -22,7 +22,7 @@ task:
 
   Download_background_script:
       #- time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.gz /cirrus -P
-      - time rclone copy znxtproject:ccache/ROM_PROJECT/ccache.tar.zst /cirrus -P
+      - time rclone copy znxtproject:ccache/$ROM_PROJECT/ccache.tar.zst /cirrus -P
       - ./setup.sh
 
   Retry_background_script:
