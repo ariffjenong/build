@@ -14,8 +14,8 @@ make systemimage &
 #make nad &  #dont remove that '&'
 #sleep 107m #first running
 #sleep 106m #second running
-sleep 105m #third running
-#sleep 104m #fourth running
+#sleep 105m #third running
+sleep 104m #fourth running
 kill %1
 
 #make nad -j30 #finall
