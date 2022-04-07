@@ -12,8 +12,8 @@
  export TZ=Asia/Jakarta
 blissify -g maple_dsds &
 #make nad &  #dont remove that '&'
-sleep 108m #first running
-#sleep 106m #second running
+#sleep 108m #first running
+sleep 106m #second running
 #sleep 105m #third running
 #sleep 104m #fourth running
 kill %1
