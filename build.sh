@@ -8,7 +8,7 @@
  export USE_CCACHE=1
  ccache -M 50G
  ccache -z
- export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
+ #export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
  export TZ=Asia/Jakarta
 blissify -g maple_dsds &
 #make nad &  #dont remove that '&'
