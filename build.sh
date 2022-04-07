@@ -20,6 +20,7 @@ env
  export BUILD_USERNAME=ArifJeNong
  export WITH_GAPPS=true
  export TZ=Asia/Jakarta
+export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
  #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="$(echo "${var_cache_report_config}")"
 #make sepolicy -j24
 #make bootimage -j24
