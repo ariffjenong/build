@@ -9,7 +9,7 @@
  ccache -M 50G
  ccache -z
  export TZ=Asia/Jakarta
-make systemimage &
+blissify -g maple_dsds &
 #make nad &  #dont remove that '&'
 sleep 108m #first running
 #sleep 106m #second running
@@ -17,5 +17,5 @@ sleep 108m #first running
 #sleep 104m #fourth running
 kill %1
 
-#make nad -j30 #finall
+#blissify -g maple_dsds #finall
 ccache -s
