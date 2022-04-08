@@ -63,8 +63,8 @@ get_out () {
 }
 
 #get_selinux
-#get_ccache
-get_out
+get_ccache
+#get_out
 
 # Lets see machine specifications and environments
   df -h
