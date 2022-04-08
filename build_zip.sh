@@ -26,6 +26,6 @@ get_out () {
   ls -lh
 }
 
-get_out
+#get_out
 
 #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Success"

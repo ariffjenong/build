@@ -33,7 +33,7 @@ retry_event() {
 }
 
 cd /cirrus/rom
-sleep 117m
-#sleep 119m
+#sleep 117m
+sleep 119m
 compiled_zip
 retry_event
