@@ -27,6 +27,7 @@ task:
 
   Out_background_script:
       - time rclone copy znxtproject:ccache/$ROM_PROJECT/out.tar.zst /cirrus/rom -P
+      - cd cirrus/rom
       - time tar -xaf out.tar.zst
       - time rm -rf out.tar.zst
 
