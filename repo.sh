@@ -14,12 +14,12 @@ compile () {
 }
 
 cherry_pick () {
-  cd build
+  cd build/make
   git fetch https://github.com/LineageOS/android_build refs/changes/79/322579/1 && git cherry-pick FETCH_HEAD
-  cd ../bionic
-  git fetch https://github.com/LineageOS/android_bionic refs/changes/80/322580/2 && git cherry-pick FETCH_HEAD
-  cd ../build/soong
+  cd ../soong
   git fetch https://github.com/LineageOS/android_build_soong refs/changes/78/322578/1 && git cherry-pick FETCH_HEAD
+  cd ../../bionic
+  git fetch https://github.com/LineageOS/android_bionic refs/changes/80/322580/2 && git cherry-pick FETCH_HEAD
 }
 
 ls -lh
