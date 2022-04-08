@@ -6,10 +6,10 @@ sudo apt-get update -y && sudo apt-get install expect -y
 upload_maple_dsds () {
 cd ~/rom/out/target/product/maple_dsds
 
-GAPPS=$(ls *GApps*.zip)
+GAPPS=$(ls *Gapps*.zip)
 #product=$(ls *Vanilla*.zip)
-product=$(ls *UNOFFICIAL*.zip)
-project=xperia-xz-premium/maple_dsds
+product=$(ls *2314*.zip)
+project=nusantaraproject/maple_dsds
 
 # Upload
 expect -c "
@@ -19,11 +19,13 @@ send \"yes\r\"
 expect \"Password \"
 send \"${SF_PASS}\r\"
 expect \"sftp> \"
-send \"mkdir $ROM_PROJECT\r\"
-expect \"sftp> \"
-send \"cd $ROM_PROJECT\r\"
+send \"cd maple_dsds\r\"
 set timeout -1
 send \"put $product\r\"
+expect \"Uploading\"
+expect \"100%\"
+expect \"sftp>\"
+send \"put $GAPPS\r\"
 expect \"Uploading\"
 expect \"100%\"
 expect \"sftp>\"
@@ -43,8 +45,8 @@ Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendM
 upload_maple () {
 cd ~/rom/out/target/product/maple
 
-#productGAPPS=$(ls *GApps*.zip)
-productmaple=$(ls *Vanilla*.zip)
+productGAPPS=$(ls *Gapps*.zip)
+productmaple=$(ls *0024*.zip)
 projectmaple=xperia-xz-premium/maple
 
 # Upload
@@ -55,9 +57,13 @@ send \"yes\r\"
 expect \"Password \"
 send \"${SF_PASS}\r\"
 expect \"sftp> \"
-send \"cd $ROM_PROJECT\r\"
+send \"cd maple\r\"
 set timeout -1
 send \"put $productmaple\r\"
+expect \"Uploading\"
+expect \"100%\"
+expect \"sftp>\"
+send \"put $productGAPPS\r\"
 expect \"Uploading\"
 expect \"100%\"
 expect \"sftp>\"
@@ -75,4 +81,4 @@ Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendM
 }
 
 upload_maple_dsds
-#upload_maple
+upload_maple

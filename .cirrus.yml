@@ -23,21 +23,22 @@ task:
       #- git config --global credential.helper store --file=~/.git-credentials
       - mkdir -p ~/.config/rclone
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
-      #- mkdir -p ~/rom/out/target/product/maple
-      #- cd ~/rom/out/target/product/maple
-      #- time aria2c https://roms.cirrus-ci.workers.dev/0:/maple/Cherish-OS-v3.5.5-20220331-0404-maple-UNOFFICIAL-Vanilla.zip -x16 -s50
+      - mkdir -p ~/rom/out/target/product/maple
+      - cd ~/rom/out/target/product/maple
+      - time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/Nusantara-Project/maple/Nusantara-v4.4-12L-maple-Gapps-08042022-OFFICIAL-0059.zip -x16 -s50
+      - time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/Nusantara-Project/maple/Nusantara-v4.4-12L-maple-08042022-OFFICIAL-0024.zip -x16 -s50
       - mkdir -p ~/rom/out/target/product/maple_dsds
       - cd ~/rom/out/target/product/maple_dsds
-      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/lineage-19.1-20220401-UNOFFICIAL-maple_dsds.zip -x16 -s50
-      #- time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Cherish-OS-v3.5.5-20220330-1957-maple_dsds-UNOFFICIAL-Vanilla.zip -x16 -s50
+      - time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/Nusantara-Project/Nusantara-v4.4-12L-maple_dsds-Gapps-07042022-OFFICIAL-2247.zip -x16 -s50
+      - time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/Nusantara-Project/Nusantara-v4.4-12L-maple_dsds-07042022-OFFICIAL-2314.zip -x16 -s50
 
   SF_script:
       - ./sf.sh
       #- ./build_zip.sh
       #- cd ~/rom/out/target/product/maple
       #- time rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT/maple -P
-      - cd ~/rom/out/target/product/maple_dsds
-      - time rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT/maple_dsds -P
+      #- cd ~/rom/out/target/product/maple_dsds
+      #- time rclone copy $(ls *.zip) znxtproject:rom/$ROM_PROJECT/maple_dsds -P
       #- time rclone copy $(ls *Vanilla*.zip) znxtproject:rom/$ROM_PROJECT/maple_dsds -P
       - cd ~ && rm -rf rom #&& rm .git-credentials
  
