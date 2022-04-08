@@ -47,7 +47,7 @@ cd ~/rom/out/target/product/maple
 
 productGAPPS=$(ls *Gapps*.zip)
 productmaple=$(ls *0024*.zip)
-projectmaple=xperia-xz-premium/maple
+projectmaple=nusantaraproject/maple
 
 # Upload
 expect -c "
@@ -57,8 +57,6 @@ send \"yes\r\"
 expect \"Password \"
 send \"${SF_PASS}\r\"
 expect \"sftp> \"
-send \"cd maple\r\"
-set timeout -1
 send \"put $productmaple\r\"
 expect \"Uploading\"
 expect \"100%\"
@@ -80,5 +78,5 @@ Server Host : cirrus-ci
 Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendMessage
 }
 
-upload_maple_dsds
+#upload_maple_dsds
 upload_maple

@@ -27,10 +27,10 @@ task:
       - cd ~/rom/out/target/product/maple
       - time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/Nusantara-Project/maple/Nusantara-v4.4-12L-maple-Gapps-08042022-OFFICIAL-0059.zip -x16 -s50
       - time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/Nusantara-Project/maple/Nusantara-v4.4-12L-maple-08042022-OFFICIAL-0024.zip -x16 -s50
-      - mkdir -p ~/rom/out/target/product/maple_dsds
-      - cd ~/rom/out/target/product/maple_dsds
-      - time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/Nusantara-Project/Nusantara-v4.4-12L-maple_dsds-Gapps-07042022-OFFICIAL-2247.zip -x16 -s50
-      - time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/Nusantara-Project/Nusantara-v4.4-12L-maple_dsds-07042022-OFFICIAL-2314.zip -x16 -s50
+      #- mkdir -p ~/rom/out/target/product/maple_dsds
+      #- cd ~/rom/out/target/product/maple_dsds
+      #- time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/Nusantara-Project/Nusantara-v4.4-12L-maple_dsds-Gapps-07042022-OFFICIAL-2247.zip -x16 -s50
+      #- time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/Nusantara-Project/Nusantara-v4.4-12L-maple_dsds-07042022-OFFICIAL-2314.zip -x16 -s50
 
   SF_script:
       - ./sf.sh
