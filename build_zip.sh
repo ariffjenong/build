@@ -17,4 +17,15 @@ time rclone copy ccache.tar.* znxtproject:ccache/$ROM_PROJECT -P
 #time com rom 1
 time rm ccache.tar.*
 ls -lh
+
+get_out () {
+  cd rom
+  time com out 9
+  time rclone copy out.tar.* znxtproject:ccache/$ROM_PROJECT -P
+  time rm out.tar.*
+  ls -lh
+}
+
+get_out
+
 #curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Success"
