@@ -12,12 +12,13 @@
  export BUILD_USERNAME=znxt
  #export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
  export TZ=Asia/Jakarta
+ make installclean
 blissify -g maple_dsds &
 #make nad &  #dont remove that '&'
 #sleep 108m #first running
 #sleep 106m #second running
 #sleep 105m #third running
-sleep 104m #fourth running
+sleep 90m #fourth running
 kill %1
 
 #blissify -g maple_dsds #finall

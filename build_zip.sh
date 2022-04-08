@@ -55,8 +55,16 @@ get_selinux () {
   root
 }
 
+get_out () {
+  cd /cirrus/rom
+  ls -lh
+  time com out 1
+  time rclone copy out.tar.* znxtproject:ccache/$ROM_PROJECT -P
+}
+
 #get_selinux
-get_ccache
+#get_ccache
+get_out
 
 # Lets see machine specifications and environments
   df -h
