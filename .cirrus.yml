@@ -35,7 +35,6 @@ task:
       - ./retry.sh
 
   Sync_script:
-      - sleep 1m
       - ./repo.sh
 
   Build_script:
