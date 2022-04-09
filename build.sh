@@ -19,11 +19,11 @@ env
  export WITH_GAPPS=true
  export TZ=Asia/Jakarta
 #make systemimage &
-#make installclean
+make installclean
 make bacon -j24 & #dont remove that '&'
 #sleep 50m #first running
-#sleep 90m #second running
-sleep 104m #third running
+sleep 90m #second running
+#sleep 104m #third running
 kill %1
  
 #make bacon -j24
