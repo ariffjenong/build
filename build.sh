@@ -18,7 +18,7 @@ blissify -g maple_dsds &
 #sleep 108m #first running
 #sleep 106m #second running
 #sleep 104m #third running
-sleep 90m #fourth running
+sleep 89m #fourth running
 kill %1
 
 #blissify -g maple_dsds #finall
