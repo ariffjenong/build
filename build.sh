@@ -17,8 +17,8 @@ blissify -g maple_dsds &
 #make nad &  #dont remove that '&'
 #sleep 108m #first running
 #sleep 106m #second running
-#sleep 104m #third running
-sleep 89m #fourth running
+sleep 100m #third running
+#sleep 89m #fourth running
 kill %1
 
 #blissify -g maple_dsds #finall
