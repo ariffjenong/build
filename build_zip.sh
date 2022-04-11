@@ -1,5 +1,4 @@
 #!/bin/bash
-cd /cirrus
 
 com ()
 {
@@ -7,25 +6,21 @@ com ()
     tar "-I zstd -1 -T2" -cf $1.tar.zst $1
 }
 
+get ccache () {
+cd /cirrus
 time com ccache 1
-
-
-#echo "$rclone_config" > ~/.config/rclone/rclone.conf
-#curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading ccache...."
 time rclone copy ccache.tar.* znxtproject:ccache/$ROM_PROJECT -P
-#cd ~
-#time com rom 1
-#time rm ccache.tar.*
 ls -lh
+}
 
 get_out () {
-  cd rom
+  cd /cirrus/rom
   time com out 9
   time rclone copy out.tar.* znxtproject:ccache/$ROM_PROJECT -P
   time rm out.tar.*
   ls -lh
 }
 
-#get_out
-
-#curl -s https://api.telegram.org/$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="Uploading Success"
+sleep 104m
+get_out
+#get ccache
