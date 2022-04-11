@@ -80,5 +80,5 @@ Server Host : cirrus-ci
 Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendMessage
 }
 
-upload_maple_dsds
-#upload_maple
+#upload_maple_dsds
+upload_maple
