@@ -43,7 +43,7 @@ Server Host : cirrus-ci
 Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendMessage
 }
 
-upload_maple () {
+#upload_maple () {
 cd ~/rom/out/target/product/maple
 
 productGAPPS=$(ls *GApps*.zip)
@@ -57,6 +57,14 @@ expect \"yes/no\"
 send \"yes\r\"
 expect \"Password \"
 send \"${SF_PASS}\r\"
+expect \"sftp>\"
+send \"rm Cherish-OS-v3.6-20220411-0929-maple-UNOFFICIAL-Vanilla.zip\r\"
+expect \"sftp>\"
+send \"rm Cherish-OS-v3.6-20220411-0301-maple-UNOFFICIAL-GApps.zip\r\"
+expect \"sftp>\"
+send \"put $productGAPPS\r\"
+expect \"Uploading\"
+expect \"100%\"
 expect \"sftp>\"
 send \"put $productmaple\r\"
 expect \"Uploading\"
@@ -74,7 +82,7 @@ Product : ""$productmaple"" ""productGAPPS""
 Device : ""maple""
 Server Host : cirrus-ci
 Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendMessage
-}
+
 
 #upload_maple_dsds
-upload_maple
+#upload_maple
