@@ -48,7 +48,7 @@ cd ~/rom/out/target/product/maple
 
 productGAPPS=$(ls *GApps*.zip)
 productmaple=$(ls *Vanilla*.zip)
-projectmaple=xperia-xz-premium/CherishOS/twelve-one/maple
+projectmaple=xperia-xz-premium/CherishOS/twelve-one
 
 # Upload
 expect -c "
@@ -58,7 +58,11 @@ send \"yes\r\"
 expect \"Password \"
 send \"${SF_PASS}\r\"
 expect \"sftp>\"
-send \"rm Cherish-OS-v3.6-20220411-0929-maple-UNOFFICIAL-Vanilla.zip\r\"
+send \"mkdir maple\r\"
+set timeout -1
+expect \"sftp>\"
+send \"cd maple\r\"
+set timeout -1
 expect \"sftp>\"
 send \"put $productmaple\r\"
 expect \"Uploading\"
@@ -74,7 +78,8 @@ send \"yes\r\"
 expect \"Password \"
 send \"${SF_PASS}\r\"
 expect \"sftp>\"
-send \"rm Cherish-OS-v3.6-20220411-0301-maple-UNOFFICIAL-GApps.zip\r\"
+send \"cd maple\r\"
+set timeout -1
 expect \"sftp>\"
 send \"put $productGAPPS\r\"
 expect \"Uploading\"
