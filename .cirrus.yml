@@ -27,7 +27,7 @@ task:
       - mkdir -p ~/rom/out/target/product/maple
       - cd ~/rom/out/target/product/maple
       - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple/Cherish-OS-v3.6-20220411-0929-maple-UNOFFICIAL-Vanilla.zip -x16 -s50
-      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple/Cherish-OS-v3.6-20220411-0301-maple-UNOFFICIAL-GApps.zip -x16 -s50
+      #- time aria2c https://roms.cirrus-ci.workers.dev/0:/maple/Cherish-OS-v3.6-20220411-0301-maple-UNOFFICIAL-GApps.zip -x16 -s50
       #- mkdir -p ~/rom/out/target/product/maple_dsds
       #- cd ~/rom/out/target/product/maple_dsds
       #- time aria2c https://roms.cirrus-ci.workers.dev/0:/maple_dsds/Cherish-OS-v3.6-20220411-0435-maple_dsds-UNOFFICIAL-GApps.zip -x16 -s50
