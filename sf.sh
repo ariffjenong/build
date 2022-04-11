@@ -7,9 +7,9 @@ upload_maple_dsds () {
 cd ~/rom/out/target/product/maple_dsds
 
 GAPPS=$(ls *Gapps*.zip)
-#product=$(ls *Vanilla*.zip)
-product=$(ls *2314*.zip)
-project=nusantaraproject/maple_dsds
+product=$(ls *Vanilla*.zip)
+#product=$(ls *2314*.zip)
+project=xperia-xz-premium/CherishOS/twelve-one/maple_dsds
 
 # Upload
 expect -c "
@@ -34,6 +34,7 @@ interact"
 
 # Post
 curl -s -v -F "chat_id=$TG_CHAT_ID" -F "parse_mode=html" -F text="Build completed successfully!!!
+Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple_dsds/$ROM_PROJECT/$GAPPS
 Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple_dsds/$ROM_PROJECT/$product
 Dev : ""Arif JeNong""
 Product : ""$product"" ""$GAPPS""
@@ -46,8 +47,8 @@ upload_maple () {
 cd ~/rom/out/target/product/maple
 
 productGAPPS=$(ls *Gapps*.zip)
-productmaple=$(ls *0024*.zip)
-projectmaple=nusantaraproject/maple
+productmaple=$(ls *Vanilla*.zip)
+projectmaple=xperia-xz-premium/CherishOS/twelve-one/maple
 
 # Upload
 expect -c "
@@ -61,14 +62,19 @@ send \"put $productGAPPS\r\"
 expect \"Uploading\"
 expect \"100%\"
 expect \"sftp>\"
+send \"put $productmaple\r\"
+expect \"Uploading\"
+expect \"100%\"
+expect \"sftp>\"
 send \"bye\r\"
 interact"
 
 # Post
 curl -s -v -F "chat_id=$TG_CHAT_ID" -F "parse_mode=html" -F text="Build completed successfully!!!
+Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple/$ROM_PROJECT/$productGAPPS
 Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple/$ROM_PROJECT/$productmaple
 Dev : ""Arif JeNong""
-Product : ""$productmaple""
+Product : ""$productmaple"" ""productGAPPS""
 Device : ""maple""
 Server Host : cirrus-ci
 Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendMessage
