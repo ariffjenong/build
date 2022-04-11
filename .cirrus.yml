@@ -26,9 +26,9 @@ task:
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
       - mkdir -p ~/rom/out/target/product/maple
       - cd ~/rom/out/target/product/maple
-      - time aria2c https://sourceforge.net/projects/nusantaraproject/files/maple/Nusantara-v4.4-12L-maple-Gapps-08042022-OFFICIAL-0059.zip -x16 -s50
+      - time aria2c https://sourceforge.net/projects/nusantaraproject/files/maple/Nusantara-v4.4-12L-maple-08042022-OFFICIAL-0024.zip -x16 -s50
       - ls -lh
-      - unzip Nusantara-v4.4-12L-maple-Gapps-08042022-OFFICIAL-0059.zip
+      - unzip $(ls)
       #- time aria2c https://roms.cirrus-ci.workers.dev/0:/maple/Cherish-OS-v3.6-20220411-0301-maple-UNOFFICIAL-GApps.zip -x16 -s50
       #- mkdir -p ~/rom/out/target/product/maple_dsds
       #- cd ~/rom/out/target/product/maple_dsds
