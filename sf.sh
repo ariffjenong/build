@@ -18,8 +18,6 @@ expect \"yes/no\"
 send \"yes\r\"
 expect \"Password \"
 send \"${SF_PASS}\r\"
-expect \"sftp> \"
-send \"cd maple_dsds\r\"
 set timeout -1
 send \"put $product\r\"
 expect \"Uploading\"
@@ -43,12 +41,12 @@ Server Host : cirrus-ci
 Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendMessage
 }
 
-#upload_maple () {
+upload_maple () {
 cd ~/rom/out/target/product/maple
 
 productGAPPS=$(ls *GApps*.zip)
 productmaple=$(ls *Vanilla*.zip)
-projectmaple=xperia-xz-premium/CherishOS/twelve-one
+projectmaple=xperia-xz-premium/CherishOS/twelve-one/maple
 
 # Upload
 expect -c "
@@ -57,29 +55,11 @@ expect \"yes/no\"
 send \"yes\r\"
 expect \"Password \"
 send \"${SF_PASS}\r\"
-expect \"sftp>\"
-send \"mkdir maple\r\"
-set timeout -1
-expect \"sftp>\"
-send \"cd maple\r\"
 set timeout -1
 expect \"sftp>\"
 send \"put $productmaple\r\"
 expect \"Uploading\"
 expect \"100%\"
-expect \"sftp>\"
-send \"bye\r\"
-interact"
-
-expect -c "
-spawn sftp $SF_USERNAME@frs.sourceforge.net:/home/pfs/project/$projectmaple
-expect \"yes/no\"
-send \"yes\r\"
-expect \"Password \"
-send \"${SF_PASS}\r\"
-expect \"sftp>\"
-send \"cd maple\r\"
-set timeout -1
 expect \"sftp>\"
 send \"put $productGAPPS\r\"
 expect \"Uploading\"
@@ -87,7 +67,7 @@ expect \"100%\"
 expect \"sftp>\"
 send \"bye\r\"
 interact"
-
+}
 
 #upload_maple_dsds
 #upload_maple
