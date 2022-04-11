@@ -58,24 +58,30 @@ send \"yes\r\"
 expect \"Password \"
 send \"${SF_PASS}\r\"
 expect \"sftp>\"
-send \"put $productGAPPS\r\"
-expect \"sftp>\"
 send \"rm Cherish-OS-v3.6-20220411-0929-maple-UNOFFICIAL-Vanilla.zip\r\"
 expect \"sftp>\"
 send \"put $productmaple\r\"
+expect \"Uploading\"
+expect \"100%\"
 expect \"sftp>\"
 send \"bye\r\"
 interact"
 
-# Post
-curl -s -v -F "chat_id=$TG_CHAT_ID" -F "parse_mode=html" -F text="Build completed successfully!!!
-Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple/$ROM_PROJECT/$productGAPPS
-Link: https://sourceforge.net/projects/xperia-xz-premium/files/maple/$ROM_PROJECT/$productmaple
-Dev : ""Arif JeNong""
-Product : ""$productmaple"" ""productGAPPS""
-Device : ""maple""
-Server Host : cirrus-ci
-Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendMessage
+expect -c "
+spawn sftp $SF_USERNAME@frs.sourceforge.net:/home/pfs/project/$projectmaple
+expect \"yes/no\"
+send \"yes\r\"
+expect \"Password \"
+send \"${SF_PASS}\r\"
+expect \"sftp>\"
+send \"rm Cherish-OS-v3.6-20220411-0301-maple-UNOFFICIAL-GApps.zip\r\"
+expect \"sftp>\"
+send \"put $productGAPPS\r\"
+expect \"Uploading\"
+expect \"100%\"
+expect \"sftp>\"
+send \"bye\r\"
+interact"
 
 
 #upload_maple_dsds
