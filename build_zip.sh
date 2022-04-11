@@ -6,7 +6,7 @@ com ()
     tar "-I zstd -1 -T2" -cf $1.tar.zst $1
 }
 
-get ccache () {
+get_ccache () {
 cd /cirrus
 time com ccache 1
 time rclone copy ccache.tar.* znxtproject:ccache/$ROM_PROJECT -P
@@ -23,4 +23,4 @@ get_out () {
 
 sleep 104m
 get_out
-#get ccache
+#get_ccache
