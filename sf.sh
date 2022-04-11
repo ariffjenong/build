@@ -6,7 +6,7 @@ sudo apt-get update -y && sudo apt-get install expect -y
 upload_maple_dsds () {
 cd ~/rom/out/target/product/maple_dsds
 
-GAPPS=$(ls *Gapps*.zip)
+GAPPS=$(ls *GApps*.zip)
 product=$(ls *Vanilla*.zip)
 #product=$(ls *2314*.zip)
 project=xperia-xz-premium/CherishOS/twelve-one/maple_dsds
@@ -46,7 +46,7 @@ Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendM
 upload_maple () {
 cd ~/rom/out/target/product/maple
 
-productGAPPS=$(ls *Gapps*.zip)
+productGAPPS=$(ls *GApps*.zip)
 productmaple=$(ls *Vanilla*.zip)
 projectmaple=xperia-xz-premium/CherishOS/twelve-one/maple
 
