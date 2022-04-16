@@ -17,6 +17,6 @@ make systemimage &
 #sleep 105m #third running
 sleep 104m #fourth running
 kill %1
-
+ 
 #make nad -j30 #finall
 ccache -s
