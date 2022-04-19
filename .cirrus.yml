@@ -12,7 +12,7 @@ task:
       memory: 32G
  
   Download_script:
-      - url=https://roms.apon77.workers.dev/ccache/ci3/ccache.tar.gz
+      - #tes url=https://roms.apon77.workers.dev/ccache/ci3/ccache.tar.gz
       - cd ~
       - mkdir -p ~/rom
       - mkdir -p ~/znxt
