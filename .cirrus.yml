@@ -10,7 +10,7 @@ task:
       image: inok2341/anu:latest
       cpu: 8
       memory: 32G
-
+ 
   Download_script:
       - url=https://roms.apon77.workers.dev/ccache/ci3/ccache.tar.gz
       - cd ~
