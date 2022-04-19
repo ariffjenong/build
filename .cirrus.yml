@@ -24,13 +24,47 @@ task:
       - git config --global user.email "arifbuditantodablekk@gmail.com"
       - echo "$GIT" > ~/.git-credentials
       - git config --global credential.helper store --file=~/.git-credentials
-      - mkdir -p ~/github/kernel
+      - mkdir -p ~/github
       - cd ~/github
-      - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998.git -b lineage-19.1 kernel
+      - git clone --depth=1 https://github.com/ariffjenong/android_kernel_sony_msm8998.git -b nad12.1 kernel
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple.git -b Nusantara-12.1 device_maple
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b nad12.1 vendor_maple
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_maple_dsds.git -b Nusantara-12.1 device_maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_device_sony_yoshino-common.git -b nad12.1 device_yoshino
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git -b nad12.1 vendor_maple_dsds
       - cd ~/github/kernel
-      - git branch nad12.1
-      - git checkout nad12.1
-      - git push --set-upstream origin nad12.1
+      - git remote add what https://github.com/whatawurst/android_kernel_sony_msm8998
+      - git fetch what
+      - git checkout what/lineage-19.1 && git switch -c nad12.1-p
+      - git push --set-upstream origin nad12.1-p
+      - cd ~/github/device_maple_dsds
+      - git remote add what https://github.com/whatawurst/android_device_sony_maple_dsds
+      - git fetch what
+      - git checkout what/lineage-19.1 && git switch -c Nusantara-12.1-p
+      - git cherry-pick f9c12da83e5e4088ddb51820b37c803fa63b2b5d
+      - git push --set-upstream origin Nusantara-12.1-p
+      - cd ~/github/device_yoshino
+      - git remote add what https://github.com/whatawurst/android_device_sony_yoshino-common
+      - git fetch what
+      - git checkout what/lineage-19.1 && git switch -c nad12.1-p
+      - git cherry-pick 6380b768715d1b5a6a311670b318f3d22f1692ed 981533ecab8c38491faab1de8a09748b428460d6
+      - git push --set-upstream origin nad12.1-p
+      - cd ~/github/vendor_maple_dsds
+      - git remote add what https://github.com/whatawurst/android_vendor_sony_maple_dsds
+      - git fetch what
+      - git checkout what/lineage-19.1 && git switch -c nad12.1-p
+      - git push --set-upstream origin nad12.1-p
+      - cd ~/github/device_maple
+      - git remote add what https://github.com/whatawurst/android_device_sony_maple
+      - git fetch what
+      - git checkout what/lineage-19.1 && git switch -c Nusantara-12.1-p
+      - git cherry-pick d9d883d0682b4e2b3f3eafd4c1de3970b88c018e
+      - git push --set-upstream origin Nusantara-12.1-p
+      - cd ~/github/vendor_maple
+      - git remote add what https://github.com/whatawurst/android_vendor_sony_maple
+      - git fetch what
+      - git checkout what/lineage-19.1 && git switch -c nad12.1-p
+      - git push --set-upstream origin nad12.1-p
       #- git remote add derf https://github.com/Classic-Phone-Devs/android_vendor_sony_maple.git
       #- git remote add ar https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git
       #- git fetch ar
