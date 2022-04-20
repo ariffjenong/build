@@ -1,5 +1,6 @@
 env:
-    rclone_config: "ENCRYPTED[258406cd70f27dc298893934a7a10dcbb98d879ac3bb51b6c5e53b8659815a865cd2b00b588d4b65a0aa3ce346c21309]"
+    CIRRUS_CLONE_DEPTH: 1
+    rclone_config: "ENCRYPTED[dcb01f999ce7488858fdcfc930c6f0e224d61244143e37bce0d75e886f81b01d93753256a1db12b106843bada1f5a0f2]"
     TG_TOKEN: "ENCRYPTED[7888fd688129c58fcd9a25086dad02a0c103986cfca92f0d1606b3873ab2e02fffacffe4a8a432b0d726eff81999323e]"
     TG_CHAT_ID: "ENCRYPTED[e06537f430d3e1dfd6bd23c324f9f5d0ac0a67807e496b194aa1a1bfb4c4a8aae6b6eb77bdcb5ae2f043b9b09cc00bc5]"
     SF_USERNAME: "ENCRYPTED[9b9deac88b090b7dc4e69a058e79360e8832c782b9bd46499a7f1401e66e219bad7c9c901a85eeb0d154f717cfc5f148]"
@@ -7,13 +8,14 @@ env:
     GIT: "ENCRYPTED[d54cdbd8648be21a5afda47479c134fc824f12d8c3318f0a471f0720488015135663762ad3604cfa49704744ef58a04e]"
     m: "ENCRYPTED[4a34b08f10bcabfbe0c5148ea877c7976aa0e93eccfcf64fc1d8fe06ec37fed7b80c7a14fedc9912529729b0e6363e5d]"
     ROM_PROJECT: "nusantara-12"
+    cp: "ENCRYPTED[919714941fa21ab21bc82cf2a128c466bdc6006ffabd96b667434082640168c2bd16d781160403a1c769b4b95c740b37]"
  
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
   timeout_in: 1h  
   container:
       image: inok2341/anu:latest
-      cpu: 2
+      cpu: 4
       memory: 8G
 
   Download_script:
@@ -26,33 +28,11 @@ task:
       - git config --global credential.helper store --file=~/.git-credentials
       - mkdir -p ~/github
       - cd ~/github
-      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b lineage-19.0 vendor_maple
-      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git -b lineage-19.1 vendor_maple_dsds
-      - cd ~/github/vendor_maple_dsds
-      - git remote add what https://github.com/aomsin2526/android_vendor_sony_maple_dsds
-      - git fetch what lineage-19.1
-      - git checkout what/lineage-19.1 && git switch -c nad12.1
-      - git branch -D lineage-19.1
-      - git push origin HEAD:nad12.1 -f
-      - cd ~/github/vendor_maple
-      - git remote add what https://github.com/avlclsxx/android_vendor_sony_maple
-      - git fetch what lineage-19.1
-      - git checkout what/lineage-19.1 && git switch -c nad12.1 && git branch -D lineage-19.0
-      - git push origin HEAD:nad12.1 -f
-      #- git remote add derf https://github.com/Classic-Phone-Devs/android_vendor_sony_maple.git
-      #- git remote add ar https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git
-      #- git fetch ar
-      #- git cherry-pick 3020980a21cf11fe780f9544dff4c975d8e1932f
-      #- git fetch derf
-      #- git cherry-pick eeaa34ddb0d56958c61a8ffd2df1836bcf35b46d && rm proprietary/vendor/lib/libperipheral_client.so && rm proprietary/vendor/bin/pm-service && rm proprietary/vendor/bin/pm-proxy && rm proprietary/vendor/lib64/libperipheral_client.so && rm proprietary/vendor/etc/init/taimport_vendor.rc
-      #- rm .gitignore
-      #- cd proprietary/vendor/lib
-      #- wget https://github.com/AndroidBlobs/vendor_sony_maple/raw/maple-user-9-YOSHINO-2.2.0-190725-0908-1-dev-keys/proprietary/vendor/lib/libminksocket.so && cd ..
-      #- cd lib64
-      #- wget https://github.com/AndroidBlobs/vendor_sony_maple/raw/maple-user-9-YOSHINO-2.2.0-190725-0908-1-dev-keys/proprietary/vendor/lib64/libminksocket.so
-      #- cd ~/github/vendor_maple
-      #- git add . && git commit
-      #- git push origin lineage-19.0
+      - git clone https://github.com/ariffjenong/android_vendor_sony_maple_dsds -b cherish-12.1 vendor
+      - cd vendor
+      - git checkout a2ca1e2884471f5afd255eebf6eb85bb2b997b36 && git switch -c cherish-12
+      - git fetch origin cherish-12 && git cherry-pick 61494f74ff31289dc62fff2dcf2d222b99c8b881
+      - git push origin cherish-12 -f
 
   SF_script:
       - cd ~ && rm -rf .config && rm -rf github && rm .git-credentials
