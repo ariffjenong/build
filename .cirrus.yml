@@ -27,12 +27,12 @@ task:
       - mkdir -p ~/github
       - cd ~/github
       - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple.git -b lineage-19.0 vendor_maple
-      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git -b lineage-19.0 vendor_maple_dsds
+      - git clone --depth=1 https://github.com/ariffjenong/android_vendor_sony_maple_dsds.git -b lineage-19.1 vendor_maple_dsds
       - cd ~/github/vendor_maple_dsds
       - git remote add what https://github.com/aomsin2526/android_vendor_sony_maple_dsds
       - git fetch what lineage-19.1
       - git checkout what/lineage-19.1 && git switch -c nad12.1
-      - git branch -D lineage-19.0
+      - git branch -D lineage-19.1
       - git push origin HEAD:nad12.1 -f
       - cd ~/github/vendor_maple
       - git remote add what https://github.com/avlclsxx/android_vendor_sony_maple
