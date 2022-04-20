@@ -35,7 +35,7 @@ task:
       - git branch -D lineage-19.0
       - git push origin HEAD:nad12.1 -f
       - cd ~/github/vendor_maple
-      - git remote add what https://github.com/avlclsxx/android_vendor_sony_maple
+      - git remote add what https://github.com/whatawurst/android_vendor_sony_maple
       - git fetch what lineage-19.1
       - git checkout what/lineage-19.1 && git switch -c nad12.1 && git branch -D lineage-19.0
       - git push origin HEAD:nad12.1 -f
