@@ -7,7 +7,7 @@ upload_maple_dsds () {
 cd ~/rom/out/target/product/maple_dsds
 
 GAPPS=$(ls *GApps*.zip)
-product=$(ls *Vanilla*.zip)
+#product=$(ls *Vanilla*.zip)
 #product=$(ls *2314*.zip)
 project=xperia-xz-premium/CherishOS/twelve-one/maple_dsds
 
@@ -19,9 +19,6 @@ send \"yes\r\"
 expect \"Password \"
 send \"${SF_PASS}\r\"
 set timeout -1
-send \"put $product\r\"
-expect \"Uploading\"
-expect \"100%\"
 expect \"sftp>\"
 send \"put $GAPPS\r\"
 expect \"Uploading\"
@@ -44,9 +41,9 @@ Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendM
 upload_maple () {
 cd ~/rom/out/target/product/maple
 
-productGAPPS=$(ls *GApps*.zip)
-productmaple=$(ls *Vanilla*.zip)
-projectmaple=xperia-xz-premium/CherishOS/twelve-one/maple
+productGAPPS=$(ls *Gapps*.zip)
+#productmaple=$(ls *Vanilla*.zip)
+projectmaple=nusantaraproject/maple
 
 # Upload
 expect -c "
@@ -57,10 +54,6 @@ expect \"Password \"
 send \"${SF_PASS}\r\"
 set timeout -1
 expect \"sftp>\"
-send \"put $productmaple\r\"
-expect \"Uploading\"
-expect \"100%\"
-expect \"sftp>\"
 send \"put $productGAPPS\r\"
 expect \"Uploading\"
 expect \"100%\"
@@ -69,5 +62,5 @@ send \"bye\r\"
 interact"
 }
 
-#upload_maple_dsds
+upload_maple_dsds
 #upload_maple
