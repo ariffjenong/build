@@ -41,7 +41,7 @@ Date : ""$(env TZ=Asia/Jakarta date)""" https://api.telegram.org/$TG_TOKEN/sendM
 upload_maple () {
 cd ~/rom/out/target/product/maple
 
-productGAPPS=$(ls *Gapps*.zip)
+productGAPPS=$(ls Nusantara*Gapps*.zip)
 #productmaple=$(ls *Vanilla*.zip)
 projectmaple=nusantaraproject/maple
 
@@ -62,5 +62,5 @@ send \"bye\r\"
 interact"
 }
 
-upload_maple_dsds
-#upload_maple
+#upload_maple_dsds
+upload_maple
