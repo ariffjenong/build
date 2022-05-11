@@ -26,8 +26,8 @@ task:
       - echo "$rclone_config" > ~/.config/rclone/rclone.conf
       - mkdir -p ~/rom/out/target/product/maple
       - cd ~/rom/out/target/product/maple
-      - rclone copy znxtproject:NusantaraProject/maple/Nusantara-v4.5-12L-maple-Gapps-10052022-OFFICIAL-0119.zip ~/rom/out/target/product/maple -P
-      #- time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/CherishOS/twelve-one/maple/Cherish-OS-v3.6-20220411-0301-maple-UNOFFICIAL-GApps.zip/download -x16 -s50
+      #- rclone copy znxtproject:NusantaraProject/maple/Nusantara-v4.5-12L-maple-Gapps-10052022-OFFICIAL-0119.zip ~/rom/out/target/product/maple -P
+      - time aria2c https://roms.cirrus-ci.workers.dev/0:/maple/Cherish-OS-v3.7-20220511-0237-maple-UNOFFICIAL-GApps.zip -x16 -s50
       #- ls -lh
       #- time aria2c https://sourceforge.net/projects/xperia-xz-premium/files/CherishOS/twelve-one/maple/Cherish-OS-v3.6-20220411-0929-maple-UNOFFICIAL-Vanilla.zip/download -x16 -s50
       #- ls -lh
